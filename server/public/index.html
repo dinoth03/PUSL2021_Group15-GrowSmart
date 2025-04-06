@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GrowSmart - Live Community Chat Room</title>
+    <link rel="icon" type="image/png" href="/images/TitleLogo.png">
+
+    <link href="chatstyle.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.8.1/socket.io.min.js" integrity="sha512-8ExARjWWkIllMlNzVg7JKq9RKWPlJABQUNq6YvAjE/HobctjH/NA+bSiDMDvouBVjp4Wwnf1VP1OEv7Zgjtuxw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script defer src="app.js"></script>
+</head>
+
+<body>
+
+    <main>
+        <form class="form-join">
+            <input type="text" id="name" maxlength="10" placeholder="Your name" size="5" required>
+            <input type="text" id="room" placeholder="Chat Room" size="5" required>
+            <button id="join" type="submit">Join</button>
+        </form>
+
+        <ul class="chat-display"></ul>
+
+        <p class="user-list"></p>
+
+        <p class="room-list"></p>
+
+        <p class="activity"></p>
+
+        <form class="form-msg">
+            <input type="text" id="message" placeholder="Your message" required>
+            <button type="submit">Send</button>
+        </form>
+    </main>
+
+</body>
+</html>

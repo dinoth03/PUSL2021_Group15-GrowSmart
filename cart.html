@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GrowSmart - Cart</title>
+    <link rel="icon" type="image/png" href="Img/TitleLogo.png">
+     <!-- Bootstrap CSS -->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+     <!--my css-->
+     <link href="css/shopStyle.css" rel="stylesheet">
+    <style>
+        .cart-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .cart-image {
+            width: 50px;
+            height: 50px;
+        }
+
+        .remove-item {
+            cursor: pointer;
+            font-size: 14px;
+            padding: 5px 10px 5px 10px;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <h2 style="font-size: 30px;">Your Cart</h2>
+    </nav>
+    <div class="container">
+        <div style="display: flex; justify-content: flex-end; align-items: center; padding-right: 10px;">
+            <label style="margin-right: 30px; font-size: 20px;">
+                <input type="checkbox" id="selectAll"> Select All
+            </label>
+            <button id="removeAll" class="btn btn-danger">Remove Selected</button>
+        </div>
+        
+        <br>
+        <div id="cartItems" style="border: 1px solid #ddd; padding: 15px; margin: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+        </div>
+        
+        <h3>Total: <span id="totalPrice">Rs.0.00</span></h3>
+        <button id="checkout" type="button" class="btn btn-primary">Check Out</button>
+        <button class="btn btn-secondary" type="button" onclick="window.location.href='index.html';">Back</button>
+    </div>
+    <!-- <footer class="bg-light text-center py-3" style="margin-bottom: 100%;">
+        <p>© 2025 Shop. All rights reserved.</p>
+    </footer> -->
+
+    <script>
+        // document.addEventListener("DOMContentLoaded", function () {
+        //     const cartItemsContainer = document.getElementById("cartItems");
+        //     const totalPriceElement = document.getElementById("totalPrice");
+        //     const selectAllCheckbox = document.getElementById("selectAll");
+        //     const removeAllButton = document.getElementById("removeAll");
+        //     const buyNowButton = document.getElementById("buyNow");
+
+        //     let cart = JSON.parse(localStorage.getItem("cart")) || [
+        //         { name: "Apple", price: "Rs.50.00", image: "apple.jpg" },
+        //         { name: "Banana", price: "Rs.20.00", image: "banana.jpg" },
+        //         { name: "Cherry", price: "Rs.150.00", image: "cherry.jpg" },
+        //     ];
+
+        //     function renderCart() {
+        //         cartItemsContainer.innerHTML = "";
+
+        //         cart.forEach((item, index) => {
+        //             const cartItem = document.createElement("div");
+        //             cartItem.className = "cart-item";
+        //             cartItem.innerHTML = `
+        //                 <input type="checkbox" class="cart-checkbox" data-index="${index}">
+        //                 <img src="${item.image}" alt="${item.name}" class="cart-image">
+        //                 <span>${item.name}</span>
+        //                 <span>${item.price}</span>
+        //                 <button class="remove-item btn btn-danger" data-index="${index}">Remove</button>
+        //             `;
+        //             cartItemsContainer.appendChild(cartItem);
+        //         });
+
+        //         calculateTotal();
+        //     }
+
+        //     function calculateTotal() {
+        //         const checkboxes = document.querySelectorAll(".cart-checkbox:checked");
+        //         let total = 0;
+
+        //         checkboxes.forEach(checkbox => {
+        //             const index = checkbox.getAttribute("data-index");
+        //             const item = cart[index];
+        //             if (item && item.price) {
+        //                 const price = parseFloat(item.price.replace("Rs.", "").trim());
+        //                 total += isNaN(price) ? 0 : price;
+        //             }
+        //         });
+
+        //         totalPriceElement.textContent = `Rs.${total.toFixed(2)}`;
+        //     }
+
+        //     // Select All Checkbox
+        //     selectAllCheckbox.addEventListener("change", function () {
+        //         const checkboxes = document.querySelectorAll(".cart-checkbox");
+        //         checkboxes.forEach(checkbox => checkbox.checked = this.checked);
+        //         calculateTotal();
+        //     });
+
+        //     // Remove Selected Items
+        //     removeAllButton.addEventListener("click", function () {
+        //         const selectedItems = document.querySelectorAll(".cart-checkbox:checked");
+
+        //         if (selectedItems.length === 0) {
+        //             alert("No items selected to remove!");
+        //             return;
+        //         }
+
+        //         // Remove selected items from the cart
+        //         cart = cart.filter((_, index) => {
+        //             return ![...selectedItems].some(item => item.getAttribute("data-index") == index);
+        //         });
+
+        //         localStorage.setItem("cart", JSON.stringify(cart));
+        //         renderCart();
+        //         alert("Selected items have been removed!");
+        //     });
+
+        //     // Remove Individual Item
+        //     cartItemsContainer.addEventListener("click", function (e) {
+        //         if (e.target.classList.contains("remove-item")) {
+        //             const index = e.target.getAttribute("data-index");
+        //             cart.splice(index, 1);
+        //             localStorage.setItem("cart", JSON.stringify(cart));
+        //             renderCart();
+        //             alert("Item removed successfully!");
+        //         }
+        //     });
+
+        //     // Event Listener for Individual Checkboxes
+        //     cartItemsContainer.addEventListener("change", function (e) {
+        //         if (e.target.classList.contains("cart-checkbox")) {
+        //             calculateTotal();
+        //         }
+        //     });
+
+        //     // Buy Now
+        //     buyNowButton.addEventListener("click", function () {
+        //         const selectedItems = document.querySelectorAll(".cart-checkbox:checked");
+        //         if (selectedItems.length === 0) {
+        //             alert("Please select items to purchase.");
+        //             return;
+        //         }
+
+        //         alert("Thank you for your purchase!");
+        //         cart = cart.filter((_, index) => {
+        //             return ![...selectedItems].some(item => item.getAttribute("data-index") == index);
+        //         });
+
+        //         localStorage.setItem("cart", JSON.stringify(cart));
+        //         renderCart();
+        //     });
+
+        //     renderCart();
+        // });
+
+
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const cartItemsContainer = document.getElementById("cartItems");
+        const totalPriceElement = document.getElementById("totalPrice");
+        const selectAllCheckbox = document.getElementById("selectAll");
+        const removeAllButton = document.getElementById("removeAll");
+        const checkoutButton = document.getElementById("checkout");
+
+        let cart = JSON.parse(localStorage.getItem("cart")) || [
+            { name: "Apple", price: "Rs.50.00", image: "apple.jpg" },
+            { name: "Banana", price: "Rs.20.00", image: "banana.jpg" },
+            { name: "Cherry", price: "Rs.150.00", image: "cherry.jpg" },
+        ];
+
+        function renderCart() {
+            cartItemsContainer.innerHTML = "";
+
+            cart.forEach((item, index) => {
+                const cartItem = document.createElement("div");
+                cartItem.className = "cart-item";
+                cartItem.innerHTML = `
+                    <input type="checkbox" class="cart-checkbox" data-index="${index}">
+                    <img src="${item.image}" alt="${item.name}" class="cart-image">
+                    <span>${item.name}</span>
+                    <span>${item.price}</span>
+                    <button class="remove-item btn btn-danger" data-index="${index}">Remove</button>
+                `;
+                cartItemsContainer.appendChild(cartItem);
+            });
+
+            calculateTotal();
+        }
+
+        function calculateTotal() {
+            const checkboxes = document.querySelectorAll(".cart-checkbox:checked");
+            let total = 0;
+
+            checkboxes.forEach(checkbox => {
+                const index = checkbox.getAttribute("data-index");
+                const item = cart[index];
+                if (item && item.price) {
+                    const price = parseFloat(item.price.replace("Rs.", "").trim());
+                    total += isNaN(price) ? 0 : price;
+                }
+            });
+
+            totalPriceElement.textContent = `Rs.${total.toFixed(2)}`;
+        }
+
+        // Select All Checkbox
+        selectAllCheckbox.addEventListener("change", function () {
+            const checkboxes = document.querySelectorAll(".cart-checkbox");
+            checkboxes.forEach(checkbox => checkbox.checked = this.checked);
+            calculateTotal();
+        });
+
+        // Remove Selected Items
+        removeAllButton.addEventListener("click", function () {
+            const selectedItems = document.querySelectorAll(".cart-checkbox:checked");
+
+            if (selectedItems.length === 0) {
+                alert("No items selected to remove!");
+                return;
+            }
+
+            cart = cart.filter((_, index) => {
+                return ![...selectedItems].some(item => item.getAttribute("data-index") == index);
+            });
+
+            localStorage.setItem("cart", JSON.stringify(cart));
+            renderCart();
+            alert("Selected items have been removed!");
+        });
+
+        // Remove Individual Item
+        cartItemsContainer.addEventListener("click", function (e) {
+            if (e.target.classList.contains("remove-item")) {
+                const index = e.target.getAttribute("data-index");
+                cart.splice(index, 1);
+                localStorage.setItem("cart", JSON.stringify(cart));
+                renderCart();
+                alert("Item removed successfully!");
+            }
+        });
+
+        // Event Listener for Individual Checkboxes
+        cartItemsContainer.addEventListener("change", function (e) {
+            if (e.target.classList.contains("cart-checkbox")) {
+                calculateTotal();
+            }
+        });
+
+        // Checkout Button Event
+        checkoutButton.addEventListener("click", function () {
+            const checkboxes = document.querySelectorAll(".cart-checkbox:checked");
+            let selectedItems = [];
+            let total = 0;
+
+            checkboxes.forEach(checkbox => {
+                const index = checkbox.getAttribute("data-index");
+                const item = cart[index];
+                if (item) {
+                    selectedItems.push(item);
+                    total += parseFloat(item.price.replace("Rs.", "").trim());
+                }
+            });
+
+            if (selectedItems.length === 0) {
+                alert("No items selected for checkout!");
+                return;
+            }
+
+            // Pass selected items and total to the delivery form
+            localStorage.setItem("selectedItems", JSON.stringify(selectedItems));
+            localStorage.setItem("checkoutTotal", total.toFixed(2));
+            window.location.href = `delivery.html?total=Rs.${total.toFixed(2)}`;
+        });
+
+        renderCart();
+    });
+
+    </script>
+</body>
+
+</html>

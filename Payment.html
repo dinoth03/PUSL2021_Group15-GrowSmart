@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Your Payment</title>
+    <link rel="icon" type="image/png" href="Img/TitleLogo.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/Payment.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="section">
+            <h3>Purchase Summary</h3><hr>
+            <div class="receipt">
+                <p id="product"><b>Products:</b> </p>
+                <p class="total" id="total_price"><b>Total Price:</b></p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>Payment Method</h3><hr>
+               <div class="payment-methods">
+                <!-- PayPal Button -->
+                <div id="paypal-button-container"></div>
+
+                <div class="card-form">
+                    <input type="text" placeholder="Card Number" required id="cd">
+                    <input type="text" placeholder="Expiration (MM/YY)" required id="ex">
+                    <input type="text" placeholder="CVV" required id="cvv">
+                    <input type="text" placeholder="First Name" required id="fname">
+                    <input type="text" placeholder="Last Name" required id="lname">
+                    <input type="text" placeholder="Email" required id="email">
+					
+                </div>
+					<!--<label><input type="checkbox" required>&nbsp;&nbsp;I Agree to the Terms and Coniditons.</label>
+                <button class="place-order">Place Order</button>-->
+				
+				<div class="buttons">
+            		<a href="Movies.html" class="back-btn" id="back">BACK</a>
+            		<a href="#" class="pay-now-btn" id="pay">PAY NOW</a>
+        		</div>
+           	   </div> <br>
+			
+			<input type="checkbox" id="check1" required>
+            <label for="check1">I agree to the <a href="Terms and Conditions.html" id="tnm">Terms & Conditions</a></label>
+				
+        </div>
+    	</div>
+
+
+         <!-- PayPal Sandbox Configuration Load -->
+	      	<!-- Include the PayPal JavaScript SDK -->
+   			 <script src="https://www.paypal.com/sdk/js?client-id=AS8svvryxGm8WdNhTp-2NZJcHdVJvTfTEfQB6w7yij6sfRCsHd-6pBiHe61dv7UrQ_x04bcaZ-j_OkBo&currency=USD"></script>
+                <!-- This is ABCCinemas App under ABCCinemas Sandbox Account -->
+                <!-- Username & Password for the sandbox account of the site -->
+                <!-- Email :- CinemasABC@gmail.com  /  Password :- ABC@cinemas -->
+    <script>
+      // Render the PayPal button into #paypal-button-container
+      paypal.Buttons({
+          style: {
+              layout: 'horizontal'
+          },
+          createOrder: function(data, actions) {
+              return actions.order.create({
+                  purchase_units: [{
+                      amount: {
+                          value: '36' // Total price dynamically passed
+                      }
+                  }]
+              });
+          },
+          onApprove: function(data, actions) {
+              return actions.order.capture().then(function(details) {
+                  alert('Transaction completed by ' + details.payer.name.given_name + '!');
+              });
+          }
+      }).render('#paypal-button-container');
+    </script>
+
+
+</body>
+</html>   

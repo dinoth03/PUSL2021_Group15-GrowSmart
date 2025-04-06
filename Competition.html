@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GrowSmart - Plant Market Competition</title>
+    <link rel="icon" type="image/png" href="Img/TitleLogo.png">
+    <link rel="stylesheet" href="css/CompetitionStyle.css">
+    <link rel="stylesheet" href="css/header and footer.css">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!--header section starts-->
+
+    <header class="header">
+        <a href="home new.html" class="logo"><i class="fas fa-seedling"></i>Growsmart</a>
+        <ul class="navbar">
+            <li><a href="home new.html">Home</a></li>
+            <li class="dropdown">
+            <a href="#">Plant <i class="fas fa-chevron-down"></i></a>
+            <div class="dropdown-content">
+                <a href="indoorplants.html">House Plants</a>
+                <a href="fruits & vegetables.html">Fruits & Vegetables</a>
+                <a href="flowers.html">Flowers</a>
+            </div></li>
+            <li class="dropdown">
+            <a href="#">Sustainability Garden <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="sustainable.html">Organic</a>
+                    <a href="sustainable.html">Waterwise</a>
+                </div></li>
+            <li><a href="Competition.html">Compitition</a></li>
+            <li><a href="#">shop</a></li>
+            <li class="dropdown">
+            <a href="#">Chat <i class="fas fa-chevron-down"></i></a>
+            <div class="dropdown-content">
+                <a href="#">AI Chat</a>
+                <a href="#">Community</a>
+            </div></li>
+            <li class="dropdown">
+                <a href="#">More <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="#">Promotions</a>
+                    <a href="#">Points</a>
+                    <a href="#">Learning</a>
+                    <a href="#">Idea & Inspiration</a>
+                </div></li>
+        </ul>
+
+        <div class="Icons">
+            <div class="fas fa-bars" id="menu-btn"></div>
+            <div class="fas fa-search" id="search-btn"></div>
+            <div class="fas fa-shopping-cart" id="cart-btn"></div>
+            <div class="fas fa-user" id="login-btn"></div>
+        </div>
+
+        <form action="" class="search-form">
+            <input type="search" id="search-box" placeholder="Search Here...">
+            <label for="search-box" class="fas fa-search"></label>
+            </form>
+
+         <form action="" class="login-form">
+            <h3><a href="#">Login now</a> </h3>
+         </form>   
+    
+    </header>
+
+    <!--header section ends-->
+    </br>
+</br>
+</br>
+</br>
+    
+</br>
+</br>
+
+    <header class="hero">
+        <div class="container">
+          <h1>GROWSMART</h1>
+          <p>Where Green Thumbs Meet Great Minds.</p>
+          <a href="#register" class="btn">Register Now</a>
+        </div>
+      </header>
+        <!-- voting list--> 
+    <section id="plant-list">
+        <h2>Most Voated Plants & flowers</h2>
+        <div class="plant" data-id="1">
+            <img src="Img/1.jpg" alt="Plant 1">
+            <h3>Rose</h3>
+            <p>Price: $10</p>
+            <button onclick="vote(1)">Vote</button>
+            <span class="votes" style="font-size: 24px; display: block; width: 100px; text-align: center;">Votes: 0</span>
+        </div>
+        <div class="plant" data-id="2">
+            <img src="Img/anthurium.webp" alt="Plant 2">
+            <h3>Anthurium</h3>
+            <p>Price: $15</p>
+            <button onclick="vote(2)">Vote</button>
+            <span class="votes" style="font-size: 24px; display: block; width: 100px; text-align: center;">Votes: 0</span>
+        </div>
+        <div class="plant" data-id="3">
+            <img src="Img/peace lily.jpg" alt="Plant 3">
+            <h3>Peace lily</h3>
+            <p>Price: $10</p>
+            <button onclick="vote(3)">Vote</button>
+            <span class="votes" style="font-size: 24px; display: block; width: 100px; text-align: center;">Votes: 0</span>
+        </div>
+        <div class="plant" data-id="4">
+            <img src="Img/Begonia.jpg" alt="Plant 4">
+            <h3>Begonia</h3>
+            <p>Price: $15</p>
+            <button onclick="vote(4)">Vote</button>
+            <span class="votes" style="font-size: 24px; display: block; width: 100px; text-align: center;">Votes: 10</span>
+        </div>
+        <div class="plant" data-id="5">
+            <img src="Img/gardenia.webp" alt="Plant 5">
+            <h3>gardenia</h3>
+            <p>Price: $12</p>
+            <button onclick="vote(5)">Vote</button>
+            <span class="votes" style="font-size: 24px; display: block; width: 100px; text-align: center;">Votes: 10</span>
+        </div>
+        <div class="plant" data-id="6">
+            <img src="Img/aloe.jpeg" alt="Plant 6">
+            <h3>aloe</h3>
+            <p>Price: $8</p>
+            <button onclick="vote(6)">Vote</button>
+            <span class="votes" style="font-size: 24px; display: block; width: 100px; text-align: center;">Votes: 10</span>
+        </div>
+        <div class="plant" data-id="7">
+            <img src="Img/turmeric.webp" alt="Plant 7">
+            <h3>turmeric</h3>
+            <p>Price: $20</p>
+            <button onclick="vote(7)">Vote</button>
+            <span class="votes" style="font-size: 24px; display: block; width: 100px; text-align: center;">Votes: 10</span>
+        </div>
+        <div class="plant" data-id="8">
+            <img src="Img/Lavender.webp" alt="Plant 8">
+            <h3>Lavender</h3>
+            <p>Price: $18</p>
+            <button onclick="vote(8)">Vote</button>
+            <span class="votes" style="font-size: 24px; display: block; width: 100px; text-align: center;">Votes: 10</span>
+        </div>
+        <div class="plant" data-id="9">
+            <img src="Img/Matricaria.jpg" alt="Plant 9">
+            <h3>Matricaria</h3>
+            <p>Price: $9</p>
+            <button onclick="vote(9)">Vote</button>
+            <span class="votes" style="font-size: 24px; display: block; width: 100px; text-align: center;">Votes: 10</span>
+        </div>
+        <div class="plant" data-id="10">
+            <img src="Img/Hibiscus.webp" alt="Plant 10">
+            <h3>Hibiscus</h3>
+            <p>Price: $14</p>
+            <button onclick="vote(10)">Vote</button>
+            <span class="votes" style="font-size: 24px; display: block; width: 100px; text-align: center;">Votes: 10</span>
+        </div>
+        
+    </section>
+    
+    <section id="leaderboard">
+        <h2>Top Rated Plants</h2>
+        <ul id="leaderboard-list"></ul>
+    </section>
+
+
+
+   <!-- seller -->
+    <section class="sellers">
+        <div class="container">
+          <h2>Top Sellers via Rating</h2>
+          <div id="sellerList" class="seller-list"></div>
+        </div>
+      </section>
+
+
+
+
+    <!-- comments --> 
+
+    <section id="comments">
+        <h2>Comments</h2>
+        <textarea id="comment-input" placeholder="Write a comment..."></textarea>
+        <button onclick="addComment()">Submit</button>
+        <ul id="comment-list"></ul>
+    </section>
+
+
+
+    <!-- winners profile --> 
+    <section id="winners">
+        <h2>Competition Winners</h2>
+        <div class="winner-profile">
+            <img src="winner1.jpg" alt="Winner 1">
+            <h3>Alice Green</h3>
+            <p>Top Plant: Rose</p>
+        </div>
+        <div class="winner-profile">
+            <img src="winner2.jpg" alt="Winner 2">
+            <h3>Bob Bloom</h3>
+            <p>Top Plant: Sunflower</p>
+        </div>
+        <div class="winner-profile">
+            <img src="winner3.jpg" alt="Winner 3">
+            <h3>Charlie Flora</h3>
+            <p>Top Plant: Orchid</p>
+        </div>
+        <div class="winner-profile">
+            <img src="winner4.jpg" alt="Winner 4">
+            <h3>Daisy Meadow</h3>
+            <p>Top Plant: Jasmine</p>
+        </div>
+    </section>
+
+    <!--footer section starts-->
+
+    <section class="footer">
+
+        <div class="box-container">
+
+            <div class="box">
+               <h3>Growsmart <i class="fas fa-seedling"></i></h3>
+               <p>"Sustainable Farming for a Greener Tomorrow."</p>
+               <div class="social-links">
+                <a href="https://www.facebook.com/yourpage" target="_blank" class="fab fa-facebook"></a>
+                <a href="https://www.youtube.com/yourchannel" target="_blank" class="fab fa-youtube"></a>
+                <a href="https://www.instagram.com/yourprofile" target="_blank" class="fab fa-instagram"></a>
+            </div>
+            
+            </div>
+
+            <div class="box">
+                <h3>Contact Info</h3>
+                <a href="#" class="links" onclick="checker()"><i class="fas fa-phone"></i>+94 11 111 1111</a>
+                <a href="#" class="links" onclick="checker()"><i class="fas fa-phone"></i>+94 11 222 2222</a>
+                <a href="#" class="links" onclick="openTelLink()"><i class="fas fa-envelope"></i>Growsmart@gmail.com</a>
+                <a href="#" class="links" onclick="openTelLink()"><i class="fas fa-map-marker-alt"></i>Colombo,sri lanka</a>
+             </div>  
+             
+             <div class="box">
+                <h3>Quick Links</h3>
+                <a href="home new.html" class="links"><i class="fas fa-arrow-right"></i>Home</a>
+            
+                <!-- Dropdown for Plants -->
+                <div class="dropdown">
+                    <a href="Plants" class="links dropdown-toggle">
+                        <i class="fas fa-arrow-right"></i>Plants ▼
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="House Plnts">House Plants</a>
+                        <a href="Fruits and Vegetables">Fruits and Vegetables</a>
+                        <a href="Flowers">Flowers</a>
+                        </div>
+                </div>
+            </br>
+                <div class="dropdown">
+                    <a href="Sustainability Garden" class="links dropdown-toggle">
+                        <i class="fas fa-arrow-right"></i>Sustainability Garden ▼
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="organic">Organic</a>
+                        <a href="Waterwise">Waterwise</a>
+                    </div>
+                </div>
+                <a href="Compitition" class="links"><i class="fas fa-arrow-right"></i>Competition</a>
+                <a href="shop" class="links"><i class="fas fa-arrow-right"></i>Shop</a>
+                <div class="dropdown">
+                    <a href="chat" class="links dropdown-toggle">
+                        <i class="fas fa-arrow-right"></i>Chat ▼
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="AI chat">AI Chat</a>
+                        <a href="Community">Community</a>
+                    
+                    </div>
+                </div>
+            </br>
+                <div class="dropdown">
+                    <a href="More" class="links dropdown-toggle">
+                        <i class="fas fa-arrow-right"></i>More ▼
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="">Promotions</a>
+                        <a href="">Points</a>
+                        <a href="">Learning</a>
+                        <a href="">Ideas & Inspiration</a>
+                    </div>
+                </div>
+            </div>
+            
+
+             <div class="box">
+                <h3>Newsletter</h3>
+                <p>Stay us with more informations</p>
+            
+                <div class="box">
+                    <h3>User informations</h3>
+                <a href="guidelines.html" class="links">User Guidelines</a>
+
+                <div class="box">
+                    <h3>Terms and Conditions</h3>
+                <a href="Terms and Conditions.html" class="links">Terms and Conditions</a>
+               
+                <div class="box">
+                    <h3>Privacy and Policy</h3>
+                <a href="Privacy and Policy.html" class="links">Privacy and Policy</a>
+
+
+                
+             </div>  
+        </div>
+
+    </br></br></br></br>
+
+       
+    </section>
+    <!--footer section ends-->
+
+
+    <body>
+        <section class="footer">
+            <div class="credit">
+                created by <span>© 2025 GrowSmart.</span> | all rights reserved
+            </div>
+        </section>
+        <script src="js/script.js"></script>
+    </body>
+
+    <!-- Onclick Prompt -->
+    <script>
+            function checker()
+            {
+                var result= confirm('Open Pick an App?');
+				if ( result == false) {
+					event.preventDefault();
+				}
+			}
+    </script>
+
+    <!-- JS for Opening the App list in the User device -->
+    <script>
+            function openTelLink() {
+            // This will trigger the app picker
+            window.location.href = "tel:+94 11 111 1111";
+            }
+    </script>
+        
+    <script>
+            function openTelLink() {
+            // This will trigger the app picker
+            window.location.href = "tel:+94 22 222 2222";
+            }
+    </script>
+
+    <script src="js/competition.js"></script>
+</body>
+</html>
+

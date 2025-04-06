@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GrowSmart - Fruits & Vegetables</title>
+    <link rel="icon" type="image/png" href="Img/TitleLogo.png">
+    <link rel="stylesheet" href="css/f&v.css">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    </head>
+    <!--header section starts-->
+
+    <header class="header">
+        <a href="#" class="logo"><i class="fas fa-seedling"></i>Growsmart</a>
+        <ul class="navbar">
+            <li><a href="home new.html">Home</a></li>
+            <li class="dropdown">
+            <a href="#">Plant <i class="fas fa-chevron-down"></i></a>
+            <div class="dropdown-content">
+                <a href="indoorplants.html">House Plants</a>
+                <a href="#">Fruits & Vegetables</a>
+                <a href="#">Flowers</a>
+            </div></li>
+            <li class="dropdown">
+            <a href="#">Sustainability Garden <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="#">Organic</a>
+                    <a href="#">Waterwise</a>
+                </div></li>
+            <li><a href="#">Compitition</a></li>
+            <li><a href="#">shop</a></li>
+            <li class="dropdown">
+            <a href="#">Chat <i class="fas fa-chevron-down"></i></a>
+            <div class="dropdown-content">
+                <a href="#">AI Chat</a>
+                <a href="#">Community</a>
+            </div></li>
+            <li class="dropdown">
+                <a href="#">More <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="#">Promotions</a>
+                    <a href="#">Points</a>
+                    <a href="#">Learning</a>
+                    <a href="#">Idea & Inspiration</a>
+                </div></li>
+        </ul>
+
+        <div class="Icons">
+            <div class="fas fa-bars" id="menu-btn"></div>
+            <div class="fas fa-search" id="search-btn"></div>
+            <div class="fas fa-shopping-cart" id="cart-btn"></div>
+            <div class="fas fa-user" id="login-btn"></div>
+        </div>
+
+        <form action="" class="search-form">
+            <input type="search" id="search-box" placeholder="Search Here...">
+            <label for="search-box" class="fas fa-search"></label>
+            </form>
+
+         <form action="" class="login-form">
+            <h3><a href="#">Login now</a> </h3>
+         </form>   
+    
+    </header>
+
+    <!--header section ends-->
+    </br>
+</br>
+</br>
+</br>
+    
+</br>
+</br>
+
+<body>
+    <header class="header1">
+        <h1>Fruits & Vegetables Guide</h1>
+        
+    </header>
+
+    <main>
+        <section id="intro">
+            <h2>Welcome to the World of Vegetable & Fruits</h2>
+            <p>Discover the best Vegetables & Fruits for your home and learn how to take care of them.</p>
+            <input type="text" id="searchBox" placeholder="Search for a plant..." onkeyup="filterPlants()">
+        </section>
+
+        <section id="plant-list">
+            <div class="plant" data-name="Tomatoes ">
+                <img src="Img/tomato.jpg" alt="Tomatoes ">
+                <h3>Tomatoes</h3>
+                <p>Tomatoes are one of the most widely grown vegetables, producing juicy, red fruits that are used in salads, sauces, and cooking.</p>
+                
+            </div>
+
+            <div class="plant" data-name="Carrots ">
+                <img src="Img/carrot.jpg" alt="Carrots ">
+                <h3>Carrots  </h3>
+                <p>Carrots are root vegetables that grow underground and are rich in vitamins. They come in orange, purple, yellow, and red varieties.</p>
+            </div>
+
+            <div class="plant" data-name="Lettuce ">
+                <img src="Img/lettuce.png" alt="Lettuce ">
+                <h3>Lettuce </h3>
+                <p>Lettuce is a leafy green vegetable used in salads, sandwiches, and wraps. It grows quickly and thrives in cool weather.</p>
+            </div>
+
+            <div class="plant" data-name=" Bell Peppers ">
+                <img src="Img/bellpepper.jpg" alt="Bell Peppers  ">
+                <h3>Bell Peppers  </h3>
+                <p>Bell peppers are colorful, crunchy vegetables that come in green, red, yellow, and orange varieties.</p>
+            </div>
+            
+            <div class="plant" data-name="Apples ">
+                <img src="Img/apple.jpg" alt="Apples ">
+                <h3>Apples </h3>
+                <p>Apples are one of the most popular fruits, coming in sweet and tart varieties. They grow on trees and require proper care for a good harvest.</p>
+            </div>
+            
+            <div class="plant" data-name="Bananas ">
+                <img src="Img/banana.webp" alt="Bananas ">
+                <h3>Bananas</h3>
+                <p>Bananas are tropical fruits that grow in clusters on large plants. They are rich in potassium and commonly eaten fresh or used in baking.</p>
+            </div>
+            
+            <div class="plant" data-name="Strawberries ">
+                <img src="Img/strawberry.webp" alt="Strawberries ">
+                <h3>Strawberries </h3>
+                <p>Strawberries are small, red fruits with a sweet and slightly tangy flavor. They grow in small bushes and spread through runners.</p>
+            </div>
+            
+            <div class="plant" data-name="Oranges ">
+                <img src="Img/Orange.jpg" alt="Oranges ">
+                <h3>Oranges </h3>
+                <p>Oranges are juicy citrus fruits packed with vitamin C. They grow on evergreen trees and thrive in warm climates.</p>
+            </div>
+        </section>
+
+        <div class="plant-guide">
+
+            <div class="guide" data-target="Tomatoes">
+                <button class="btn-close">&times;</button>
+                <img src="Img/tomato.jpg" alt="Tomato">
+                <h3>Tomatoes</h3>
+                <p>How to Grow:
+                    Plant in well-draining soil with full sun (6–8 hours daily). 
+                    Water consistently, keeping the soil moist but not soggy. 
+                    Support plants with stakes or cages as they grow. 
+                    Fertilize with a balanced fertilizer throughout the season. 
+                    Harvest when fully red and slightly firm.</p>
+            </div>
+
+            <div class="guide" data-target="Carrots ">
+                <button class="btn-close">&times;</button>
+                <h3>Carrots</h3>
+                <p>How to Grow:
+                    Sow seeds directly in loose, well-draining soil. 
+                    Keep the soil moist but not waterlogged. 
+                    Thin seedlings to allow space for roots to develop. 
+                    Harvest when carrots reach a desirable size (usually 60–80 days).</p>
+            </div>
+
+            <div class="guide" data-target="Lettuce">
+                <button class="btn-close">&times;</button>
+                <h3>Lettuce</h3>
+                <p>How to Grow:
+                    Plant in well-drained soil with partial to full sun. 
+                    Water regularly to keep the soil moist. 
+                    Harvest outer leaves continuously to encourage regrowth. 
+                    Grow in containers for easy harvesting.</p>
+            </div>
+
+            <div class="guide" data-target="Bell Peppers  ">
+                <button class="btn-close">&times;</button>
+                <h3> Bell Peppers </h3>
+                <p>How to Grow:
+                    Plant in warm, well-drained soil with full sun. 
+                    Water deeply but allow soil to dry slightly between watering. 
+                    Stake plants to support heavy fruit production. 
+                    Harvest when peppers reach the desired color.</p>
+            </div>
+            
+            <div class="guide" data-target="Apples  ">
+                <button class="btn-close">&times;</button>
+                <h3>Apples </h3>
+                <p>How to Grow:
+                    Plant in well-drained soil with full sun. 
+                    Space trees properly to allow airflow. 
+                    Water deeply, especially in dry conditions. 
+                    Prune to encourage strong branches and better fruiting.</p>
+            </div>
+            
+            <div class="guide" data-target="Bananas  ">
+                <button class="btn-close">&times;</button>
+                <h3>Bananas  </h3>
+                <p>How to Grow:
+                    Plant in nutrient-rich, well-draining soil with full sun. 
+                    Water regularly to keep the soil moist. 
+                    Fertilize frequently for fast growth. 
+                    Harvest when bananas are green and let them ripen off the plant.</p>
+            </div>
+            
+            <div class="guide" data-target="Strawberries  ">
+                <button class="btn-close">&times;</button>
+                <h3>Strawberries </h3>
+                <p>How to Grow:
+                    Plant in well-drained soil with full sun. 
+                    Keep the soil consistently moist. 
+                    Mulch around plants to retain moisture and prevent weeds. 
+                    Pick berries when fully red and ripe.</p>
+            </div>
+            
+            <div class="guide" data-target="Oranges ">
+                <button class="btn-close">&times;</button>
+                <h3>Oranges </h3>
+                <p>How to Grow:
+                    Plant in well-draining soil with full sun. 
+                    Water regularly, but allow the soil to dry between watering. 
+                    Fertilize with citrus-specific fertilizer. 
+                    Harvest when the skin turns bright orange.</p>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="f&v.js"></script>
+
+     <!--footer section starts-->
+
+     <section class="footer">
+
+        <div class="box-container">
+
+            <div class="box">
+               <h3>Growsmart <i class="fas fa-seedling"></i></h3>
+               <p>"Sustainable Farming for a Greener Tomorrow."</p>
+               <div class="social-links">
+                <a href="https://www.facebook.com/yourpage" target="_blank" class="fab fa-facebook"></a>
+                <a href="https://www.youtube.com/yourchannel" target="_blank" class="fab fa-youtube"></a>
+                <a href="https://www.instagram.com/yourprofile" target="_blank" class="fab fa-instagram"></a>
+            </div>
+            
+            </div>
+
+            <div class="box">
+                <h3>Contact Info</h3>
+                <a href="#" class="links"><i class="fas fa-phone"></i>011 111 1111</a>
+                <a href="#" class="links"><i class="fas fa-phone"></i>011 111 1111</a>
+                <a href="#" class="links"><i class="fas fa-envelope"></i>Growsmart@gmail.com</a>
+                <a href="#" class="links"><i class="fas fa-map-marker-alt"></i>Colombo,sri lanka</a>
+             </div>  
+             
+             <div class="box">
+                <h3>Quick Links</h3>
+                <a href="home new.html" class="links"><i class="fas fa-arrow-right"></i>Home</a>
+            
+                <!-- Dropdown for Plants -->
+                <div class="dropdown">
+                    <a href="Plants" class="links dropdown-toggle">
+                        <i class="fas fa-arrow-right"></i>Plants ▼
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="House Plnts">House Plants</a>
+                        <a href="Fruits and Vegetables">Fruits and Vegetables</a>
+                        <a href="Flowers">Flowers</a>
+                        </div>
+                </div>
+            </br>
+                <div class="dropdown">
+                    <a href="Sustainability Garden" class="links dropdown-toggle">
+                        <i class="fas fa-arrow-right"></i>Sustainability Garden ▼
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="organic">Organic</a>
+                        <a href="Waterwise">Waterwise</a>
+                    </div>
+                </div>
+                <a href="Compitition" class="links"><i class="fas fa-arrow-right"></i>Competition</a>
+                <a href="shop" class="links"><i class="fas fa-arrow-right"></i>Shop</a>
+                <div class="dropdown">
+                    <a href="chat" class="links dropdown-toggle">
+                        <i class="fas fa-arrow-right"></i>Chat ▼
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="AI chat">AI Chat</a>
+                        <a href="Community">Community</a>
+                    
+                    </div>
+                </div>
+            </br>
+                <div class="dropdown">
+                    <a href="More" class="links dropdown-toggle">
+                        <i class="fas fa-arrow-right"></i>More ▼
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="">Promotions</a>
+                        <a href="">Points</a>
+                        <a href="">Learning</a>
+                        <a href="">Ideas & Inspiration</a>
+                    </div>
+                </div>
+            </div>
+            
+
+             <div class="box">
+                <h3>Newsletter</h3>
+                <p>Stay us with more informations</p>
+            
+                <div class="box">
+                    <h3>User informations</h3>
+                <a href="guidelines.html" class="links">User Guidelines</a>
+
+                <div class="box">
+                    <h3>Terms and Conditions</h3>
+                <a href="Terms and Conditions.html" class="links">Terms and Conditions</a>
+               
+                <div class="box">
+                    <h3>Privacy and Policy</h3>
+                <a href="Privacy and Policy.html" class="links">Privacy and Policy</a>
+
+
+                
+             </div>  
+        </div>
+
+    </br></br></br></br>
+
+       
+    </section>
+    <!--footer section ends-->
+
+
+    <body>
+        <section class="footer">
+            <div class="credit">
+                created by <span>© 2025 GrowSmart.</span> | all rights reserved
+            </div>
+        </section>
+        <script src="js/f&v.js"></script>
+    </body>
+</body>
+</html>

@@ -1,0 +1,199 @@
+.nav-item
+{
+    padding-right: 10px;
+}
+
+.hero-section {
+    background-image: url(../Images/OrganicShop.png); /* Replace with your actual image path */
+    background-size: cover; /* Ensures the image covers the entire section */
+    background-position: bottom; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    height: 1300px;
+    margin-left: -100px; /* Set the height to 50% of the viewport height */
+ /* Ensure the banner spans the full width */
+  }
+  
+  /* Media Query for Larger Screens */
+  @media (min-width: 768px) {
+    .hero-section {
+      height:40vh; /* Adjust the height for larger screens */
+    }
+
+  }
+  
+  /* Media Query for Smaller Screens */
+  @media (max-width: 767px) {
+    .hero-section {
+      height: 30vh; /* Adjust the height for smaller screens */
+    }
+
+    .product-card{
+        margin-left: 20%;
+    }
+
+    .section-header
+  {
+    margin-left: 20px;
+  }
+
+  }
+
+  .section-header
+  {
+    background-color: #ddd;
+    border: 1px solid white;
+    width: 91%;
+    padding: 10px 0px 10px 0px;
+  }
+
+
+/* General card layout */
+.product-card .card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    align-items: center;
+}
+
+.product-card .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+ /* Ensure product cards are square */
+ .product-card {
+    position: relative;
+    height: 600px; /* Fixed height to ensure the cards are square */
+    margin-bottom: 20px;
+    width: 300px;
+    padding: 10px;
+}
+
+
+.card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-img-top {
+    object-fit:cover;
+    height: 280px; 
+    width: 280px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+/* Adjust the button size */
+.btn {
+    margin-top: 10px;
+    padding: 10px 60px 10px 60px;
+}
+
+
+#nav-button, #categoryDropdown {
+    margin-top: 10px;
+    padding: 10px 20px 10px 20px;
+}
+
+.selected-category {
+    background-color: #00ff73 !important; /* Bootstrap green */
+    color: white !important;
+}
+
+.dropdown-menu
+{
+    --bs-dropdown-link-active-bg: #00ff00;
+}
+
+/* User section */
+.card-body-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.user-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    
+    margin-right: 5px;
+}
+
+.user-name {
+    border: none;
+    background: none;
+    font-size: 16px;
+    color: #007bff;
+    cursor: pointer;
+    padding: 0;
+}
+
+.user-name:hover {
+    text-decoration: underline;
+}
+
+
+.modal
+{
+    align-content: center;
+}
+
+
+
+
+/* Footer styling */
+footer {
+    background-color: #f8f9fa;
+    padding: 15px 0;
+    font-size: 14px;
+    color: #6c757d;
+}
+
+
+/* cart */
+.back-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #6c757d;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+}
+.back-button:hover {
+    background-color: #5a6268;
+}
+
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.cart-image {
+    width: 50px;
+    height: 50px;
+}
+
+.search-button:hover{
+    background-color: #00ff00;
+    color: #fff;
+    border: .1rem solid black;
+}
+
+.btn{
+    border: .1rem solid black;
+}

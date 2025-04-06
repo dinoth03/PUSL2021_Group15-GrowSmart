@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GrowSmart - Sustainability Garden</title>
+    <link rel="icon" type="image/png" href="Img/TitleLogo.png">
+    <link rel="stylesheet" href="css/sustainable.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!--header section starts-->
+
+    <header class="header">
+        <a href="home new.html" class="logo"><i class="fas fa-seedling"></i>Growsmart</a>
+        <ul class="navbar">
+            <li><a href="home new.html">Home</a></li>
+            <li class="dropdown">
+            <a href="#">Plant <i class="fas fa-chevron-down"></i></a>
+            <div class="dropdown-content">
+                <a href="indoorplants.html">House Plants</a>
+                <a href="fruits & vegetables.html">Fruits & Vegetables</a>
+                <a href="flowers.html">Flowers</a>
+            </div></li>
+            <li class="dropdown">
+            <a href="#">Sustainability Garden <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="sustainable.html">Organic</a>
+                    <a href="sustainable.html">Waterwise</a>
+                </div></li>
+            <li><a href="Competition.html">Compitition</a></li>
+            <li><a href="#">shop</a></li>
+            <li class="dropdown">
+            <a href="#">Chat <i class="fas fa-chevron-down"></i></a>
+            <div class="dropdown-content">
+                <a href="#">AI Chat</a>
+                <a href="#">Community</a>
+            </div></li>
+            <li class="dropdown">
+                <a href="#">More <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="#">Promotions</a>
+                    <a href="#">Points</a>
+                    <a href="#">Learning</a>
+                    <a href="#">Idea & Inspiration</a>
+                </div></li>
+        </ul>
+
+        <div class="Icons">
+            <div class="fas fa-bars" id="menu-btn"></div>
+            <div class="fas fa-search" id="search-btn"></div>
+            <div class="fas fa-shopping-cart" id="cart-btn"></div>
+            <div class="fas fa-user" id="login-btn"></div>
+        </div>
+
+        <form action="" class="search-form">
+            <input type="search" id="search-box" placeholder="Search Here...">
+            <label for="search-box" class="fas fa-search"></label>
+            </form>
+
+         <form action="" class="login-form">
+            <h3><a href="#">Login now</a> </h3>
+         </form>   
+    
+    </header>
+
+    <!--header section ends-->
+    </br>
+</br>
+</br>
+</br>
+    
+</br>
+</br>
+    
+    <main class="container">
+        <section class="intro">
+            <h2>Sustainability Garden</h2>
+            <p>Discover the joy and benefits of sustainable gardening with our comprehensive guide to organic and water-wise gardening practices. Learn how to grow your own food while conserving resources and protecting the environment.</p>
+        </section>
+        
+        <div class="tab-container">
+            <div class="tabs">
+                <button class="tab-btn active" onclick="openTab('organic')">Organic Garden</button>
+                <button class="tab-btn" onclick="openTab('water-wise')">Water-Wise Garden</button>
+            </div>
+            
+            <!-- ORGANIC GARDEN TAB -->
+            <div id="organic" class="tab-content active">
+                <section class="garden-section">
+                    <div class="garden-info">
+                        <h2>🌿What is an Organic Garden?</h2>
+                        <p>An organic garden is a growing space that follows natural principles and avoids synthetic chemicals, pesticides, and fertilizers. It focuses on building healthy soil through composting and natural amendments, fostering biodiversity, and working with nature rather than against it.</p>
+                        <p>Organic gardening is more than just avoiding chemicals—it's a holistic approach to cultivating plants that promotes sustainability, health, and environmental stewardship. By mimicking natural ecosystems, organic gardens become self-regulating and resilient over time.</p>
+                        <p>This approach to gardening treats the soil as a living entity, teeming with beneficial microorganisms that support plant health naturally. When you garden organically, you're not just growing food—you're nurturing an entire ecosystem.</p>
+                    </div>
+                    <div class="garden-visual">
+                        <img src="Img/organic.webp" alt="Organic Garden Example">
+                    </div>
+                </section>
+
+                <div class="plant-gallery">
+                    <h3 class="section-title">Recommended Plants for Organic Gardens</h3>
+                    <div class="gallery-grid">
+                        <div class="plant-card">
+                            <div class="plant-img">
+                                <img src="Img/tomato.jpg.jpg" alt="Tomatoes">
+                            </div>
+                            <div class="plant-info">
+                                <h4>Tomatoes</h4>
+                                <p>Rich in nutrients and adaptable to many climates. Perfect for beginning organic gardeners.</p>
+                            </div>
+                        </div>
+                        <div class="plant-card">
+                            <div class="plant-img">
+                                <img src="Img/kale.webp" alt="Kale">
+                            </div>
+                            <div class="plant-info">
+                                <h4>Kale</h4>
+                                <p>Hardy leafy green full of nutrients that grows well in cool weather and partial shade.</p>
+                            </div>
+                        </div>
+                        <div class="plant-card">
+                            <div class="plant-img">
+                                <img src="Img/basil.jpg" alt="Basil">
+                                
+                            </div>
+                            <div class="plant-info">
+                                <h4>Basil</h4>
+                                <p>A flavorful herb used in cooking; grows well with natural compost and organic methods.</p>
+                            </div>
+                        </div>
+                        <div class="plant-card">
+                            <div class="plant-img">
+                                
+                                <img src="Img/mint.jpg" alt="Mint">
+                            </div>
+                            <div class="plant-info">
+                                <h4>Mint</h4>
+                                <p>A fragrant herb used in teas and cooking; easy to grow organically in moist soil.</p>
+                            </div>
+                        </div>
+                        <div class="plant-card">
+                            <div class="plant-img">
+                                <img src="Img/beans.webp" alt="Beans">
+                            </div>
+                            <div class="plant-info">
+                                <h4>Beans</h4>
+                                <p>Nitrogen-fixing plants that improve soil fertility while providing a nutritious harvest.</p>
+                            </div>
+                        </div>
+                        <div class="plant-card">
+                            <div class="plant-img">
+                                <img src="Img/sunflower.jpeg" alt="Sunflowers">
+                            </div>
+                            <div class="plant-info">
+                                <h4>Sunflowers</h4>
+                                <p>Attract pollinators, provide seeds, and can help extract toxins from soil.</p>
+                            </div>
+                        </div>
+                        <div class="plant-card">
+                            <div class="plant-img">
+                                <img src="Img/zucchini.jpg" alt="Zucchini">
+                            </div>
+                            <div class="plant-info">
+                                <h4>Zucchini</h4>
+                                <p>Productive and easy to grow, providing abundant harvest in small spaces.</p>
+                            </div>
+                        </div>
+                        <div class="plant-card">
+                            <div class="plant-img">
+                                <img src="Img/Strawberry.webp" alt="Strawberry ">
+                                
+                            </div>
+                            <div class="plant-info">
+                                <h4>Strawberry </h4>
+                                <p>Sweet red fruit, grows well in organic mulch, and requires minimal chemical care.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <section class="advantages-section">
+                    <h3>Advantages of Organic Gardening</h3>
+                    <div class="advantages-list">
+                        <div class="advantage-card">
+                            <div class="advantage-icon">🌱</div>
+                            <h4>Healthier Food</h4>
+                            <p>Organic produce contains fewer pesticide residues and, in some studies, has been shown to have higher levels of certain nutrients and antioxidants.</p>
+                        </div>
+                        <div class="advantage-card">
+                            <div class="advantage-icon">🌍</div>
+                            <h4>Environmental Protection</h4>
+                            <p>By avoiding synthetic chemicals, organic gardening helps protect water quality, soil health, and beneficial insects including pollinators.</p>
+                        </div>
+                        <div class="advantage-card">
+                            <div class="advantage-icon">🌱</div>
+                            <h4>Soil Conservation</h4>
+                            <p>Organic practices build rich, living soil that resists erosion, retains moisture better, and sequesters carbon from the atmosphere.</p>
+                        </div>
+                        <div class="advantage-card">
+                            <div class="advantage-icon">🐞</div>
+                            <h4>Biodiversity</h4>
+                            <p>Organic gardens support a diverse ecosystem of plants, insects, and microorganisms, creating a balanced and resilient environment.</p>
+                        </div>
+                        <div class="advantage-card">
+                            <div class="advantage-icon">💰</div>
+                            <h4>Cost Savings</h4>
+                            <p>Once established, organic gardens can reduce expenses on fertilizers, pesticides, and water while providing abundant harvests.</p>
+                        </div>
+                        <div class="advantage-card">
+                            <div class="advantage-icon">❤️</div>
+                            <h4>Health Benefits</h4>
+                            <p>Gardening organically eliminates exposure to synthetic chemicals and provides exercise, stress relief, and connection with nature.</p>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="video-section">
+                    <h3>How to Grow an Organic Garden</h3>
+                    <div class="video-container">
+                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/hwrYFBP4j0g?si=oVH1jqh99yPtwB2-" title="Organic Gardening Tutorial" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </section>
+                
+                <section class="how-to-section">
+                    <h3>Starting Your Organic Garden</h3>
+                    <div class="steps-container">
+                        <div class="step-card">
+                            <div class="step-number">1</div>
+                            <h4>Build Healthy Soil</h4>
+                            <p>Start with quality compost and organic matter to create rich, living soil that will nourish your plants naturally.</p>
+                        </div>
+                        <div class="step-card">
+                            <div class="step-number">2</div>
+                            <h4>Choose the Right Plants</h4>
+                            <p>Select varieties adapted to your local climate and conditions to ensure they'll thrive with minimal inputs.</p>
+                        </div>
+                        <div class="step-card">
+                            <div class="step-number">3</div>
+                            <h4>Practice Companion Planting</h4>
+                            <p>Group compatible plants together to deter pests, attract beneficial insects, and maximize growing space.</p>
+                        </div>
+                        <div class="step-card">
+                            <div class="step-number">4</div>
+                            <h4>Implement Natural Pest Control</h4>
+                            <p>Use physical barriers, beneficial insects, and organic solutions to manage pests without synthetic chemicals.</p>
+                        </div>
+                        <div class="step-card">
+                            <div class="step-number">5</div>
+                            <h4>Conserve Water Wisely</h4>
+                            <p>Use mulch, drip irrigation, and proper timing to reduce water usage while keeping plants healthy.</p>
+                        </div>
+                        <div class="step-card">
+                            <div class="step-number">6</div>
+                            <h4>Practice Crop Rotation</h4>
+                            <p>Change where you plant specific crops each season to prevent pest buildup and nutrient depletion.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="resources-section">
+                    <h3 class="section-title">Organic Garden Resources</h3>
+                    <div class="resource-links">
+                        <a href="https://www.gardenorganic.org.uk/resources" class="resource-link" target="_blank">
+                            <span class="resource-icon">📚</span>
+                            <span>Organic Gardening Books & Guides</span>
+                        </a>
+                        <a href="https://www.thespruce.com/homemade-organic-fertilizer-recipes-2539640" class="resource-link" target="_blank">
+                            <span class="resource-icon">🧪</span>
+                            <span>DIY Organic Fertilizer Recipes</span>
+                        </a>
+                        <a href="https://www.seedsavers.org/" class="resource-link" target="_blank">
+                            <span class="resource-icon">🌿</span>
+                            <span>Organic Seed Suppliers</span>
+                        </a>
+                        <a href="https://www.planetnatural.com/pest-problem-solver/" class="resource-link" target="_blank">
+                            <span class="resource-icon">🐛</span>
+                            <span>Natural Pest Control Solutions</span>
+                        </a>
+                    </div>
+                
+                    <h3>Additional Resources</h3>
+                    <div class="resources-grid">
+                        <div class="resource-card">
+                            <div class="resource-icon">📋</div>
+                            <h4>Planting Calendar</h4>
+                        </div>
+                        <div class="resource-card">
+                            <div class="resource-icon">🌱</div>
+                            <h4>Seed Library</h4>
+                        </div>
+                        <div class="resource-card">
+                            <div class="resource-icon">🐞</div>
+                            <h4>Pest Identification</h4>
+                        </div>
+                        <div class="resource-card">
+                            <div class="resource-icon">🌿</div>
+                            <h4>Companion Planting Guide</h4>
+                        </div>
+                        <div class="resource-card">
+                            <div class="resource-icon">🧪</div>
+                            <h4>Soil Testing Kit</h4>
+                        </div>
+                        <div class="resource-card">
+                            <div class="resource-icon">📱</div>
+                            <h4>GrowSmart App</h4>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            
+            <!-- WATER-WISE GARDEN TAB -->
+            <div id="water-wise" class="tab-content">
+                <section class="garden-section">
+                    <div class="garden-info">
+                        <h2>💧What is a Water-Wise Garden?</h2>
+                        <p>A water-wise garden (also known as a drought-tolerant or xeriscape garden) is designed to minimize water usage while maintaining an attractive, productive landscape. These gardens use smart plant selection, efficient irrigation techniques, and specialized soil management to thrive with minimal supplemental watering.</p>
+                        <p>Water-wise gardening recognizes water as a precious resource and aims to create beautiful outdoor spaces that don't depend on constant irrigation. This approach is particularly valuable in areas facing water scarcity or drought conditions, but its principles can benefit any garden.</p>
+                        <p>By selecting appropriate plants, grouping them according to water needs, and employing strategic design techniques, water-wise gardens can be lush, colorful, and productive while significantly reducing water consumption.</p>
+                    </div>
+                    <div class="garden-visual">
+                        <img src="Img/water wise.jpg" alt="Water-Wise Garden Example">
+                    </div>
+                </section>
+
+                <div class="plant-gallery">
+                    <h3 class="section-title">Recommended Water-Wise Plants</h3>
+                    <div class="gallery-grid">
+                        <div class="plant-card">
+                            <div class="plant-img">
+                                <img src="Img/lavender.jpg" alt="Lavender">
+                            </div>
+                            <div class="plant-info">
+                                <h4>Lavender</h4>
+                                <p>Aromatic, drought-resistant perennial that attracts pollinators and requires minimal watering once established.</p>
+                            </div>
+                        </div>
+                        <div class="plant-card">
+                            <div class="plant-img">
+                                <img src="Img/succulents.jpg" alt="Succulents">
+                            </div>
+                            <div class="plant-info">
+                                <h4>Succulents</h4>
+                                <p>Store water in their leaves and stems, requiring minimal irrigation and coming in diverse shapes and colors.</p>
+                            </div>
+                        </div>
+                        <div class="plant-card">
+                            <div class="plant-img">
+                                <img src="Img/rosemary.webp" alt="Rosemary">
+                            </div>
+                            <div class="plant-info">
+                                <h4>Rosemary</h4>
+                                <p>Culinary herb that's both drought-tolerant and deer-resistant, with beautiful blue flowers.</p>
+                            </div>
+                        </div>
+                        <div class="plant-card">
+                            <div class="plant-img">
+                                <img src="Img/agave.jpg" alt="Agave">
+                            </div>
+                            <div class="plant-info">
+                                <h4>Agave</h4>
+                                <p>A hardy, drought-tolerant succulent with thick leaves and a bold rosette shape. Perfect for low-water, low-maintenance gardens.</p>
+                            </div>
+                        </div>
+                        <div class="plant-card">
+                            <div class="plant-img">
+                                <img src="Img/bougainvillea.webp" alt="Bougainvillea">
+                            </div>
+                            <div class="plant-info">
+                                <h4>Bougainvillea</h4>
+                                <p>A vibrant, drought-tolerant plant with colorful bracts. Thrives in dry conditions and adds bold beauty to water-wise gardens.</p>
+                            </div>
+                        </div>
+                        <div class="plant-card">
+                            <div class="plant-img">
+                                <img src="Img/aloevera.webp" alt="Aloe vera">
+                            </div>
+                            <div class="plant-info">
+                                <h4>Aloe vera</h4>
+                                <p>A succulent with thick, healing leaves. Needs minimal water and is perfect for dry, low-maintenance landscapes.</p>
+                            </div>
+                        </div>
+                        <div class="plant-card">
+                            <div class="plant-img">
+                                <img src="Img/Cactus.jpeg" alt="Cactus">
+                            </div>
+                            <div class="plant-info">
+                                <h4>Cactus</h4>
+                                <p>Iconic desert plant needing very little water; comes in many shapes and sizes.</p>
+                            </div>
+                        </div>
+                        <div class="plant-card">
+                            <div class="plant-img">
+                                <img src="Img/Lantana.jpg" alt="Lantana">
+                            </div>
+                            <div class="plant-info">
+                                <h4>Lantana</h4>
+                                <p>Hardy flowering shrub that blooms in clusters and survives on minimal water.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <section class="advantages-section">
+                    <h3>Advantages of Water-Wise Gardening</h3>
+                    <div class="advantages-list">
+                        <div class="advantage-card">
+                            <div class="advantage-icon">💧</div>
+                            <h4>Water Conservation</h4>
+                            <p>Water-wise gardens typically use 50-75% less water than conventional landscapes, helping conserve this precious resource.</p>
+                        </div>
+                        <div class="advantage-card">
+                            <div class="advantage-icon">⏱️</div>
+                            <h4>Lower Maintenance</h4>
+                            <p>Once established, drought-tolerant plants require less attention, less frequent watering, and often less pruning and care.</p>
+                        </div>
+                        <div class="advantage-card">
+                            <div class="advantage-icon">💰</div>
+                            <h4>Cost Savings</h4>
+                            <p>Reduced water bills and fewer maintenance requirements translate to significant cost savings over time.</p>
+                        </div>
+                        <div class="advantage-card">
+                            <div class="advantage-icon">🌍</div>
+                            <h4>Environmental Benefits</h4>
+                            <p>Water-wise gardens reduce runoff, prevent erosion, and decrease the energy needed to treat and pump water for irrigation.</p>
+                        </div>
+                        <div class="advantage-card">
+                            <div class="advantage-icon">🌱</div>
+                            <h4>Resilience</h4>
+                            <p>These gardens are better equipped to withstand drought conditions and water restrictions when they occur.</p>
+                        </div>
+                        <div class="advantage-card">
+                            <div class="advantage-icon">🦋</div>
+                            <h4>Biodiversity</h4>
+                            <p>Native and adapted plants in water-wise gardens often provide better habitat for local wildlife and pollinators.</p>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="video-section">
+                    <h3>How to Create a Water-Wise Garden</h3>
+                    <div class="video-container">
+                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/0LzZxA-Vpzw?si=d6duhApwFrOkJ9g7" title="Water-Wise Gardening Tutorial" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </section>
+                
+                <section class="how-to-section">
+                    <h3>Starting Your Water-Wise Garden</h3>
+                    <div class="steps-container">
+                        <div class="step-card">
+                            <div class="step-number">1</div>
+                            <h4>Plan Your Layout</h4>
+                            <p>Design your garden with hydrozones that group plants with similar water requirements together for efficient irrigation.</p>
+                        </div>
+                        <div class="step-card">
+                            <div class="step-number">2</div>
+                            <h4>Improve Your Soil</h4>
+                            <p>Add organic matter to improve water retention in sandy soils or drainage in clay soils, creating the ideal growing medium.</p>
+                        </div>
+                        <div class="step-card">
+                            <div class="step-number">3</div>
+                            <h4>Select Appropriate Plants</h4>
+                            <p>Choose drought-tolerant, native, or well-adapted plants suited to your local climate and conditions.</p>
+                        </div>
+                        <div class="step-card">
+                            <div class="step-number">4</div>
+                            <h4>Install Efficient Irrigation</h4>
+                            <p>Use drip irrigation, soaker hoses, or precision sprinklers to deliver water directly to plant roots with minimal waste.</p>
+                        </div>
+                        <div class="step-card">
+                            <div class="step-number">5</div>
+                            <h4>Apply Mulch</h4>
+                            <p>Add a 2-3 inch layer of mulch to reduce evaporation, suppress weeds, and moderate soil temperature.</p>
+                        </div>
+                        <div class="step-card">
+                            <div class="step-number">6</div>
+                            <h4>Maintain Properly</h4>
+                            <p>Water deeply but infrequently to encourage deep root growth, and adjust irrigation according to seasonal needs.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="resources-section">
+                    <h3 class="section-title">Water-Wise Garden Resources</h3>
+                    <div class="resource-links">
+                        <a href="https://www.epa.gov/watersense/what-plant" class="resource-link" target="_blank">
+                            <span class="resource-icon">🌵</span>
+                            <span>Water-Wise Plant Selection Guide</span>
+                        </a>
+                        <a href="https://www.waterwise.org.uk/knowledge-base/" class="resource-link" target="_blank">
+                            <span class="resource-icon">💧</span>
+                            <span>Water Conservation Techniques</span>
+                        </a>
+                        <a href="https://www.irrigation.org/IA/Resources/Smart-Irrigation-Month/IA/Resources/Smart-Irrigation-Month/Smart-Irrigation-Month.aspx" class="resource-link" target="_blank">
+                            <span class="resource-icon">🚿</span>
+                            <span>Smart Irrigation Systems</span>
+                        </a>
+                        <a href="https://www.drought.gov/drought-resources" class="resource-link" target="_blank">
+                            <span class="resource-icon">🌡️</span>
+                            <span>Drought-Resistant Landscaping Tips</span>
+                        </a>
+                    </div>
+                
+                    <h3>Additional Resources</h3>
+                    <div class="resources-grid">
+                        <div class="resource-card">
+                            <div class="resource-icon">🌵</div>
+                            <h4>Drought-Tolerant Plant Guide</h4>
+                        </div>
+                        <div class="resource-card">
+                            <div class="resource-icon">💧</div>
+                            <h4>Irrigation Calculator</h4>
+                        </div>
+                        <div class="resource-card">
+                            <div class="resource-icon">📊</div>
+                            <h4>Water Usage Tracker</h4>
+                        </div>
+                        <div class="resource-card">
+                            <div class="resource-icon">☀️</div>
+                            <h4>Microclimate Assessment</h4>
+                        </div>
+                        <div class="resource-card">
+                            <div class="resource-icon">🌡️</div>
+                            <h4>Soil Moisture Meter</h4>
+                        </div>
+                        <div class="resource-card">
+                            <div class="resource-icon">📱</div>
+                            <h4>GrowSmart App</h4>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main> <br><br><br>
+    
+  <!--footer section starts-->
+
+  <section class="footer">
+
+    <div class="box-container">
+
+        <div class="box">
+           <h3>Growsmart <i class="fas fa-seedling"></i></h3>
+           <p>"Sustainable Farming for a Greener Tomorrow."</p>
+           <div class="social-links">
+            <a href="https://www.facebook.com/yourpage" target="_blank" class="fab fa-facebook"></a>
+            <a href="https://www.youtube.com/yourchannel" target="_blank" class="fab fa-youtube"></a>
+            <a href="https://www.instagram.com/yourprofile" target="_blank" class="fab fa-instagram"></a>
+        </div>
+        
+        </div>
+
+        <div class="box">
+            <h3>Contact Info</h3>
+            <a href="#" class="links" onclick="checker()"><i class="fas fa-phone"></i>+94 11 111 1111</a>
+            <a href="#" class="links" onclick="checker()"><i class="fas fa-phone"></i>+94 11 222 2222</a>
+            <a href="#" class="links" onclick="openTelLink()"><i class="fas fa-envelope"></i>Growsmart@gmail.com</a>
+            <a href="#" class="links" onclick="openTelLink()"><i class="fas fa-map-marker-alt"></i>Colombo,sri lanka</a>
+         </div>  
+         
+         <div class="box">
+            <h3>Quick Links</h3>
+            <a href="home new.html" class="links"><i class="fas fa-arrow-right"></i>Home</a>
+        
+            <!-- Dropdown for Plants -->
+            <div class="dropdown">
+                <a href="Plants" class="links dropdown-toggle">
+                    <i class="fas fa-arrow-right"></i>Plants ▼
+                </a>
+                <div class="dropdown-menu">
+                    <a href="House Plnts">House Plants</a>
+                    <a href="Fruits and Vegetables">Fruits and Vegetables</a>
+                    <a href="Flowers">Flowers</a>
+                    </div>
+            </div>
+        </br>
+            <div class="dropdown">
+                <a href="Sustainability Garden" class="links dropdown-toggle">
+                    <i class="fas fa-arrow-right"></i>Sustainability Garden ▼
+                </a>
+                <div class="dropdown-menu">
+                    <a href="organic">Organic</a>
+                    <a href="Waterwise">Waterwise</a>
+                </div>
+            </div>
+            <a href="Compitition" class="links"><i class="fas fa-arrow-right"></i>Competition</a>
+            <a href="shop" class="links"><i class="fas fa-arrow-right"></i>Shop</a>
+            <div class="dropdown">
+                <a href="chat" class="links dropdown-toggle">
+                    <i class="fas fa-arrow-right"></i>Chat ▼
+                </a>
+                <div class="dropdown-menu">
+                    <a href="AI chat">AI Chat</a>
+                    <a href="Community">Community</a>
+                
+                </div>
+            </div>
+        </br>
+            <div class="dropdown">
+                <a href="More" class="links dropdown-toggle">
+                    <i class="fas fa-arrow-right"></i>More ▼
+                </a>
+                <div class="dropdown-menu">
+                    <a href="">Promotions</a>
+                    <a href="">Points</a>
+                    <a href="">Learning</a>
+                    <a href="">Ideas & Inspiration</a>
+                </div>
+            </div>
+        </div>
+        
+
+         <div class="box">
+            <h3>Newsletter</h3>
+            <p>Stay us with more informations</p>
+        
+            <div class="box">
+                <h3>User informations</h3>
+            <a href="guidelines.html" class="links">User Guidelines</a>
+
+            <div class="box">
+                <h3>Terms and Conditions</h3>
+            <a href="Terms and Conditions.html" class="links">Terms and Conditions</a>
+           
+            <div class="box">
+                <h3>Privacy and Policy</h3>
+            <a href="Privacy and Policy.html" class="links">Privacy and Policy</a>
+
+
+            
+         </div>  
+    </div>
+
+</br></br></br></br>
+
+   
+</section>
+<!--footer section ends-->
+
+
+<body>
+    <section class="footer">
+        <div class="credit">
+            created by <span>© 2025 GrowSmart.</span> | all rights reserved
+        </div>
+    </section>
+    <script src="js/script.js"></script>
+</body>
+
+<!-- Onclick Prompt -->
+<script>
+        function checker()
+        {
+            var result= confirm('Open Pick an App?');
+            if ( result == false) {
+                event.preventDefault();
+            }
+        }
+</script>
+
+<!-- JS for Opening the App list in the User device -->
+<script>
+        function openTelLink() {
+        // This will trigger the app picker
+        window.location.href = "tel:+94 11 111 1111";
+        }
+</script>
+    
+<script>
+        function openTelLink() {
+        // This will trigger the app picker
+        window.location.href = "tel:+94 22 222 2222";
+        }
+</script>
+    
+    <script src="js/sustainable.js"></script>
+</body>
+</html>
