@@ -17,3 +17,8 @@ This project is aimed at bridging the gap between new and experienced gardeners 
 - html, css, js
 - Git
 - VS Code
+
+## CMD to install dependancies for run a Live ChatRoom :- 
+- npm i -d nodemon
+- npm i socket.io
+- npm i express
