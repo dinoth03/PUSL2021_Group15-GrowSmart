@@ -10,7 +10,7 @@ This project is aimed at bridging the gap between new and experienced gardeners 
 - Any kind of Plant related learning platform
 
 ## Prerequisites :-
-- Node.js
+- Node.js / Php
 - Socket.io
 - Express Framework
 - Bootstrap Framework
