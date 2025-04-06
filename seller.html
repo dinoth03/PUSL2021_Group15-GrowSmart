@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GrowSmart - Seller Panel</title>
+    <link rel="icon" type="image/png" href="Img/TitleLogo.png">
+     <!-- Bootstrap CSS -->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+     <!--my css-->
+     <link href="style.css" rel="stylesheet">
+     </head>
+     <body>
+
+
+
+<div class="container mt-5">
+    <h2>Seller Panel</h2>
+    <!-- Add Product Form -->
+    <form id="addProductForm">
+        <div class="row">
+            <div class="col-md-6">
+                <label for="productName">Product Name</label>
+                <input type="text" id="productName" class="form-control" required>
+            </div>
+            <div class="col-md-6">
+                <label for="productCategory">Category</label>
+                <select id="productCategory" class="form-control" required>
+                    <option value="productCategory"></option>
+                    <option value="vegetables">Vegetables</option>
+                    <option value="plants">Plants</option>
+                    <option value="vegetables">Vegetables</option>
+                    <option value="fruits">Fruits</option>
+                    <option value="fertilizers">Fertilizers</option>
+                </select>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-6">
+                <label for="productPrice">Price (Rs.)</label>
+                <input type="number" id="productPrice" class="form-control" required>
+            </div>
+            <div class="col-md-6">
+                <label for="productWeight">Weight (kg)</label>
+                <input type="text" id="productWeight" class="form-control" required>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-12">
+                <label for="productImage">Product Image</label>
+                <input type="file" id="productImage" class="form-control" accept="image/*" required>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Add Product</button>
+    </form>
+
+    <!-- Manage Products -->
+    <h3 class="mt-5">Manage Products</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Weight</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="productList">
+            <!-- Dynamically filled rows -->
+        </tbody>
+    </table>
+</div>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+    const addProductForm = document.getElementById("addProductForm");
+    const productList = document.getElementById("productList");
+    const indexContainer = document.querySelector("#indexContainer"); // Replace with your container selector
+    let products = JSON.parse(localStorage.getItem("products")) || [];
+
+    // Render Products in the Seller Panel
+    function renderProductList() {
+        productList.innerHTML = "";
+        products.forEach((product, index) => {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+                <td>${product.name}</td>
+                <td>${product.category}</td>
+                <td>Rs.${product.price}</td>
+                <td>${product.weight} kg</td>
+                <td>
+                    <button class="btn btn-warning btn-sm edit-btn" data-index="${index}">Edit</button>
+                    <button class="btn btn-danger btn-sm delete-btn" data-index="${index}">Delete</button>
+                </td>
+            `;
+            productList.appendChild(row);
+        });
+    }
+
+    // Render Products on the Index Page
+    function renderIndexPage() {
+        indexContainer.innerHTML = "";
+        products.forEach((product) => {
+            const productCard = document.createElement("div");
+            productCard.className = `col-md-3 product-card`;
+            productCard.setAttribute("data-category", product.category);
+            productCard.innerHTML = `
+                <div class="card">
+                    <img src="${product.image}" class="card-img-top" alt="${product.name}">
+                    <div class="card-body">
+                        <h5 class="card-title">${product.name}</h5>
+                        <p>${product.weight} kg</p>
+                        <p class="card-text">Price: Rs.${product.price}</p>
+                        <button type="button" class="btn btn-primary">Add to Cart</button>
+                        <button type="button" class="btn btn-success">Buy Now</button>
+                    </div>
+                </div>
+            `;
+            indexContainer.appendChild(productCard);
+        });
+    }
+
+    // Add Product
+    addProductForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const name = document.getElementById("productName").value;
+        const category = document.getElementById("productCategory").value;
+        const price = document.getElementById("productPrice").value;
+        const weight = document.getElementById("productWeight").value;
+        const image = URL.createObjectURL(document.getElementById("productImage").files[0]);
+
+        products.push({ name, category, price, weight, image });
+        localStorage.setItem("products", JSON.stringify(products));
+        renderProductList();
+        renderIndexPage();
+        alert("Product added successfully!");
+        addProductForm.reset();
+    });
+
+    // Edit or Delete Product
+    productList.addEventListener("click", function (e) {
+        const index = e.target.getAttribute("data-index");
+        if (e.target.classList.contains("delete-btn")) {
+            products.splice(index, 1);
+            localStorage.setItem("products", JSON.stringify(products));
+            renderProductList();
+            renderIndexPage();
+            alert("Product deleted successfully!");
+        } else if (e.target.classList.contains("edit-btn")) {
+            const product = products[index];
+            document.getElementById("productName").value = product.name;
+            document.getElementById("productCategory").value = product.category;
+            document.getElementById("productPrice").value = product.price;
+            document.getElementById("productWeight").value = product.weight;
+
+            products.splice(index, 1);
+            renderProductList();
+        }
+    });
+
+    // Initialize
+    renderProductList();
+    renderIndexPage();
+});
+
+</script>
+</body>
+</html>
+
+

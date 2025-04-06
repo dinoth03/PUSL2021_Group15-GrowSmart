@@ -1,0 +1,194 @@
+@charset "utf-8";
+body {
+	margin: 0;
+    padding: 0;
+    background-color: #0096FF;
+    background: linear-gradient(to right, #e2e2e2, #D5ECFF);
+}
+.container {
+	max-width: 800px;
+    margin: 50px auto;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	margin-top: 5px;
+}
+
+.section {
+    margin-bottom: 20px;
+}
+
+.section h3 {
+	padding-top: 10px;
+	margin-bottom: 20px;
+	color: #333;
+	margin-left: 20px;
+	font-family: alice;
+}
+.receipt {
+	border: 1px solid #ddd;
+	padding: 15px;
+	background-color: #f9f9f9;
+}
+.receipt p {
+	margin: 5px 0;
+}
+.total {
+	font-weight: bold;
+	font-size: 18px;
+	color: #333;
+}
+
+.payment-methods {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+.card-form {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 10px;
+}
+.card-form input {
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	font-size: 14px;
+}
+.card-form input:nth-child(1) {
+	grid-column: span 2;
+}
+.card-form input:nth-child(6) {
+	grid-column: span 2;
+}
+
+.checkbox {
+    margin: 15px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.checkbox input {
+    width: 20px;
+    height: 20px;
+}
+
+#tnm{
+	color: black;
+	text-decoration: underline;
+}
+
+#tnm:hover{
+	color: darkblue;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.back-btn, .pay-now-btn {
+    border: none;
+    padding: 10px 158px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#back {
+    background-color: #808080;
+    color: white;
+}
+
+#pay {
+    background-color: #0096FF;
+    color: white;
+}
+
+#pay:hover {
+    background-color: #0056b3;
+	text-decoration: none;
+}
+
+#back:hover {
+    background-color: #404040;
+	text-decoration: none;
+}
+
+.place-order {
+	background-color: #0096FF;
+	color: white;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	font-size: 16px;
+	cursor: pointer;
+	grid-column: span 2;
+ }
+.place-order:hover {
+    background-color: #0056b3;
+ }
+
+/* New Effect */
+#cd{
+  	transition: .5s ease;
+}
+#cd:focus, #cd:hover{
+  	outline: none;
+  	border-color: rgba(129, 140, 248);
+  	background-color: #fff;
+  	box-shadow: 0 0 0 5px rgb(129 140 248 / 30%);
+}
+
+#ex{
+  	transition: .5s ease;
+}
+#ex:focus, #ex:hover{
+  	outline: none;
+  	border-color: rgba(129, 140, 248);
+  	background-color: #fff;
+  	box-shadow: 0 0 0 5px rgb(129 140 248 / 30%);
+}
+
+#cvv{
+  	transition: .5s ease;	
+}
+#cvv:focus, #cvv:hover{
+  	outline: none;
+  	border-color: rgba(129, 140, 248);
+  	background-color: #fff;
+  	box-shadow: 0 0 0 5px rgb(129 140 248 / 30%);
+}
+
+#fname{
+	transition: .5s ease;
+}
+#fname:focus, #fname:hover{
+	outline: none;
+  	border-color: rgba(129, 140, 248);
+  	background-color: #fff;
+  	box-shadow: 0 0 0 5px rgb(129 140 248 / 30%);
+}
+
+#lname{
+	transition: .5s ease;
+}
+#lname:focus, #lname:hover{
+	outline: none;
+  	border-color: rgba(129, 140, 248);
+  	background-color: #fff;
+  	box-shadow: 0 0 0 5px rgb(129 140 248 / 30%);
+}
+
+#email{
+	transition: .5s ease;
+}
+#email:focus, #email:hover{
+	outline: none;
+  	border-color: rgba(129, 140, 248);
+  	background-color: #fff;
+  	box-shadow: 0 0 0 5px rgb(129 140 248 / 30%);
+}
+
+

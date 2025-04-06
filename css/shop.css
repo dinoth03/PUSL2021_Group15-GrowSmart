@@ -1,0 +1,41 @@
+:root {
+  --outline: 1rem solid rgba(0, 0, 0, 0.1);
+}
+
+body {
+  background: #eee;
+}
+
+/* cart-button button is for both button in cart*/
+/* .cart-button {
+    border: .1rem solid black;
+} */
+
+/* add-to-cart button */
+.add-to-cart {
+  background-color: rgb(220, 233, 247);
+  border: 0.1rem solid dodgerblue;
+}
+.add-to-cart:hover {
+  background-color: dodgerblue;
+  color: white;
+}
+
+/* buy-now button */
+.buy-now {
+  background: #d5f3d5;
+  border: 0.1rem solid #00ff00;
+}
+.buy-now:hover {
+  background: #00ff00;
+  color: white;
+}
+
+.section-header {
+  background: #fff;
+  box-shadow: --box-shadow;
+  padding: 1rem 1rem;
+  text-align: center;
+  outline: var(--outline);
+  outline-offset: -0.5rem;
+}

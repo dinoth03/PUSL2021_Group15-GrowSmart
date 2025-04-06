@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Container */
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background: white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+/* Heading Styles */
+h1 {
+    text-align: center;
+    color: #2d6a4f;
+}
+
+h2 {
+    color: #40916c;
+    border-bottom: 2px solid #2d6a4f;
+    padding-bottom: 5px;
+}
+
+/* Paragraph Styling */
+p {
+    font-size: 16px;
+    line-height: 1.6;
+    padding-left: 10px;
+}
+
+/* Back Button */
+a {
+    display: block;
+    width: 200px;
+    margin: 20px auto;
+    text-align: center;
+    background: #40916c;
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+a:hover {
+    background: #2d6a4f;
+}

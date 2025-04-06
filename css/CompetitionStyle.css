@@ -1,0 +1,271 @@
+/* From Uiverse.io by Mike11jr */ 
+.scene {
+  width: 10em;
+  justify-content: center;
+  align-items: center;
+ }
+ 
+ .cube {
+  color: #ccc;
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+  transition: all 0.85s cubic-bezier(.17,.67,.14,.93);
+  transform-style: preserve-3d;
+  transform-origin: 100% 50%;
+  width: 10em;
+  height: 4em;
+ }
+ 
+ .cube:hover {
+  transform: rotateX(-90deg);
+ }
+ 
+ .side {
+  box-sizing: border-box;
+  position: absolute;
+  display: inline-block;
+  height: 4em;
+  width: 10em;
+  text-align: center;
+  text-transform: uppercase;
+  padding-top: 1.5em;
+  font-weight: bold;
+ }
+ 
+ .top {
+  background: wheat;
+  color: #222229;
+  transform: rotateX(90deg) translate3d(0, 0, 2em);
+  box-shadow: inset 0 0 0 5px #fff;
+ }
+ 
+ .front {
+  background: #222229;
+  color: #fff;
+  box-shadow: inset 0 0 0 5px #fff;
+  transform: translate3d(0, 0, 2em);
+ }
+
+
+
+
+
+
+
+
+
+
+
+/*plants*/
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+
+h1, h2 {
+    margin: 10px 0;
+}
+
+p {
+    transition: color 0.3s ease; /* Smooth transition for text color */
+}
+
+p:hover {
+    color: #ffeb3b; /* Change text color on hover */
+}
+
+#plant-list, #leaderboard {
+    margin: 20px;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.plant {
+    display: inline-block;
+    background: #e8f5e9;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.plant img {
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
+}
+
+button {
+    background: #12fa1ace;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background: #0ce617;
+}
+
+
+
+
+
+
+
+
+/*header part*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body, html {
+    font-family: 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+  }
+  
+  .container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px 0;
+  }
+  
+  .hero {
+    background: linear-gradient(to right, #04e710, #06bd00);
+    color: white;
+    text-align: center;
+    padding: 80px 20px;
+  }
+  
+  .hero .btn {
+    margin-top: 20px;
+    display: inline-block;
+    padding: 12px 25px;
+    background: white;
+    color: #007bff;
+    font-weight: bold;
+    border-radius: 5px;
+    text-decoration: none;
+  }
+
+
+
+
+
+
+
+
+
+
+
+/* Sellers css */
+.sellers {
+    background-color: #ffffff;
+    padding: 60px 20px;
+    text-align: center;
+  }
+  
+  .seller-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+  }
+  
+  .seller-card {
+    background-color: #f1f1f1;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  }
+  
+  .seller-card h3 {
+    margin-bottom: 10px;
+  }
+  
+  .rating {
+    margin-top: 10px;
+  }
+  
+  .star {
+    font-size: 20px;
+    cursor: pointer;
+    color: #ccc;
+  }
+  
+  .star.active {
+    color: gold;
+  }
+
+  
+  
+
+
+
+
+
+/* CSS for Winner Profiles */
+#winners {
+    text-align: center;
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+}
+
+.winner-profile {
+    display: inline-block;
+    width: 200px;
+    margin: 15px;
+    padding: 15px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s; /* Add transition for smooth effect */
+}
+
+.winner-profile:hover {
+    transform: translateY(-5px); /* Move up slightly on hover */
+    box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
+}
+
+.winner-profile img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+    border: 3px solid #4CAF50;
+}
+
+.winner-profile h3 {
+    font-size: 18px;
+    margin: 5px 0;
+    color: #333;
+}
+
+.winner-profile p {
+    font-size: 14px;
+    color: #666;
+}
+
+
+
+
+
+
+
