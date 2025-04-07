@@ -9,6 +9,19 @@
 body {
     background-color: #ffffff;
     color: #000000;
+    background: linear-gradient(to right, #e2e2e2, #d5ffdd);
+}
+
+#h2 {
+    text-align: center;
+    color: #333;
+    text-shadow: #333;
+}
+
+#h3 {
+    text-align: center;
+    color: #333;
+    text-shadow: #333;
 }
 
 main {
@@ -120,4 +133,48 @@ button {
 
 .activity {
     font-style: italic;
+}
+
+#name {
+    transition: .5s ease;
+}
+#name:focus, #name:hover{
+	outline: none;
+	border-color: rgb(161, 248, 129);
+	background-color: #fff;
+	box-shadow: 0 0 0 5px rgba(129, 248, 137, 0.353);
+}
+
+#room {
+    transition: .5s ease;
+}
+#room:focus, #room:hover{
+	outline: none;
+	border-color: rgb(161, 248, 129);
+	background-color: #fff;
+	box-shadow: 0 0 0 5px rgba(129, 248, 137, 0.353);
+}
+
+#message {
+    transition: .5s ease;
+}
+#message:focus, #message:hover{
+	outline: none;
+	border-color: rgb(161, 248, 129);
+	background-color: #fff;
+	box-shadow: 0 0 0 5px rgba(129, 248, 137, 0.353);
+}
+
+#Send {
+    background-color: rgb(199, 255, 179);
+}
+#Send:hover {
+    background-color: rgb(154, 255, 118);;
+}
+
+#join {
+    background-color: rgb(199, 255, 179);
+}
+#join:hover {
+    background-color: rgb(154, 255, 118);;
 }
