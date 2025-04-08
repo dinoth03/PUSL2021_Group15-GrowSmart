@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GrowSmart - Learning</title>
+  <link rel="icon" type="image/png" href="Img/TitleLogo.png">
+  <link rel="stylesheet" href="css/learning.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <header class="header">
+    <a href="#" class="logo"><i class="fas fa-seedling"></i>Growsmart</a>
+    <ul class="navbar">
+        <li><a href="home new.html">Home</a></li>
+        <li class="dropdown">
+        <a href="#">Plant <i class="fas fa-chevron-down"></i></a>
+        <div class="dropdown-content">
+            <a href="indoorplants.html">House Plants</a>
+            <a href="fruits & vegetables.html">Fruits & Vegetables</a>
+            <a href="flowers.html">Flowers</a>
+        </div></li>
+        <li><a href="sustainable.html">Sustainability Garden </a></li>
+       
+        <li><a href="Competition.html">Compitition</a></li>
+        <li><a href="shop.html">shop</a></li>
+        <li class="dropdown">
+            <a href="#">Chat <i class="fas fa-chevron-down"></i></a>
+            <div class="dropdown-content">
+                <a href="components/Virtual Assistant.html">AI Chat</a>
+                <a href="server/public/index.html">Community</a>
+            </div></li>
+        <li class="dropdown">
+            <a href="#">More <i class="fas fa-chevron-down"></i></a>
+            <div class="dropdown-content">
+                <a href="offer.html">Promotions</a>
+                <a href="#">Points</a>
+                <a href="Learning.html">Learning</a>
+                <a href="Idea & Inspiration.html">Idea & Inspiration</a>
+            </div></li>
+            
+    </ul>
+
+    <div class="Icons">
+        <div class="fas fa-bars" id="menu-btn"></div>
+        <div class="fas fa-search" id="search-btn"></div>
+        <div class="fas fa-shopping-cart" id="cart-btn"></div>
+        <div class="fas fa-user" id="login-btn"></div>
+    </div>
+
+    <form action="" class="search-form">
+        <input type="search" id="search-box" placeholder="Search Here...">
+        <label for="search-box" class="fas fa-search"></label>
+        </form>
+
+     <form action="" class="login-form">
+        <h3><a href="#">Login now</a> </h3>
+        
+     </form>   
+
+</header>
+
+<!--header section ends-->
+
+<br><br><br><br>
+
+  <section class="intro">
+    <h2>What is GrowSmart?</h2>
+    <p>GrowSmart is your all-in-one platform for sustainable gardening. Learn how to care for plants, sell your produce, and connect with a green community.</p>
+  </section>
+
+  <section class="steps">
+    <h2>Get Started in 3 Easy Steps</h2>
+    <div class="step-container">
+      <div class="step">
+        <h3>1. Create an Account</h3>
+        <p>Sign up for free and personalize your garden dashboard.</p>
+      </div>
+      <div class="step">
+        <h3>2. Analyze Your Plants</h3>
+        <p>Use our AI tools to identify plant needs and get care advice.</p>
+      </div>
+      <div class="step">
+        <h3>3. Grow & Sell</h3>
+        <p>Grow your plants and sell them in our sustainable marketplace.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="video">
+    <h2>Watch How It Works</h2>
+    <video controls>
+      <source src="growsmart-demo.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </section>
+
+    <!--footer section starts-->
+
+    <section class="footer">
+
+      <div class="box-container">
+
+          <div class="box">
+             <h3>Growsmart <i class="fas fa-seedling"></i></h3>
+             <p>"Sustainable Farming for a Greener Tomorrow."</p>
+             <div class="social-links">
+              <a href="https://www.facebook.com/yourpage" target="_blank" class="fab fa-facebook"></a>
+              <a href="https://www.youtube.com/yourchannel" target="_blank" class="fab fa-youtube"></a>
+              <a href="https://www.instagram.com/yourprofile" target="_blank" class="fab fa-instagram"></a>
+          </div>
+          
+          </div>
+
+          <div class="box">
+              <h3>Contact Info</h3>
+              <a href="#" class="links" onclick="openTelLink()"><i class="fas fa-phone"></i>+94 11 111 1111</a>
+              <a href="#" class="links" onclick="openTelLink()"><i class="fas fa-phone"></i>+94 22 222 2222</a>
+              <a href="#" class="links" onclick="checker()"><i class="fas fa-envelope"></i>Growsmart@gmail.com</a>
+              <a href="#" class="links"><i class="fas fa-map-marker-alt"></i>Colombo,sri lanka</a>
+           </div>  
+           
+           <div class="box">
+              <h3>Quick Links</h3>
+              <a href="home new.html" class="links"><i class="fas fa-arrow-right"></i>Home</a>
+          
+              <!-- Dropdown for Plants -->
+              <div class="dropdown">
+                  <a href="Plants" class="links dropdown-toggle">
+                      <i class="fas fa-arrow-right"></i>Plants ▼
+                  </a>
+                  <div class="dropdown-menu">
+                      <a href="indoorplants.html">House Plants</a>
+                      <a href="fruits & vegetables.html">Fruits and Vegetables</a>
+                      <a href="flowers.html">Flowers</a>
+                      </div>
+              </div>
+          </br>
+              <div class="dropdown">
+                  <a href="Sustainability Garden" class="links dropdown-toggle">
+                      <i class="fas fa-arrow-right"></i>Sustainability Garden ▼
+                  </a>
+                  <div class="dropdown-menu">
+                      <a href="organic">Organic</a>
+                      <a href="Waterwise">Waterwise</a>
+                  </div>
+              </div>
+              <a href="Compitition" class="links"><i class="fas fa-arrow-right"></i>Competition</a>
+              <a href="shop" class="links"><i class="fas fa-arrow-right"></i>Shop</a>
+              <div class="dropdown">
+                  <a href="chat" class="links dropdown-toggle">
+                      <i class="fas fa-arrow-right"></i> Chat ▼
+                  </a>
+                  <div class="dropdown-menu">
+                      <a href="AI chat">AI Chat</a>
+                      <a href="Community">Community</a>
+                  
+                  </div>
+              </div>
+          </br>
+              <div class="dropdown">
+                  <a href="More" class="links dropdown-toggle">
+                      <i class="fas fa-arrow-right"></i>More ▼
+                  </a>
+                  <div class="dropdown-menu">
+                      <a href="">Promotions</a>
+                      <a href="">Points</a>
+                      <a href="">Learning</a>
+                      <a href="Idea & Inspiration.html">Ideas & Inspiration</a>
+                  </div>
+              </div>
+          </div>
+          
+
+           <div class="box">
+              <h3>Newsletter</h3>
+              <p>Stay us with more informations</p>
+          
+              <div class="box">
+                  <h3>User informations</h3>
+              <a href="guidelines.html" class="links">User Guidelines</a>
+
+              <div class="box">
+                  <h3>Terms and Conditions</h3>
+              <a href="Terms and Conditions.html" class="links">Terms and Conditions</a>
+             
+              <div class="box">
+                  <h3>Privacy and Policy</h3>
+              <a href="Privacy and Policy.html" class="links">Privacy and Policy</a>
+
+
+              
+           </div>  
+      </div>
+
+  </br></br></br></br>
+
+     
+  </section>
+  <!--footer section ends-->
+
+
+  <body>
+      <section class="footer">
+          <div class="credit">
+              created by <span>© 2025 GrowSmart.</span> | all rights reserved
+          </div>
+      </section>
+      
+  <script src="js/script.js"></script>
+</body>
+</html>
