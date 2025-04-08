@@ -1,4 +1,4 @@
- @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
 
 :root{
     --orange:#00ff00;
@@ -485,6 +485,28 @@ position: relative;
 }
 
 
+/* Button Styling */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background: #388E3C;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .card {
+        width: 90%;
+    }
+}
 
 
 
@@ -500,6 +522,7 @@ position: relative;
 
 .footer{
     background: #fff;
+    padding: 1rem 0;
     
 }
 
@@ -507,6 +530,7 @@ position: relative;
     display: grid;
     grid-template-columns: repeat(auto-fit,minmax(25rem,1fr));
     gap: 0.5rem;
+    padding: 1rem 2rem;
 }
 
 .footer .box-container .box h3{
@@ -757,68 +781,4 @@ position: relative;
         font-size: 1.5rem;
     }
 }
-
-/* Floating Action Button Styles */
-.fab-container {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  z-index: 999;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-}
-
-.fab-button {
-  background-color: #28a745;
-  color: white;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  font-size: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  cursor: pointer;
-  transition: transform 0.3s ease-in-out, background-color 0.3s;
-}
-
-.fab-button.open {
-  transform: rotate(45deg);
-  background-color: #ff5733; /* Optional: Change the color when open */
-}
-
-.fab-options {
-  display: none;
-  flex-direction: column;
-  align-items: flex-end;
-  margin-bottom: 10px;
-  transition: all 0.3s ease-in-out;
-}
-
-.fab-option {
-  background-color: #28a745;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  margin-top: 10px;
-  font-size: 20px;
-  cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  opacity: 0;
-  transform: scale(0);
-  transition: opacity 0.3s, transform 0.3s;
-}
-
-.fab-options.show .fab-option {
-  opacity: 1;
-  transform: scale(1);
-}
-
-.fab-options.show {
-  display: flex;
-} 
 

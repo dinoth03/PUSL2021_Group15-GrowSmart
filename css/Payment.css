@@ -3,7 +3,7 @@ body {
 	margin: 0;
     padding: 0;
     background-color: #0096FF;
-    background: linear-gradient(to right, #e2e2e2, #D5ECFF);
+    background: linear-gradient(to right, #e2e2e2, #d5ffdd);
 }
 .container {
 	max-width: 800px;
@@ -102,12 +102,12 @@ body {
 }
 
 #pay {
-    background-color: #0096FF;
+    background-color: #00da2f;
     color: white;
 }
 
 #pay:hover {
-    background-color: #0056b3;
+    background-color: #3db600;
 	text-decoration: none;
 }
 
@@ -136,9 +136,9 @@ body {
 }
 #cd:focus, #cd:hover{
   	outline: none;
-  	border-color: rgba(129, 140, 248);
+  	border-color: rgb(161, 248, 129);
   	background-color: #fff;
-  	box-shadow: 0 0 0 5px rgb(129 140 248 / 30%);
+  	box-shadow: 0 0 0 5px rgba(129, 248, 137, 0.353);
 }
 
 #ex{
@@ -146,9 +146,9 @@ body {
 }
 #ex:focus, #ex:hover{
   	outline: none;
-  	border-color: rgba(129, 140, 248);
+  	border-color: rgb(161, 248, 129);
   	background-color: #fff;
-  	box-shadow: 0 0 0 5px rgb(129 140 248 / 30%);
+  	box-shadow: 0 0 0 5px rgba(129, 248, 137, 0.353);
 }
 
 #cvv{
@@ -156,9 +156,9 @@ body {
 }
 #cvv:focus, #cvv:hover{
   	outline: none;
-  	border-color: rgba(129, 140, 248);
+  	border-color: rgb(161, 248, 129);
   	background-color: #fff;
-  	box-shadow: 0 0 0 5px rgb(129 140 248 / 30%);
+  	box-shadow: 0 0 0 5px rgba(129, 248, 137, 0.353);;
 }
 
 #fname{
@@ -166,9 +166,9 @@ body {
 }
 #fname:focus, #fname:hover{
 	outline: none;
-  	border-color: rgba(129, 140, 248);
-  	background-color: #fff;
-  	box-shadow: 0 0 0 5px rgb(129 140 248 / 30%);
+	border-color: rgb(161, 248, 129);
+	background-color: #fff;
+	box-shadow: 0 0 0 5px rgba(129, 248, 137, 0.353);
 }
 
 #lname{
@@ -176,9 +176,9 @@ body {
 }
 #lname:focus, #lname:hover{
 	outline: none;
-  	border-color: rgba(129, 140, 248);
-  	background-color: #fff;
-  	box-shadow: 0 0 0 5px rgb(129 140 248 / 30%);
+	border-color: rgb(161, 248, 129);
+	background-color: #fff;
+	box-shadow: 0 0 0 5px rgba(129, 248, 137, 0.353);
 }
 
 #email{
@@ -186,9 +186,9 @@ body {
 }
 #email:focus, #email:hover{
 	outline: none;
-  	border-color: rgba(129, 140, 248);
-  	background-color: #fff;
-  	box-shadow: 0 0 0 5px rgb(129 140 248 / 30%);
+	border-color: rgb(161, 248, 129);
+	background-color: #fff;
+	box-shadow: 0 0 0 5px rgba(129, 248, 137, 0.353);
 }
 
 

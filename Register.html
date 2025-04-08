@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GrowSmart - Register</title>
+    <link rel="icon" type="image/png" href="Img/TitleLogo.png">
+    <link rel="stylesheet" href="css/logstyles.css">
+</head>
+<body>
+    
+    <div class="container">
+        <h2>Register to Grow Smart</h2>
+        <form action="Regcon.php" method="POST">
+            <label for="first_name">First Name:</label>
+            <input type="text" id="first_name" name="first_name" required>
+
+            <label for="last_name">Last Name:</label>
+            <input type="text" id="last_name" name="last_name" required>
+
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="phone">Sri Lankan Phone Number:</label>
+            <input type="tel" id="phone" name="phone" pattern="^\+94\d{9}$" placeholder="+94XXXXXXXXX" required>
+
+            <label>Account Type:</label>
+            <div class="radio-group">
+                <label><input type="radio" name="account_type" value="Seller" required> Seller</label>
+                <label><input type="radio" name="account_type" value="Buyer" required> Buyer</label>
+            </div>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Sign Up</button>
+        </form>
+        <p>Already have an account? <a href="Login.html">Sign In</a></p>
+    </div>
+</body>
+</html>
+
