@@ -12,16 +12,14 @@ body {
     background: linear-gradient(to right, #e2e2e2, #d5ffdd);
 }
 
-#h2 {
+#h1 {
     text-align: center;
     color: #333;
-    text-shadow: #333;
 }
 
 #h3 {
     text-align: center;
     color: #333;
-    text-shadow: #333;
 }
 
 main {
@@ -57,7 +55,7 @@ button {
 }
 
 .chat-display {
-    background-color: #333;
+    background-color: #99d696;
     list-style-type: none;
     width: 100%;
     max-width: 1000px;
@@ -129,6 +127,8 @@ button {
     margin: 0 auto;
     max-width: 600px;
     padding: .75rem .25rem;
+    font-weight: bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .activity {
@@ -142,7 +142,7 @@ button {
 	outline: none;
 	border-color: rgb(161, 248, 129);
 	background-color: #fff;
-	box-shadow: 0 0 0 5px rgba(129, 248, 137, 0.353);
+	box-shadow: 0 0 0 5px rgba(124, 255, 132, 0.656);
 }
 
 #room {
@@ -152,7 +152,7 @@ button {
 	outline: none;
 	border-color: rgb(161, 248, 129);
 	background-color: #fff;
-	box-shadow: 0 0 0 5px rgba(129, 248, 137, 0.353);
+	box-shadow: 0 0 0 5px rgba(124, 255, 132, 0.656);
 }
 
 #message {
@@ -162,19 +162,52 @@ button {
 	outline: none;
 	border-color: rgb(161, 248, 129);
 	background-color: #fff;
-	box-shadow: 0 0 0 5px rgba(129, 248, 137, 0.353);
+	box-shadow: 0 0 0 5px rgba(124, 255, 132, 0.656);
 }
 
 #Send {
-    background-color: rgb(199, 255, 179);
+    background-color: rgb(109, 224, 67);
+    padding: 12.5px 30px;
+    border: 0;
+    color: #ffffff;
+    font-weight: Bold;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    margin-left: 15px;
 }
 #Send:hover {
-    background-color: rgb(154, 255, 118);;
+    background-color: rgb(156, 255, 119);
+    box-shadow: 0 0 20px #6fc5ff50;
+    transform: scale(1.1);
+}
+#Send:active {
+    background-color: #108d00;
+    transition: all 0.25s;
+    -webkit-transition: all 0.25s;
+    box-shadow: none;
+    transform: scale(0.98);
 }
 
 #join {
-    background-color: rgb(199, 255, 179);
+    background-color: rgb(109, 224, 67);
+    padding: 12.5px 30px;
+    border: 0;
+    color: #ffffff;
+    font-weight: Bold;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    margin-left: 15px;
 }
 #join:hover {
-    background-color: rgb(154, 255, 118);;
+    background-color: rgb(156, 255, 119);
+    box-shadow: 0 0 20px #6fc5ff50;
+    transform: scale(1.1);
 }
+#join:active {
+    background-color: #108d00;
+    transition: all 0.25s;
+    -webkit-transition: all 0.25s;
+    box-shadow: none;
+    transform: scale(0.98);
+}
+

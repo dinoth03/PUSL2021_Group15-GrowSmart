@@ -35,7 +35,7 @@ io.on('connection', socket => {
     console.log(`User ${socket.id} connected`)
 
     // Upon connection - only to user 
-    socket.emit('message', buildMsg(ADMIN, "Welcome to GrowSmart Chat App!"))
+    socket.emit('message', buildMsg(ADMIN, "Welcome to GrowSmart Chat Rooms!"))
 
     socket.on('enterRoom', ({ name, room }) => {
 
