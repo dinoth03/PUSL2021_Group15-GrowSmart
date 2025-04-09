@@ -18,7 +18,7 @@
 <div class="container mt-5">
     <h2>Seller Panel</h2>
     <!-- Add Product Form -->
-    <form id="addProductForm" action="/controller/addProducts.php" method="post">
+    <form id="addProductForm">
         <div class="row">
             <div class="col-md-6">
                 <label for="productName">Product Name</label>
@@ -48,8 +48,8 @@
         </div>
         <div class="row mt-3">
             <div class="col-md-12">
-                <label for="productImage">Image URL</label>
-                <input type="text" id="imageUrl" class="form-control" required>
+                <label for="productImage">Product Image</label>
+                <input type="file" id="productImage" class="form-control" accept="image/*" required>
             </div>
         </div>
         <button type="submit" class="btn btn-primary mt-3">Add Product</button>
@@ -74,7 +74,7 @@
 </div>
 
 
-<!-- <script>
+<script>
     document.addEventListener("DOMContentLoaded", function () {
     const addProductForm = document.getElementById("addProductForm");
     const productList = document.getElementById("productList");
@@ -166,7 +166,7 @@
     renderIndexPage();
 });
 
-</script> -->
+</script>
 </body>
 </html>
 
