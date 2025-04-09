@@ -17,6 +17,25 @@
 </head>
 
 <body>
+
+<?php
+    $server = "localhost";
+    $username = "root";
+    $password = "Himasha@1218";
+    $db = "growsmart";
+
+    // Connect
+    $conn = mysqli_connect($server, $username, $password, $db);
+    
+    if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error());
+    }
+
+    // Query
+    $sql = "SELECT * FROM products";
+    $result = mysqli_query($conn, $sql);    
+?>
+    
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             
@@ -78,278 +97,81 @@
 
     <br>
 
-    <div id="indexContainer" class="row">
+    <!-- <div id="indexContainer" class="row"> -->
         <!-- Products will be dynamically added here -->
-    </div>
+    <!-- </div> -->
 
-    
-    <!-- Plant Listing -->
     <div class="container">
-        <div class="section-header" id="categoryHeaderPlants" data-category="plants" style="display: none;">
-            <h2 style="text-align: center; padding-left: -10%;">Plants</h2>
+        <div class="section-header" id="categoryHeaderPlants" data-category="plants">
+            <h2 style="text-align: center;">Plants</h2>
         </div>
         <br>
         <div class="row" id="productListPlants">
-
-            <div class="col-md-3 product-card" data-category="plants" data-name="snakeplant">
-
-                <div class="card">
-                    <img src="Images/snakeplant.jpg" class="card-img-top" alt="Snakeplant" data-toggle="modal"
-                        data-target="#snakeplantModal">
-
-                    <div class="card-body">
-                        <div class="card-body-user">
-                            <img src="Images/u1.jpeg" alt="User Image" class="user-img">
-                            <button class="user-name">John Smith</button>
+            <?php while ($row = mysqli_fetch_assoc($result)) { ?>
+                <div class="col-md-3 product-card" data-category="<?php echo $row['category']; ?>" data-name="<?php echo strtolower($row['productname']); ?>">
+                    <div class="card">
+                        <img src="<?php echo $row['imageurl']; ?>" class="card-img-top" alt="<?php echo $row['productname']; ?>" data-toggle="modal"
+                             data-target="#<?php echo strtolower($row['productname']); ?>Modal">
+    
+                        <div class="card-body">
+                            <div class="card-body-user">
+                                <img src="Images/u1.jpeg" alt="User Image" class="user-img">
+                                <button class="user-name">John Smith</button>
+                            </div>
+                            <h5 class="card-title"><?php echo $row['productname']; ?></h5>
+                            <p><?php echo $row['weight']; ?></p>
+                            <p class="card-text">Price: Rs.<?php echo $row['price']; ?></p>
+                            <button type="button" class="btn add-to-cart cart-button" data-product-id="<?php echo strtolower($row['productname']); ?>Modal"
+                                    data-bs-dismiss="modal">Add to Cart</button>
+                            <button type="button" class="btn buy-now cart-button">Buy Now</button>
                         </div>
-                        <h5 class="card-title">Snake Plant</h5>
-                        <div>
-                            <p>1 Pcs</p>
-                        </div>
-                        <p class="card-text">Price: Rs.500.00</p>
-                        <button type="button" class="btn add-to-cart cart-button" data-product-id="snakeplantModal"
-                            data-bs-dismiss="modal">Add to Cart</button>
-                        <button type="button" class="btn buy-now cart-button">Buy Now</button>
                     </div>
                 </div>
-            </div>
-
-            <!-- Product Modal -->
-            <div class="modal fade" id="snakeplantModal" tabindex="-1" aria-labelledby="snakeplantModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h3 class="modal-title" id="snakeplantModalLabel">Snake Plant Details</h3>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="row">
-
-                                <div class="col-md-6">
-                                    <img src="Images/snakeplant.jpg" class="img-fluid" alt="Snakeplant">
+    
+                <!-- Modal -->
+                <div class="modal fade" id="<?php echo strtolower($row['productname']); ?>Modal" tabindex="-1" aria-labelledby="<?php echo strtolower($row['productname']); ?>ModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title" id="<?php echo strtolower($row['productname']); ?>ModalLabel"><?php echo $row['productname']; ?> Details</h3>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <img src="<?php echo $row['imageurl']; ?>" class="img-fluid" alt="<?php echo $row['productname']; ?>">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p><strong>Seller:</strong> John Smith</p>
+                                        <p><strong>Seller Address:</strong> No.205, Galle Rd, Galle.</p>
+                                        <p><strong>Rating:</strong> ⭐⭐⭐⭐ (4.5)</p>
+                                        <p><strong>Pieces:</strong> <?php echo $row['weight']; ?></p>
+                                        <p class="card-text"><strong>Price:</strong> Rs.<?php echo $row['price']; ?></p>
+                                        <p><strong>Shipping:</strong> Free</p>
+                                    </div>
                                 </div>
-
-                                <div class="col-md-6">
-                                    <h4 class="card-title">Tomato</h4>
-                                    <p><strong>Seller:</strong> John Smith</p>
-                                    <p><strong>Seller Address:</strong> No.205, Galle Rd, Galle.</p>
-                                    <p><strong>Rating:</strong> ⭐⭐⭐⭐ (4.5)</p>
-                                    <p><strong>Pices:</strong> 1 Pcs</p>
-                                    <p class="card-text"><strong>Price:</strong> Rs.500.00</p>
-                                    <p><strong>Shipping:</strong> Free</p>
-                                </div>
-
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn add-to-cart" data-product-id="<?php echo strtolower($row['productname']); ?>Modal"
+                                        data-bs-dismiss="modal">Add to Cart</button>
+                                <button type="button" class="btn btn-success">Buy Now</button>
                             </div>
                         </div>
-
-                        <div class="modal-footer">
-                            <button type="button" class="btn   add-to-cart" data-product-id="snakeplantModal"
-                                data-bs-dismiss="modal">Add to Cart</button>
-                            <button type="button" class="btn btn-success">Buy Now</button>
-                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="col-md-3 product-card" data-category="plants" data-name="anthurium">
-
-                <div class="card">
-                    <img src="Images/anthurium.jpg" class="card-img-top" alt="anthurium" data-toggle="modal"
-                        data-target="#anthuriumModal">
-
-                    <div class="card-body">
-                        <div class="card-body-user">
-                            <img src="Images/u1.jpeg" alt="User Image" class="user-img">
-                            <button class="user-name">John Smith</button>
-                        </div>
-                        <h5 class="card-title">Snake Plant</h5>
-                        <div>
-                            <p>1 Pcs</p>
-                        </div>
-                        <p class="card-text">Price: Rs.300.00</p>
-                        <button type="button" class="btn add-to-cart cart-button" data-product-id="anthuriumModal"
-                            data-bs-dismiss="modal">Add to Cart</button>
-                        <button type="button" class="btn buy-now cart-button">Buy Now</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Product Modal -->
-            <div class="modal fade" id="anthuriumModal" tabindex="-1" aria-labelledby="anthuriumModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h3 class="modal-title" id="anthuriumModalLabel">Anthurium Plant Details</h3>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="row">
-
-                                <div class="col-md-6">
-                                    <img src="Images/anthurium.jpg" class="img-fluid" alt="anthurium">
-                                </div>
-
-                                <div class="col-md-6">
-                                    <h4 class="card-title">Anthurium</h4>
-                                    <p><strong>Seller:</strong> John Smith</p>
-                                    <p><strong>Seller Address:</strong> No.205, Galle Rd, Galle.</p>
-                                    <p><strong>Rating:</strong> ⭐⭐⭐⭐ (4.5)</p>
-                                    <p><strong>Pices:</strong> 1 Pcs</p>
-                                    <p class="card-text"><strong>Price:</strong> Rs.300.00</p>
-                                    <p><strong>Shipping:</strong> Free</p>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div class="modal-footer">
-                            <button type="button" class="btn   add-to-cart" data-product-id="anthuriumModal"
-                                data-bs-dismiss="modal">Add to Cart</button>
-                            <button type="button" class="btn btn-success">Buy Now</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="col-md-3 product-card" data-category="plants" data-name="airpurifierliveplant">
-
-                <div class="card">
-                    <img src="Images/AirPurifierLiveplant.jpg" class="card-img-top" alt="AirPurifierLiveplant" data-toggle="modal"
-                        data-target="#airpurifierliveplantModal">
-
-                    <div class="card-body">
-                        <div class="card-body-user">
-                            <img src="Images/u1.jpeg" alt="User Image" class="user-img">
-                            <button class="user-name">John Smith</button>
-                        </div>
-                        <h5 class="card-title">Air Purifier Live Plant</h5>
-                        <div>
-                            <p>1 Pcs</p>
-                        </div>
-                        <p class="card-text">Price: Rs.800.00</p>
-                        <button type="button" class="btn add-to-cart cart-button" data-product-id="airpurifierliveplantModal"
-                            data-bs-dismiss="modal">Add to Cart</button>
-                        <button type="button" class="btn buy-now cart-button">Buy Now</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Product Modal -->
-            <div class="modal fade" id="airpurifierliveplantModal" tabindex="-1" aria-labelledby="airpurifierliveplantModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h3 class="modal-title" id="airpurifierliveplantModalLabel">Air Purifier Live Plant Details</h3>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="row">
-
-                                <div class="col-md-6">
-                                    <img src="Images/AirPurifierLiveplant.jpg" class="img-fluid" alt="AirPurifierLiveplant">
-                                </div>
-
-                                <div class="col-md-6">
-                                    <h4 class="card-title">Air Purifier Live Plant</h4>
-                                    <p><strong>Seller:</strong> John Smith</p>
-                                    <p><strong>Seller Address:</strong> No.205, Galle Rd, Galle.</p>
-                                    <p><strong>Rating:</strong> ⭐⭐⭐⭐ (4.5)</p>
-                                    <p><strong>Pices:</strong> 1.00 Pcs</p>
-                                    <p class="card-text"><strong>Price:</strong> Rs.800.00</p>
-                                    <p><strong>Shipping:</strong> Free</p>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div class="modal-footer">
-                            <button type="button" class="btn   add-to-cart" data-product-id="airpurifierliveplantModal"
-                                data-bs-dismiss="modal">Add to Cart</button>
-                            <button type="button" class="btn btn-success">Buy Now</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="col-md-3 product-card" data-category="plants" data-name="guldavari">
-
-                <div class="card">
-                    <img src="Images/Guldavari.jpg" class="card-img-top" alt="Guldavari" data-toggle="modal"
-                        data-target="#snakeplantModal">
-
-                    <div class="card-body">
-                        <div class="card-body-user">
-                            <img src="Images/u1.jpeg" alt="User Image" class="user-img">
-                            <button class="user-name">John Smith</button>
-                        </div>
-                        <h5 class="card-title">Guldavari Plant</h5>
-                        <div>
-                            <p>1.00 Pcs</p>
-                        </div>
-                        <p class="card-text">Price: Rs.600.00</p>
-                        <button type="button" class="btn add-to-cart cart-button" data-product-id="guldavariModal"
-                            data-bs-dismiss="modal">Add to Cart</button>
-                        <button type="button" class="btn buy-now cart-button">Buy Now</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Product Modal -->
-            <div class="modal fade" id="guldavariModal" tabindex="-1" aria-labelledby="guldavariModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h3 class="modal-title" id="guldavariModalLabel">Guldavari Plant Details</h3>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="row">
-
-                                <div class="col-md-6">
-                                    <img src="Images/Guldavari.jpg" class="img-fluid" alt="Guldavari">
-                                </div>
-
-                                <div class="col-md-6">
-                                    <h4 class="card-title">Tomato</h4>
-                                    <p><strong>Seller:</strong> John Smith</p>
-                                    <p><strong>Seller Address:</strong> No.205, Galle Rd, Galle.</p>
-                                    <p><strong>Rating:</strong> ⭐⭐⭐⭐ (4.5)</p>
-                                    <p><strong>Pices:</strong> 1.00 Pcs</p>
-                                    <p class="card-text"><strong>Price:</strong> Rs.600.00</p>
-                                    <p><strong>Shipping:</strong> Free</p>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div class="modal-footer">
-                            <button type="button" class="btn   add-to-cart" data-product-id="guldavariModal"
-                                data-bs-dismiss="modal">Add to Cart</button>
-                            <button type="button" class="btn btn-success">Buy Now</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            
+            <?php } ?>
         </div>
     </div>
+    
+<?php
+    mysqli_close($conn);
+?>
 
+    <!-- Plant Listing -->
+  
+    
     <!-- vegetables Listing -->
     <div class="container">
         <div class="section-header" id="categoryHeaderVegetables" data-category="vegetables" style="display: none;">
