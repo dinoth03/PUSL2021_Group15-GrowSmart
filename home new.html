@@ -343,6 +343,127 @@
     <script src="js/script.js"></script>
 </body>
 
+
+<!-- Floating Action Button -->
+<style>
+
+/* Floating Action Button Styles */
+.fab-container {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.fab-button {
+  background-color: #00e81f;
+  color: white;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out, background-color 0.3s;
+}
+
+.fab-button:hover {
+    background-color: #00ca2f;
+}
+
+.fab-button.open {
+  transform: rotate(45deg);
+  background-color: #fc390d; /* Optional: Change the color when open */
+}
+
+.fab-button.open:hover {
+    background-color: #d42c06;
+}
+
+.fab-options {
+  display: none;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-bottom: 10px;
+  transition: all 0.3s ease-in-out;
+}
+
+.fab-option {
+  background-color: #00e81f;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  margin-top: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transform: scale(0);
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.fab-option:hover {
+    background-color: #00ca2f;
+}
+
+.fab-options.show .fab-option {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.fab-options.show {
+  display: flex;
+}
+
+</style>
+
+<!-- Floating Action Button -->
+<div class="fab-container">
+    <div class="fab-button" onclick="toggleFAB()">
+      <i class="fas fa-plus" id="fab-icon"></i>
+    </div>
+    <div class="fab-options" id="fab-options">
+      <button onclick="window.location.href='../components/Virtual Assistant.html'" class="fab-option" title="AI Assistant">
+        <i class="fas fa-robot"></i>
+      </button>
+      <button onclick="window.location.href='../server/public/index.html'" class="fab-option" title="Chat">
+        <i class="fas fa-comments"></i>
+      </button>
+    </div>
+  </div>
+
+<!-- Floating Action Button -->  
+<script>
+    function toggleFAB() {
+      const options = document.getElementById("fab-options");
+      const fabButton = document.querySelector(".fab-button");
+      const fabIcon = document.getElementById("fab-icon");
+  
+      // Toggle the display of the options
+      options.classList.toggle("show");
+  
+      // Toggle the open class for the main button
+      fabButton.classList.toggle("open");
+  
+      // Change the icon based on whether the options are open or closed
+      if (fabButton.classList.contains("open")) {
+        fabIcon.classList.remove("fa-plus");
+        fabIcon.classList.add("fa-times"); // Change to close icon (X)
+      } else {
+        fabIcon.classList.remove("fa-times");
+        fabIcon.classList.add("fa-plus"); // Change back to plus icon
+      }
+    }
+  </script>
+  
 <!-- Onclick Prompt -->
 <script>
         function checker()
