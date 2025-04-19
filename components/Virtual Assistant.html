@@ -24,7 +24,6 @@
 
         body {
             background-color: #e8f5e9;
-            background: linear-gradient(to right, #e2e2e2, #d5ffdd);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -42,6 +41,7 @@
             flex-direction: column;
             overflow: hidden;
             position: relative;
+            transition: all 0.5s ease;
         }
 
         .chatbot-header {
@@ -59,6 +59,10 @@
             cursor: pointer;
             opacity: 0.8;
             transition: opacity 0.3s;
+        }
+
+        .chatbot-header .header-icons i:hover {
+            opacity: 1;
         }
 
         .chat-messages {
@@ -239,15 +243,42 @@
             font-size: 18px;
             font-weight: bold;
         }
+
+        .info-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .fullscreen-mode {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 0;
+            z-index: 1000;
+        }
+
+        .fullscreen-mode .chat-messages {
+            height: calc(100% - 200px);
+        }
     </style>
 </head>
 <body>
-    <div class="chatbot-container">
+    <div class="chatbot-container" id="chatbotContainer">
         <div class="chatbot-header">
             <h2>🌱 Growsmart Virtual Assistant</h2>
             <div class="header-icons">
-                <i class="fas fa-info-circle"></i>
-                <i class="fas fa-expand"></i>
+                <i class="fas fa-info-circle" id="infoButton"></i>
+                <i class="fas fa-expand" id="fullscreenButton"></i>
             </div>
         </div>
         <div class="chat-messages" id="chatMessages"></div>
@@ -261,6 +292,23 @@
 
     <div id="plantQuizModal" class="modal">
         <div class="modal-content" id="quizContent"></div>
+    </div>
+
+    <div id="infoModal" class="info-modal">
+        <div class="modal-content">
+            <h2>About Growsmart Plant AI</h2>
+            <p>Growsmart is your intelligent plant care assistant, designed to help you succeed with your plants.</p>
+            <h3>Features:</h3>
+            <ul>
+                <li>Detailed plant care information</li>
+                <li>Plant identification assistance</li>
+                <li>Gardening tips and best practices</li>
+                <li>Plant health diagnostics</li>
+                <li>Interactive plant care quizzes</li>
+            </ul>
+            <p>Version 1.0</p>
+            <button id="closeInfoModal" style="background-color: var(--primary-green); color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin-top: 15px;">Close</button>
+        </div>
     </div>
 
     <script>
@@ -840,6 +888,7 @@
         ],
         difficulty: "Moderate"
     }
+
             ],
             "Herbs": [
             {
@@ -1242,8 +1291,7 @@
                 "Good air circulation"
             ]
         }
-    },
-    {
+    },{
         name: "Overwatering Signs",
         care: {
             signs: [
@@ -1508,6 +1556,7 @@
                 this.initializeEventListeners();
                 this.displayWelcomeMessage();
                 this.plantDictionary = this.createPlantDictionary();
+                this.isFullScreen = false;
             }
 
             // Create a dictionary of all plants for easier searching
@@ -1529,6 +1578,72 @@
                     if (e.key === 'Enter') this.handleUserInput();
                 });
                 document.getElementById('plantQuizBtn').addEventListener('click', () => this.startPlantQuiz());
+                
+                // Header icon event listeners
+                document.getElementById('infoButton').addEventListener('click', () => this.toggleInfoModal());
+                document.getElementById('fullscreenButton').addEventListener('click', () => this.toggleFullScreen());
+                document.getElementById('closeInfoModal').addEventListener('click', () => this.toggleInfoModal());
+                
+                // Listen for escape key to exit fullscreen
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && this.isFullScreen) {
+                        this.toggleFullScreen();
+                    }
+                });
+            }
+
+            toggleInfoModal() {
+                const infoModal = document.getElementById('infoModal');
+                if (infoModal.style.display === 'flex') {
+                    infoModal.style.display = 'none';
+                } else {
+                    infoModal.style.display = 'flex';
+                }
+            }
+
+            toggleFullScreen() {
+                const chatbotContainer = document.getElementById('chatbotContainer');
+                const fullscreenButton = document.getElementById('fullscreenButton');
+                
+                if (this.isFullScreen) {
+                    chatbotContainer.classList.remove('fullscreen-mode');
+                    fullscreenButton.classList.remove('fa-compress');
+                    fullscreenButton.classList.add('fa-expand');
+                    
+                    // Exit browser fullscreen if active
+                    if (document.exitFullscreen) {
+                        document.exitFullscreen();
+                    } else if (document.webkitExitFullscreen) {
+                        document.webkitExitFullscreen();
+                    } else if (document.mozCancelFullScreen) {
+                        document.mozCancelFullScreen();
+                    } else if (document.msExitFullscreen) {
+                        document.msExitFullscreen();
+                    }
+                } else {
+                    chatbotContainer.classList.add('fullscreen-mode');
+                    fullscreenButton.classList.remove('fa-expand');
+                    fullscreenButton.classList.add('fa-compress');
+                    
+                    // Request browser fullscreen
+                    if (document.documentElement.requestFullscreen) {
+                        document.documentElement.requestFullscreen();
+                    } else if (document.documentElement.webkitRequestFullscreen) {
+                        document.documentElement.webkitRequestFullscreen();
+                    } else if (document.documentElement.mozRequestFullScreen) {
+                        document.documentElement.mozRequestFullScreen();
+                    } else if (document.documentElement.msRequestFullscreen) {
+                        document.documentElement.msRequestFullscreen();
+                    }
+                }
+                
+                this.isFullScreen = !this.isFullScreen;
+                
+                // Adjust chat message container size in fullscreen
+                setTimeout(() => {
+                    const chatMessages = document.getElementById('chatMessages');
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                }, 100);
             }
 
             addMessage(message, type = 'bot') {
@@ -1766,4 +1881,4 @@
         });
     </script>
 </body>
-</html>
+</html>    
