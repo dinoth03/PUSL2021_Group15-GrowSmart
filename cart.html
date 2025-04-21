@@ -18,10 +18,11 @@
   text-align: center;
   outline: var(--outline);
   outline-offset: -0.5rem;
-    background-color: #ddd;
+    background-color: #fff;
     border: 1px solid white;
     width: 100%;
     padding: 10px 0px 10px 0px;
+    border: 20px solid #ddd;
   }
         .cart-item {
             display: flex;
@@ -70,12 +71,39 @@
   background: #e04c41;
   color: white;
 }
-        
+   
+.section-1 {
+    background-color: rgb(252, 252, 250);
+    border: 5px solid #00ff00;
+    padding: 20px;
+    width: 1000px; /* or a specific width like 500px */
+    margin: 0 auto; /* this centers the section horizontally */
+    box-sizing: border-box; /* ensures padding/borders are included in the total width */
+}
+
+@media (min-width: 768px) {
+    .section-1 {
+      width: 1000px;
+    }
+
+  }
+  
+  /* Media Query for Smaller Screens */
+  @media (max-width: 767px) {
+    .section-1 {
+      width: 500px;
+    }
+
+  }
     </style>
 </head>
 
 <body>
+    <br>
+    <br>
+
     <div class="section-1">
+        <div>
         <h2 class="mt-4">Your Cart</h2>
         </div>
     <div class="container">
@@ -93,6 +121,9 @@
         <h3>Total: <span id="totalPrice">Rs.0.00</span></h3>
         <button id="checkout" type="button" class="btn btn-checkout">Check Out</button>
         <button class="btn btn-back" type="button" onclick="window.location.href='index.html';">Back</button>
+        <br>
+        <br>
+    </div>
     </div>
     <!-- <footer class="bg-light text-center py-3" style="margin-bottom: 100%;">
         <p>© 2025 Shop. All rights reserved.</p>

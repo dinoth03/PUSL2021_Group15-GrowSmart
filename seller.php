@@ -18,10 +18,11 @@
   text-align: center;
   outline: var(--outline);
   outline-offset: -0.5rem;
-    background-color: #ddd;
+    background-color: #fff;
     border: 1px solid white;
     width: 100%;
     padding: 10px 0px 10px 0px;
+    border: 20px solid #ddd;
   }
 
   .btn {
@@ -37,6 +38,7 @@
 .container
 {
     background-color:rgb(252, 252, 250);
+    border: 5px solid #00ff00;
 }
      </style>
      </head>
@@ -45,7 +47,9 @@
 
 
      <div class="container mt-5">
+     <div class="header-4">
     <h2 class="mt-4">Seller Panel</h2>
+     </div>
     <!-- Add Product Form -->
     <form id="addProductForm" action="controller/addProducts.php" method="post">
         <div class="row">
@@ -82,6 +86,8 @@
         </div>
         <div class="text-center">
         <button type="submit" class="btn mt-3">Add Product</button>
+        <br>
+        <br>
         </div>
     
     </form>
