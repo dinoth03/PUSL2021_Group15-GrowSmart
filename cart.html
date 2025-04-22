@@ -11,6 +11,19 @@
      <!--my css-->
      <link href="css/shopStyle.css" rel="stylesheet">
     <style>
+         .mt-4 {
+  background: #fff;
+  box-shadow: --box-shadow;
+  padding: 1rem 1rem;
+  text-align: center;
+  outline: var(--outline);
+  outline-offset: -0.5rem;
+    background-color: #fff;
+    border: 1px solid white;
+    width: 100%;
+    padding: 10px 0px 10px 0px;
+    border: 20px solid #ddd;
+  }
         .cart-item {
             display: flex;
             align-items: center;
@@ -29,20 +42,76 @@
             font-size: 14px;
             padding: 5px 10px 5px 10px;
         }
-        
+
+        .btn-back {
+  background-color: rgb(220, 233, 247);
+  border: 0.1rem solid dodgerblue;
+}
+.btn-back:hover {
+  background-color: dodgerblue;
+  color: white;
+}
+
+
+.btn-checkout {
+  background: #d5f3d5;
+  border: 0.1rem solid #00ff00;
+}
+.btn-checkout:hover {
+  background: #00ff00;
+  color: white;
+}
+
+
+.btn-remove {
+  background: #d68a85;
+  border: 0.1rem solid #e04c41;
+}
+.btn-remove:hover {
+  background: #e04c41;
+  color: white;
+}
+   
+.section-1 {
+    background-color: rgb(252, 252, 250);
+    border: 5px solid #00ff00;
+    padding: 20px;
+    width: 1000px; /* or a specific width like 500px */
+    margin: 0 auto; /* this centers the section horizontally */
+    box-sizing: border-box; /* ensures padding/borders are included in the total width */
+}
+
+@media (min-width: 768px) {
+    .section-1 {
+      width: 1000px;
+    }
+
+  }
+  
+  /* Media Query for Smaller Screens */
+  @media (max-width: 767px) {
+    .section-1 {
+      width: 500px;
+    }
+
+  }
     </style>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <h2 style="font-size: 30px;">Your Cart</h2>
-    </nav>
+    <br>
+    <br>
+
+    <div class="section-1">
+        <div>
+        <h2 class="mt-4">Your Cart</h2>
+        </div>
     <div class="container">
         <div style="display: flex; justify-content: flex-end; align-items: center; padding-right: 10px;">
             <label style="margin-right: 30px; font-size: 20px;">
                 <input type="checkbox" id="selectAll"> Select All
             </label>
-            <button id="removeAll" class="btn btn-danger">Remove Selected</button>
+            <button id="removeAll" class="btn btn-remove">Remove Selected</button>
         </div>
         
         <br>
@@ -50,8 +119,11 @@
         </div>
         
         <h3>Total: <span id="totalPrice">Rs.0.00</span></h3>
-        <button id="checkout" type="button" class="btn btn-primary">Check Out</button>
-        <button class="btn btn-secondary" type="button" onclick="window.location.href='index.html';">Back</button>
+        <button id="checkout" type="button" class="btn btn-checkout">Check Out</button>
+        <button class="btn btn-back" type="button" onclick="window.location.href='shop.php';">Back</button>
+        <br>
+        <br>
+    </div>
     </div>
     <!-- <footer class="bg-light text-center py-3" style="margin-bottom: 100%;">
         <p>© 2025 Shop. All rights reserved.</p>
@@ -196,7 +268,8 @@
                     <img src="${item.image}" alt="${item.name}" class="cart-image">
                     <span>${item.name}</span>
                     <span>${item.price}</span>
-                    <button class="remove-item btn btn-danger" data-index="${index}">Remove</button>
+                   <button class="remove-item btn btn-remove" data-index="${index}">Remove</button>
+
                 `;
                 cartItemsContainer.appendChild(cartItem);
             });

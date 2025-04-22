@@ -149,7 +149,15 @@
 }
 
 
+.search-button:hover{
+    background-color: #00ff00;
+    color: #fff;
+    border: .1rem solid black;
+}
 
+.btn{
+    border: .1rem solid black;
+}
 
 /* Footer styling */
 footer {
@@ -188,12 +196,3 @@ footer {
     height: 50px;
 }
 
-.search-button:hover{
-    background-color: #00ff00;
-    color: #fff;
-    border: .1rem solid black;
-}
-
-.btn{
-    border: .1rem solid black;
-}

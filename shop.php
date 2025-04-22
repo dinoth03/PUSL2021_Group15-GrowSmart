@@ -68,7 +68,7 @@
                 </ul>
             </div>
 
-            <a href="seller.html" class="btn search-button" id="nav-button">Add Products</a>
+            <a href="seller.php" class="btn search-button" id="nav-button">Add Products</a>
 
         </div>
     </nav>
