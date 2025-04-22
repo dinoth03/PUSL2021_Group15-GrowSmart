@@ -25,20 +25,34 @@
     border: 20px solid #ddd;
   }
 
-  .btn {
+  .btn-submit {
   background: #d5f3d5;
   border: 0.1rem solid #00ff00;
   align-content: center;
 }
-.btn:hover {
+.btn-submit:hover {
   background: #00ff00;
   color: white;
+}
+
+.btn-back {
+    background-color: rgb(220, 233, 247);
+    border: 0.1rem solid dodgerblue;
+  align-content: center;
+}
+.btn-back:hover {
+    background-color: dodgerblue;
+    color: white;
 }
 
 .container
 {
     background-color:rgb(252, 252, 250);
     border: 5px solid #00ff00;
+}
+
+body{
+    background: linear-gradient(to right, #e2e2e2, #d5ffdd);
 }
      </style>
      </head>
@@ -84,8 +98,10 @@
                 <input type="text" name="imageUrl" id="imageUrl" class="form-control" required>
             </div>
         </div>
-        <div class="text-center">
-        <button type="submit" class="btn mt-3">Add Product</button>
+        
+
+        <button type="submit" class="btn btn-submit mt-3">Add Product</button>
+        <button type="back" class="btn btn-back mt-3" type="button" onclick="window.location.href='shop.php';">Back</button>
         <br>
         <br>
         </div>
