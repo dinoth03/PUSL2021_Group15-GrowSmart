@@ -488,17 +488,30 @@ position: relative;
 /* Button Styling */
 .btn {
     display: inline-block;
-    padding: 10px 20px;
-    background: #4CAF50;
+    padding: 7px 20px;
+    background: #00ea00;
     color: white;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 0px;
     margin-top: 10px;
     font-weight: bold;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    border-color: transparent;
 }
 
 .btn:hover {
-    background: #388E3C;
+    background: #00d200;
+    box-shadow: 0 0 20px #1aff00ab;
+    transform: scale(1.1);
+}
+
+.btn:active {
+    background-color: #00ff00;
+    transition: all 0.25s;
+    -webkit-transition: all 0.25s;
+    box-shadow: none;
+    transform: scale(0.98);
 }
 
 /* Responsive Design */
@@ -507,15 +520,6 @@ position: relative;
         width: 90%;
     }
 }
-
-
-
-
-
-
-
-
-
 
 
 
@@ -665,32 +669,6 @@ position: relative;
     align-items: center;
     gap: 5px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /*media queries*/

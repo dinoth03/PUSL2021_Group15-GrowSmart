@@ -57,18 +57,30 @@ section{
 .btn{
     margin-top: 1rem;
     display: inline-block;
-    padding: 1rem 3rem;
+    padding: 7px 20px;
     font-size: 1.7rem;
-    border-radius: .5rem;
+    border-radius: 0px;
     border: .2rem solid black;
     color: black;
     cursor: pointer;
-    background: none;
+    background: #00ea00;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    border-color: transparent;
 }
 
 .btn:hover {
-    background: #00ff00;
-    color: #fff;
+    background: #00d200;
+    box-shadow: 0 0 20px #1aff00ab;
+    transform: scale(1.1);
+}
+
+.btn:active {
+    background-color: #00ff00;
+    transition: all 0.25s;
+    -webkit-transition: all 0.25s;
+    box-shadow: none;
+    transform: scale(0.98);
 }
 
 
