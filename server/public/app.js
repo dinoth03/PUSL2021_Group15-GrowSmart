@@ -60,16 +60,13 @@ socket.on("message", (data) => {
     } else {
         li.innerHTML = `<div class="post__text">${text}</div>`
     }
-    document.querySelector('.chat-display').appendChild(li)
-
+    chatDisplay.appendChild(li)
     chatDisplay.scrollTop = chatDisplay.scrollHeight
 })
 
 let activityTimer
 socket.on("activity", (name) => {
     activity.textContent = `${name} is typing...`
-
-    // Clear after 1 seconds 
     clearTimeout(activityTimer)
     activityTimer = setTimeout(() => {
         activity.textContent = ""
@@ -98,14 +95,23 @@ function showUsers(users) {
 }
 
 function showRooms(rooms) {
-    roomList.textContent = ''
-    if (rooms) {
-        roomList.innerHTML = '<em>Active Rooms:</em>'
-        rooms.forEach((room, i) => {
-            roomList.textContent += ` ${room}`
-            if (rooms.length > 1 && i !== rooms.length - 1) {
-                roomList.textContent += ","
-            }
+    roomList.innerHTML = ''
+    if (rooms && rooms.length) {
+        const heading = document.createElement('em')
+        heading.textContent = 'Active Rooms:'
+        roomList.appendChild(heading)
+
+        rooms.forEach(room => {
+            const span = document.createElement('span')
+            span.textContent = ` ${room} `
+            span.style.cursor = 'pointer'
+            span.style.color = '#006600'
+            span.style.textDecoration = 'underline'
+            span.addEventListener('click', () => {
+                chatRoom.value = room
+                nameInput.focus()
+            })
+            roomList.appendChild(span)
         })
     }
 }
