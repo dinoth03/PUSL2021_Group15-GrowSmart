@@ -37,6 +37,11 @@ io.on('connection', socket => {
     // Upon connection - only to user 
     socket.emit('message', buildMsg(ADMIN, "Welcome to GrowSmart Chat Rooms!"))
 
+    // Send active rooms to newly connected user
+    socket.emit('roomList', {
+        rooms: getAllActiveRooms()
+    })
+
     socket.on('enterRoom', ({ name, room }) => {
 
         // leave previous room 
