@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Growsmart</title>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+        <!--font awesom file link-->
+        <link rel="stylesheet" href="../css/styles.css">
+    </head>
+    
+    <!--footer section starts-->
+    <section class="footer">
+
+        <div class="box-container">
+
+            <div class="box">
+               <h3>Growsmart <i class="fas fa-seedling"></i></h3>
+               <p>"Sustainable Farming for a Greener Tomorrow."</p>
+               <div class="social-links">
+                <a href="https://www.facebook.com/yourpage" target="_blank" class="fab fa-facebook"></a>
+                <a href="https://www.youtube.com/yourchannel" target="_blank" class="fab fa-youtube"></a>
+                <a href="https://www.instagram.com/yourprofile" target="_blank" class="fab fa-instagram"></a>
+            </div>
+            
+            </div>
+
+            <div class="box">
+                <h3>Contact Info</h3>
+                <a href="#" class="links"><i class="fas fa-phone"></i>011 111 1111</a>
+                <a href="#" class="links"><i class="fas fa-phone"></i>011 111 1111</a>
+                <a href="#" class="links"><i class="fas fa-envelope"></i>Growsmart@gmail.com</a>
+                <a href="#" class="links"><i class="fas fa-map-marker-alt"></i>Colombo,sri lanka</a>
+             </div>  
+             
+             <div class="box">
+                <h3>Quick Links</h3>
+                <a href="../home new.html" class="links"><i class="fas fa-arrow-right"></i>Home</a>
+            
+                <!-- Dropdown for Plants -->
+                <div class="dropdown">
+                    <a href="Plants" class="links dropdown-toggle">
+                        <i class="fas fa-arrow-right"></i>categories ▼
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="../indoorplants.html">House Plants</a>
+                        <a href="../fruits & vegetables.html">Fruits and Vegetables</a>
+                        <a href="../flowers.html">Flowers</a>
+                        <a href="../sustainable.html">Sustainability Garden</a>
+                        </div>
+                </div>
+            </br>
+                <a href="shop.php" class="links"><i class="fas fa-arrow-right"></i>Shop</a>
+                <a href="../offer.html" class="links"><i class="fas fa-arrow-right"></i>Offers</a>
+                <a href="../Competition.html" class="links"><i class="fas fa-arrow-right"></i>Compitition</a>
+                <div class="dropdown">
+                    <a href="chat" class="links dropdown-toggle">
+                        <i class="fas fa-arrow-right"></i> Chat ▼
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="../components/Virtual Assistant.html">AI Chat</a>
+                        <a href="../server/public/index.html">Community</a>
+                    
+                    </div>
+                </div>
+            </br>
+                <div class="dropdown">
+                    <a href="More" class="links dropdown-toggle">
+                        <i class="fas fa-arrow-right"></i>More ▼
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="../Learning.html">Learning</a>
+                        <a href="../Idea & Inspiration.html">Ideas & Inspiration</a>
+                    </div>
+                </div>
+            </div>
+            
+
+             <div class="box">
+                <h3>Newsletter</h3>
+                <p>Stay us with more informations</p>
+            
+                <div class="box">
+                    <h3>User informations</h3>
+                <a href="../guidelines.html" class="links">User Guidelines</a>
+
+                <div class="box">
+                    <h3>Terms and Conditions</h3>
+                <a href="../Terms and Conditions.html" class="links">Terms and Conditions</a>
+               
+                <div class="box">
+                    <h3>Privacy and Policy</h3>
+                <a href="../Privacy and Policy.html" class="links">Privacy and Policy</a>
+
+
+                
+             </div>  
+        </div>
+
+    </br></br></br></br>
+
+       
+    </section>
+    <!--footer section ends-->
+
+
+    <body>
+        <section class="footer">
+            <div class="credit">
+                created by <span>© 2025 GrowSmart.</span> | all rights reserved
+            </div>
+        </section>
+
+        <!-- Onclick Prompt -->
+        <script>
+          function checker()
+          {
+              var result= confirm('Open Pick an App?');
+              if ( result == false) {
+                  event.preventDefault();
+              }
+          }
+        </script>
+        
+        <!-- JS for Opening the App list in the User device -->
+        <script>
+          function openTelLink() {
+          // This will trigger the app picker
+          window.location.href = "tel:+94 11 111 1111";
+          }
+        </script>
+        
+        <script>
+          function openTelLink() {
+          // This will trigger the app picker
+          window.location.href = "tel:+94 22 222 2222";
+          }
+        </script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function (e) {
+        e.preventDefault(); // Stop default link behavior
+        window.top.location.href = this.href; // Navigate parent page instead
+      });
+    });
+  });
+</script>
+        
+    <script src="js/script.js"></script>
+</body>
