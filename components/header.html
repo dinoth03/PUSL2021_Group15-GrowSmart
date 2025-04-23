@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Growsmart</title>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+        <!--font awesom file link-->
+        <link rel="stylesheet" href="../css/styles.css">
+    </head>
+     <!--header section starts-->
+
+     <header class="header">
+        <a href="../home new.html" class="logo"><i class="fas fa-seedling"></i>Growsmart</a>
+        <ul class="navbar">
+            <li><a href="../home new.html">Home</a></li>
+            <li class="dropdown">
+            <a href="#">categories <i class="fas fa-chevron-down"></i></a>
+            <div class="dropdown-content">
+                <a href="../indoorplants.html">House Plants</a>
+                <a href="../fruits & vegetables.html">Fruits & Vegetables</a>
+                <a href="../flowers.html">Flowers</a>
+                <a href="../sustainable.html">Sustainability Garden </a>
+            </div></li>
+            <li><a href="../shop.php">Shop </a></li>
+            <li><a href="../offer.html">offers</a></li>
+            <li><a href="../Competition.html">competition</a></li>
+            <li class="dropdown">
+            <a href="#">Chat <i class="fas fa-chevron-down"></i></a>
+            <div class="dropdown-content">
+                <a href="../components/Virtual Assistant.html">AI Chat</a>
+                <a href="../server/public/index.html">Community</a>
+            </div></li>
+            <li class="dropdown">
+                <a href="#">More <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown-content">
+                   <a href="../Learning.html">Learning</a>
+                    <a href="../Idea & Inspiration.html">Idea & Inspiration</a>
+                </div></li>
+                <li><a href="../Login.html">Login</a></li>    
+                
+        </ul>
+
+        <div class="Icons">
+            <div class="fas fa-bars" id="menu-btn"></div>
+            <div class="fas fa-search" id="search-btn"></div>
+            <div class="fas fa-shopping-cart" id="cart-btn" onclick="window.location.href='../cart.html'"></div>
+            <div class="fas fa-user" id="login-btn"></div>
+            <div class="fas fa-edit" id="user profile" onclick="window.location.href='../user profile/userprofile.html'"></div>
+        </div>
+
+        <form action="" class="search-form">
+            <input type="search" id="search-box" placeholder="Search Here...">
+            <label for="search-box" class="fas fa-search"></label>
+            </form>
+
+         <form action="" class="login-form">
+            <h3><a href="../Login.html">Login now</a> </h3>
+         </form>   
+      
+    </header>
+    <br><br><br>
+    <!--header section ends-->
+    </br>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          document.querySelectorAll("a").forEach(function (link) {
+            link.addEventListener("click", function (e) {
+              e.preventDefault(); // Stop default link behavior
+              window.top.location.href = this.href; // Navigate parent page instead
+            });
+          });
+        });
+      </script>
+
+</html>
+
+
