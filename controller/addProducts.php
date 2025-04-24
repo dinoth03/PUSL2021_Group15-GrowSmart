@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 $server = "localhost";
 $username = "root";
@@ -10,7 +11,9 @@ $conn = mysqli_connect($server, $username, $password, $db);
 
 // 2. Check connection
 if (!$conn) {
-    die("❌ Connection failed: " . mysqli_connect_error());
+    $_SESSION['message'] = "❌ Connection failed: " . mysqli_connect_error();
+    header("Location: ../seller.php");
+    exit();
 }
 
 // 3. Get data from request
@@ -25,15 +28,13 @@ $sql = "INSERT INTO products(productname, category, price, weight, imageurl) VAL
 
 // 5. Execute query
 if (mysqli_query($conn, $sql)) {
-    echo "✅ Product added successfully!";
+    $_SESSION['message'] = "✅ Product added successfully!";
 } else {
-    echo "❌ Error: " . mysqli_error($conn);
+    $_SESSION['message'] = "❌ Error: " . mysqli_error($conn);
 }
 
-// 6. Close connection
+// 6. Close connection and redirect
 mysqli_close($conn);
-
+header("Location: ../seller.php");
+exit();
 ?>
-
-
-

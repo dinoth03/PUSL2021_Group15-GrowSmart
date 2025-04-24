@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 $server = "localhost";
 $username = "root";
 $password = "Himasha@1218";
@@ -9,37 +11,31 @@ $conn = mysqli_connect($server, $username, $password, $db);
 
 // Check connection
 if (!$conn) {
-    die("❌ Connection failed: " . mysqli_connect_error());
+    echo "<script>alert('❌ Connection failed: " . mysqli_connect_error() . "'); window.history.back();</script>";
+    exit();
 }
 
+// Get data
 $name = $_POST["name"];
 $address = $_POST["address"];
 $phone = $_POST["phone"];
 $total = $_POST["total"];
 
+// Insert query
 $sql = "INSERT INTO delivery (Dname, Daddress, Dphone, Dtotal) VALUES ('$name', '$address', '$phone', '$total')";
 
+// Run query
 if (mysqli_query($conn, $sql)) {
-    echo "✅ Delivery details added successfully!";
+    echo "<script>
+        alert('✅ Delivery details added successfully!');
+        window.location.href = '../payment.html';
+    </script>";
 } else {
-    echo "❌ Error: " . mysqli_error($conn);
+    echo "<script>
+        alert('❌ Error: " . mysqli_error($conn) . "');
+        window.history.back();
+    </script>";
 }
 
-// 6. Close connection
 mysqli_close($conn);
-
-
-
 ?>
-
-<!--
- $sql = "INSERT INTO delivery (Dname, Daddress, Dphone, Dtotal) VALUES ('$name', '$address', '$phone', '$total')";
-
-    if ($con->query($sql)) {
-        echo "<script>alert('Delivery details saved successfully!'); window.location.href='payment.html';</script>";
-    } else {
-        echo "<script>alert('Failed to save details'); window.history.back();</script>";
-    }
-
-    $con->close();
--->
