@@ -13,10 +13,13 @@
  /* Ensure the banner spans the full width */
   }
   
+
+
   /* Media Query for Larger Screens */
   @media (min-width: 768px) {
     .hero-section {
-      height:40vh; /* Adjust the height for larger screens */
+      height:40vh; 
+      background-position: bottom; /* Adjust the height for larger screens */
     }
 
   }
@@ -24,7 +27,9 @@
   /* Media Query for Smaller Screens */
   @media (max-width: 767px) {
     .hero-section {
-      height: 30vh; /* Adjust the height for smaller screens */
+      height: 30vh;
+      background-position: bottom;
+       /* Adjust the height for smaller screens */
     }
 
     .product-card{
@@ -77,11 +82,18 @@
 }
 
 .card-img-top {
-    object-fit:cover;
-    height: 280px; 
-    width: 280px;
-    border: 1px solid #ddd;
-    cursor: pointer;
+    height: 280px;
+   width: 280px; /* Makes it responsive to the card's width */
+   object-fit: cover; /* Ensures image fills the box without distortion */
+   border: 1px solid #ddd;
+   cursor: pointer;
+}
+
+
+.image-card
+{
+   height: 280px;
+   width: 280px;
 }
 
 .card-body {

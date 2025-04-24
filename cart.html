@@ -71,7 +71,7 @@
   background: #e04c41;
   color: white;
 }
-   
+
 .section-1 {
     background-color: rgb(252, 252, 250);
     border: 5px solid #00ff00;
@@ -79,6 +79,10 @@
     width: 1000px; /* or a specific width like 500px */
     margin: 0 auto; /* this centers the section horizontally */
     box-sizing: border-box; /* ensures padding/borders are included in the total width */
+}
+
+body{
+    background: linear-gradient(to right, #e2e2e2, #d5ffdd);
 }
 
 @media (min-width: 768px) {
@@ -95,13 +99,13 @@
     }
 
   }
+
     </style>
 </head>
 
 <body>
     <br>
     <br>
-
     <div class="section-1">
         <div>
         <h2 class="mt-4">Your Cart</h2>
@@ -337,30 +341,32 @@
         });
 
         // Checkout Button Event
-        checkoutButton.addEventListener("click", function () {
-            const checkboxes = document.querySelectorAll(".cart-checkbox:checked");
-            let selectedItems = [];
-            let total = 0;
+        // Checkout Button Event
+checkoutButton.addEventListener("click", function () {
+    const checkboxes = document.querySelectorAll(".cart-checkbox:checked");
+    let selectedItems = [];
+    let total = 0;
 
-            checkboxes.forEach(checkbox => {
-                const index = checkbox.getAttribute("data-index");
-                const item = cart[index];
-                if (item) {
-                    selectedItems.push(item);
-                    total += parseFloat(item.price.replace("Rs.", "").trim());
-                }
-            });
+    checkboxes.forEach(checkbox => {
+        const index = checkbox.getAttribute("data-index");
+        const item = cart[index];
+        if (item) {
+            selectedItems.push(item);
+            total += parseFloat(item.price.replace("Rs.", "").trim());
+        }
+    });
 
-            if (selectedItems.length === 0) {
-                alert("No items selected for checkout!");
-                return;
-            }
+    if (selectedItems.length === 0) {
+        alert("No items selected for checkout!");
+        return;
+    }
 
-            // Pass selected items and total to the delivery form
-            localStorage.setItem("selectedItems", JSON.stringify(selectedItems));
-            localStorage.setItem("checkoutTotal", total.toFixed(2));
-            window.location.href = `delivery.html?total=Rs.${total.toFixed(2)}`;
-        });
+    // Pass selected items and total to the delivery form
+    localStorage.setItem("selectedItems", JSON.stringify(selectedItems));
+    localStorage.setItem("checkoutTotal", total.toFixed(2));
+    window.location.href = `delivery.php?total=Rs.${total.toFixed(2)}`; // <--- Changed here
+});
+
 
         renderCart();
     });

@@ -105,8 +105,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // Select the appropriate container (card or modal)
             const container = isModal
-                ? document.querySelector(`#${productId}`)
-                : this.closest(".product-card");
+    ? document.getElementById(productId)
+    : this.closest(".product-card");
+
 
             // Extract product details
             const productName = container.querySelector(".card-title").textContent;
