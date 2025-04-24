@@ -93,43 +93,44 @@ button.classList.add("selected-category");
 
 
 //cart
-document.addEventListener("DOMContentLoaded", function () {
-    // Select all "Add to Cart" buttons
-    const addToCartButtons = document.querySelectorAll(".add-to-cart");
 
-    addToCartButtons.forEach(button => {
-        button.addEventListener("click", function () {
-            // Determine the context: card or modal
-            const productId = this.getAttribute("data-product-id");
-            const isModal = productId.includes("Modal");
+document.addEventListener("click", function (event) {
+    if (event.target.classList.contains("add-to-cart")) {
+        const button = event.target;
 
-            // Select the appropriate container (card or modal)
-            const container = isModal
-    ? document.getElementById(productId)
-    : this.closest(".product-card");
+        // Try to extract data directly from button
+        let productName = button.getAttribute("data-name");
+        let productPrice = button.getAttribute("data-price");
+        let productImage = button.getAttribute("data-image");
 
+        // If not available from data attributes, fallback to closest card
+        if (!productName || !productPrice || !productImage) {
+            const card = button.closest(".product-card");
+            productName = card.querySelector(".card-title").textContent.trim();
+            productPrice = card.querySelector(".card-text").textContent.replace("Price:", "").replace("Rs.", "").trim();
+            productImage = card.querySelector("img").src;
+        }
 
-            // Extract product details
-            const productName = container.querySelector(".card-title").textContent;
-            const productPrice = container.querySelector(".card-text").textContent.replace("Price:", "").trim();
-            const productImage = container.querySelector("img").src;
+        // Create a cart item object
+        const cartItem = {
+            name: productName,
+            price: productPrice,
+            image: productImage
+        };
 
-            // Create a cart item object
-            const cartItem = {
-                name: productName,
-                price: productPrice,
-                image: productImage,
-            };
+        // Get existing cart or empty array
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        cart.push(cartItem);
 
-            // Retrieve existing cart from localStorage or initialize an empty array
-            let cart = JSON.parse(localStorage.getItem("cart")) || [];
-            cart.push(cartItem);
+        // Save back to localStorage
+        localStorage.setItem("cart", JSON.stringify(cart));
 
-            // Save updated cart back to localStorage
-            localStorage.setItem("cart", JSON.stringify(cart));
-
-            // Alert the user
-            alert(`${productName} has been added to your cart!`);
-        });
-    });
+        // Feedback to user
+        alert(`${productName} has been added to your cart!`);
+    }
 });
+
+
+
+
+

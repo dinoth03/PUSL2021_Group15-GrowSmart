@@ -96,23 +96,38 @@ body{
 
 
     <script>
-
 document.addEventListener("DOMContentLoaded", function () {
     const totalElement = document.getElementById("totalPrice");
     const totalInput = document.getElementById("totalInput");
     const deliveryForm = document.getElementById("deliveryForm");
 
-    // Get the total price from URL (e.g., ?total=Rs.500)
+    // Get parameters from URL
     const urlParams = new URLSearchParams(window.location.search);
-    const total = urlParams.get("total") || "Rs.0.00";
+    const price = urlParams.get("price") || "0.00";
+    const action = urlParams.get("action");
+
+    // Format the price
+    let total = "0.00";
+    if (action === "buynow") {
+        // For Buy Now, use the single product price
+        total = parseFloat(price).toFixed(2);
+    } else {
+        // For cart checkout, use the passed total
+        total = urlParams.get("total") || "0.00";
+        // Remove "Rs." if present
+        total = total.toString().replace(/rs\.?/i, '').trim();
+        total = parseFloat(total).toFixed(2);
+    }
+
+    // Format as currency
+    const formattedTotal = "Rs. " + total;
 
     // Display and store in hidden input
-    totalElement.textContent = total;
-    totalInput.value = total;
+    totalElement.textContent = formattedTotal;
+    totalInput.value = formattedTotal;
 
-    // Handle form submission
+    // Form validation
     deliveryForm.addEventListener("submit", function (e) {
-        // Allow form to submit normally to PHP
         if (!document.getElementById("name").value.trim() ||
             !document.getElementById("address").value.trim() ||
             !document.getElementById("phone").value.trim()) {
@@ -121,6 +136,12 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+
+// Display PHP messages if any
+const messageFromPHP = <?= json_encode($message) ?>;
+if (messageFromPHP) {
+    alert(messageFromPHP);
+}
 </script>
 
 <script>
