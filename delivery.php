@@ -18,49 +18,48 @@ if (isset($_SESSION['message'])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         .mt-4 {
-            background: #fff;
-            box-shadow: --box-shadow;
-            padding: 1rem 1rem;
-            text-align: center;
-            outline: var(--outline);
-            outline-offset: -0.5rem;
-            background-color: #fff;
-            border: 1px solid white;
-            width: 100%;
-            padding: 10px 0px 10px 0px;
-            border: 20px solid #ddd;
-        }
+  background: #fff;
+  box-shadow: --box-shadow;
+  padding: 1rem 1rem;
+  text-align: center;
+  outline: var(--outline);
+  outline-offset: -0.5rem;
+    background-color: #fff;
+    border: 1px solid white;
+    width: 100%;
+    padding: 10px 0px 10px 0px;
+    border: 20px solid #ddd;
+  }
 
-        .btn-submit {
-            background: #d5f3d5;
-            border: 0.1rem solid #00ff00;
-            align-content: center;
-        }
+  .btn-submit {
+  background: #d5f3d5;
+  border: 0.1rem solid #00ff00;
+  align-content: center;
+}
+.btn-submit:hover {
+  background: #00ff00;
+  color: white;
+}
 
-        .btn-submit:hover {
-            background: #00ff00;
-            color: white;
-        }
+.btn-back {
+    background-color: rgb(220, 233, 247);
+    border: 0.1rem solid dodgerblue;
+  align-content: center;
+}
+.btn-back:hover {
+    background-color: dodgerblue;
+    color: white;
+}
+.container
+{
+    background-color:rgb(252, 252, 250);
+    border: 5px solid #00ff00;
+}
 
-        .btn-back {
-            background-color: rgb(220, 233, 247);
-            border: 0.1rem solid dodgerblue;
-            align-content: center;
-        }
+body{
+    background: linear-gradient(to right, #e2e2e2, #d5ffdd);
+}
 
-        .btn-back:hover {
-            background-color: dodgerblue;
-            color: white;
-        }
-
-        .container {
-            background-color: rgb(252, 252, 250);
-            border: 5px solid #00ff00;
-        }
-
-        body {
-            background: linear-gradient(to right, #e2e2e2, #d5ffdd);
-        }
     </style>
 </head>
 
@@ -82,55 +81,54 @@ if (isset($_SESSION['message'])) {
                 <label for="phone" class="form-label">Phone Number</label>
                 <input type="tel" name="phone" class="form-control" id="phone" required>
             </div>
-
+        
             <input type="hidden" id="totalInput" name="total">
             <h3>Total: <span id="totalPrice"></span></h3>
+        
 
-
-            <button type="submit" class="btn btn-submit mt-3">Confirm Order</button>
-            <button type="back" class="btn btn-back mt-3" type="button"
-                onclick="window.location.href='cart.html';">Back</button>
-            <br>
-            <br>
+                <button type="submit" class="btn btn-submit mt-3">Confirm Order</button>
+                <button type="back" class="btn btn-back mt-3" type="button" onclick="window.location.href='cart.html';">Back</button>
+              <br>
+              <br>
         </form>
-
+        
     </div>
 
 
     <script>
 
-        document.addEventListener("DOMContentLoaded", function () {
-            const totalElement = document.getElementById("totalPrice");
-            const totalInput = document.getElementById("totalInput");
-            const deliveryForm = document.getElementById("deliveryForm");
+document.addEventListener("DOMContentLoaded", function () {
+    const totalElement = document.getElementById("totalPrice");
+    const totalInput = document.getElementById("totalInput");
+    const deliveryForm = document.getElementById("deliveryForm");
 
-            // Get the total price from URL (e.g., ?total=Rs.500)
-            const urlParams = new URLSearchParams(window.location.search);
-            const total = urlParams.get("total") || "Rs.0.00";
+    // Get the total price from URL (e.g., ?total=Rs.500)
+    const urlParams = new URLSearchParams(window.location.search);
+    const total = urlParams.get("total") || "Rs.0.00";
 
-            // Display and store in hidden input
-            totalElement.textContent = total;
-            totalInput.value = total;
+    // Display and store in hidden input
+    totalElement.textContent = total;
+    totalInput.value = total;
 
-            // Handle form submission
-            deliveryForm.addEventListener("submit", function (e) {
-                // Allow form to submit normally to PHP
-                if (!document.getElementById("name").value.trim() ||
-                    !document.getElementById("address").value.trim() ||
-                    !document.getElementById("phone").value.trim()) {
-                    e.preventDefault();
-                    alert("Please fill in all fields.");
-                }
-            });
-        });
-    </script>
-
-    <script>
-        const messageFromPHP = <?= json_encode($message) ?>;
-        if (messageFromPHP) {
-            alert(messageFromPHP);
+    // Handle form submission
+    deliveryForm.addEventListener("submit", function (e) {
+        // Allow form to submit normally to PHP
+        if (!document.getElementById("name").value.trim() ||
+            !document.getElementById("address").value.trim() ||
+            !document.getElementById("phone").value.trim()) {
+            e.preventDefault();
+            alert("Please fill in all fields.");
         }
-    </script>
+    });
+});
+</script>
+
+<script>
+    const messageFromPHP = <?= json_encode($message) ?>;
+    if (messageFromPHP) {
+        alert(messageFromPHP);
+    }
+</script>
 
 </body>
 
