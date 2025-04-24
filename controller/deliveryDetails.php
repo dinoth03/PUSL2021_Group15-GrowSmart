@@ -1,5 +1,7 @@
 <?php
-$hostname = "localhost";
+session_start();
+
+$server = "localhost";
 $username = "root";
 $password = "Himasha@1218";
 $db = "growsmart";
@@ -8,26 +10,32 @@ $db = "growsmart";
 $conn = mysqli_connect($server, $username, $password, $db);
 
 // Check connection
-if ($con->connect_error) {
-    die("Database Connection failed: " . $con->connect_error);
+if (!$conn) {
+    echo "<script>alert('❌ Connection failed: " . mysqli_connect_error() . "'); window.history.back();</script>";
+    exit();
 }
 
-// Check if form is submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name    = $con->real_escape_string($_POST["name"]);
-    $address = $con->real_escape_string($_POST["address"]);
-    $phone   = $con->real_escape_string($_POST["phone"]);
-    $total   = $con->real_escape_string($_POST["total"]); // We'll pass it via hidden field
+// Get data
+$name = $_POST["name"];
+$address = $_POST["address"];
+$phone = $_POST["phone"];
+$total = $_POST["total"];
 
-    // Insert into database
-    $sql = "INSERT INTO Delivery (name, address, phone, total) VALUES ('$name', '$address', '$phone', '$total')";
+// Insert query
+$sql = "INSERT INTO delivery (Dname, Daddress, Dphone, Dtotal) VALUES ('$name', '$address', '$phone', '$total')";
 
-    if ($con->query($sql)) {
-        echo "<script>alert('Delivery details saved successfully!'); window.location.href='payment.html';</script>";
-    } else {
-        echo "<script>alert('Failed to save details'); window.history.back();</script>";
-    }
-
-    $con->close();
+// Run query
+if (mysqli_query($conn, $sql)) {
+    echo "<script>
+        alert('✅ Delivery details added successfully!');
+        window.location.href = '../payment.html';
+    </script>";
+} else {
+    echo "<script>
+        alert('❌ Error: " . mysqli_error($conn) . "');
+        window.history.back();
+    </script>";
 }
+
+mysqli_close($conn);
 ?>

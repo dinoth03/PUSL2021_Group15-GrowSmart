@@ -1,3 +1,12 @@
+<?php
+session_start();
+$message = "";
+if (isset($_SESSION['message'])) {
+    $message = $_SESSION['message'];
+    unset($_SESSION['message']); // clear the message after displaying
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,20 +31,33 @@
     border: 20px solid #ddd;
   }
 
-  .btn {
+  .btn-submit {
   background: #d5f3d5;
   border: 0.1rem solid #00ff00;
   align-content: center;
 }
-.btn:hover {
+.btn-submit:hover {
   background: #00ff00;
   color: white;
 }
 
+.btn-back {
+    background-color: rgb(220, 233, 247);
+    border: 0.1rem solid dodgerblue;
+  align-content: center;
+}
+.btn-back:hover {
+    background-color: dodgerblue;
+    color: white;
+}
 .container
 {
     background-color:rgb(252, 252, 250);
     border: 5px solid #00ff00;
+}
+
+body{
+    background: linear-gradient(to right, #e2e2e2, #d5ffdd);
 }
 
     </style>
@@ -44,7 +66,6 @@
 <body>
     <br>
     <br>
-
     <div class="container">
         <h2 class="mt-4">Delivery Details</h2>
         <form id="deliveryForm" action="controller/deliveryDetails.php" method="POST">
@@ -64,15 +85,15 @@
             <input type="hidden" id="totalInput" name="total">
             <h3>Total: <span id="totalPrice"></span></h3>
         
-            <div class="text-center mt-3">
-                <button type="submit" class="btn">Confirm Order</button>
-                <br>
-                <br>
-              </div>
-              
+
+                <button type="submit" class="btn btn-submit mt-3">Confirm Order</button>
+                <button type="back" class="btn btn-back mt-3" type="button" onclick="window.location.href='cart.html';">Back</button>
+              <br>
+              <br>
         </form>
         
     </div>
+
 
     <script>
 
@@ -101,6 +122,14 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 </script>
+
+<script>
+    const messageFromPHP = <?= json_encode($message) ?>;
+    if (messageFromPHP) {
+        alert(messageFromPHP);
+    }
+</script>
+
 </body>
 
 </html>
