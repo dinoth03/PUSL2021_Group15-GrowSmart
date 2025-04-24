@@ -118,7 +118,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                                 <p class="card-text"><strong>Price:</strong> Rs.<?= $row['price'] ?></p>
                                 <button type="button" class="btn add-to-cart cart-button" data-product-id="<?= $modalId ?>">Add to
                                     Cart</button>
-                                <a href="delivery.php?price=<?= $row['price'] ?>&name=<?= urlencode($row['productname']) ?>"
+                                    <a href="delivery.php?price=<?= $row['price'] ?>&name=<?= urlencode($row['productname']) ?>&action=buynow" 
                                     class="btn buy-now">Buy Now</a>
                     
                             </div>
@@ -151,17 +151,13 @@ while ($row = mysqli_fetch_assoc($result)) {
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                <button 
-  type="button" 
-  class="btn add-to-cart" 
-  data-bs-dismiss="modal"
-  data-name="<?= htmlspecialchars($row['productname']) ?>" 
-  data-price="<?= $row['price'] ?>" 
-  data-image="<?= $row['imageurl'] ?>"
->
-  Add to Cart
-</button>
-<a href="delivery.php?price=<?= $row['price'] ?>&name=<?= urlencode($row['productname']) ?>" class="btn buy-now cart-button">Buy Now</a>
+                                    <button type="button" class="btn add-to-cart" data-bs-dismiss="modal"
+                                        data-name="<?= htmlspecialchars($row['productname']) ?>" data-price="<?= $row['price'] ?>"
+                                        data-image="<?= $row['imageurl'] ?>">
+                                        Add to Cart
+                                    </button>
+                                    <a href="delivery.php?price=<?= $row['price'] ?>&name=<?= urlencode($row['productname']) ?>&action=buynow" 
+                                    class="btn buy-now cart-button">Buy Now</a>
 
                                 </div>
                             </div>
@@ -185,6 +181,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 <!-- Bootstrap JS (only once!) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="js/shopScript.js"></script>
+
 
 </body>
 </html>

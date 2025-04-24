@@ -32,54 +32,50 @@ header("Location: ../seller.php");
 exit();
 ?-->
 
-
-
 <?php
 session_start();
 
-// Database connection
 $server = "localhost";
 $username = "root";
 $password = "Himasha@1218";
 $db = "growsmart";
 
-// Create connection
+// 1. Connect to MySQL
 $conn = mysqli_connect($server, $username, $password, $db);
 
-// Check connection
+// 2. Check connection
 if (!$conn) {
     $_SESSION['message'] = "❌ Connection failed: " . mysqli_connect_error();
     header("Location: ../seller.php");
     exit();
 }
 
-// Check if all required POST data is set
-if (isset($_POST["product_id"], $_POST["productName"], $_POST["productCategory"], $_POST["productPrice"], $_POST["productWeight"], $_POST["imageUrl"])) {
-    $id = $_POST["product_id"];
-    $name = $_POST["productName"];
-    $category = $_POST["productCategory"];
-    $price = $_POST["productPrice"];
-    $weight = $_POST["productWeight"];
-    $url = $_POST["imageUrl"];
+// 3. Get data from request
+$id = $_POST["product_id"];
+$name = $_POST["productName"];
+$category = $_POST["productCategory"];
+$price = $_POST["productPrice"];
+$weight = $_POST["productWeight"];
+$url = $_POST["imageUrl"];
 
-    // Prepare the update statement to prevent SQL injection
-    $stmt = $conn->prepare("UPDATE products SET productname=?, category=?, price=?, weight=?, imageurl=? WHERE itemid=?");
-    $stmt->bind_param("sssssi", $name, $category, $price, $weight, $url, $id);
+// 4. Prepare and execute UPDATE statement
+$stmt = $conn->prepare("UPDATE products SET 
+                       productname=?, 
+                       category=?, 
+                       price=?, 
+                       weight=?, 
+                       imageurl=? 
+                       WHERE itemid=?");
+$stmt->bind_param("ssdssi", $name, $category, $price, $weight, $url, $id);
 
-    if ($stmt->execute()) {
-        $_SESSION['message'] = "✅ Product updated successfully!";
-    } else {
-        $_SESSION['message'] = "❌ Update failed: " . $stmt->error;
-    }
-
-    // Close the prepared statement and connection
-    $stmt->close();
-    mysqli_close($conn);
+if ($stmt->execute()) {
+    $_SESSION['message'] = "✅ Product updated successfully!";
 } else {
-    $_SESSION['message'] = "❌ Missing required product information!";
+    $_SESSION['message'] = "❌ Error: " . $stmt->error;
 }
 
-// Redirect to seller.php after handling the request
+$stmt->close();
+mysqli_close($conn);
 header("Location: ../seller.php");
 exit();
 ?>
