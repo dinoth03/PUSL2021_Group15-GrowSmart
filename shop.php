@@ -20,9 +20,7 @@
     </style>
 </head>
 
-
 <body>
-
 
 <?php
 $server = "localhost";
@@ -40,7 +38,6 @@ while ($row = mysqli_fetch_assoc($result)) {
     $products[] = $row;
 }
 ?>
-
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
@@ -80,7 +77,9 @@ while ($row = mysqli_fetch_assoc($result)) {
             </ul>
         </div>
 
-        <a href="seller.php" class="btn search-button" id="nav-button">Add Products</a>
+        <a href="seller.php" id="addProductBtn" class="btn search-button" 
+           data-loggedin="<?php echo isset($_SESSION['seller_id']) ? 'true' : 'false'; ?>">Add Products</a>
+
     </div>
 </nav>
 
@@ -102,11 +101,10 @@ while ($row = mysqli_fetch_assoc($result)) {
                     $modalId = 'modal_' . $row['itemid']; // Assuming 'id' is a unique field in your DB
                     ?>
                     <div class="col-md-3 product-card" data-category="<?= $row['category'] ?>" data-name="<?= $row['productname'] ?>">
-                    
                         <div class="card">
                             <div class="image-card">
                                 <img src="<?= $row['imageurl'] ?>" class="card-img-top" alt="<?= $row['productname'] ?>"
-                                    data-bs-toggle="modal" data-bs-target="#<?= $modalId ?>">
+                                     data-bs-toggle="modal" data-bs-target="#<?= $modalId ?>">
                             </div>
                             <div class="card-body">
                                 <div class="card-body-user">
@@ -116,11 +114,12 @@ while ($row = mysqli_fetch_assoc($result)) {
                                 <h5 class="card-title"><?= $row['productname'] ?></h5>
                                 <p><strong>Pieces:</strong> <?= $row['weight'] ?></p>
                                 <p class="card-text"><strong>Price:</strong> Rs.<?= $row['price'] ?></p>
-                                <button type="button" class="btn add-to-cart cart-button" data-product-id="<?= $modalId ?>">Add to
-                                    Cart</button>
-                                    <a href="delivery.php?price=<?= $row['price'] ?>&name=<?= urlencode($row['productname']) ?>&action=buynow" 
-                                    class="btn buy-now">Buy Now</a>
-                    
+
+                                <!-- Add to Cart and Buy Now buttons -->
+                                <button type="button" class="btn add-to-cart cart-button" data-product-id="<?= $modalId ?>" 
+                                        data-loggedin="<?php echo isset($_SESSION['user_id']) ? 'true' : 'false'; ?>">Add to Cart</button>
+                                <a href="delivery.php?price=<?= $row['price'] ?>&name=<?= urlencode($row['productname']) ?>&action=buynow" 
+                                   class="btn buy-now" data-loggedin="<?php echo isset($_SESSION['user_id']) ? 'true' : 'false'; ?>">Buy Now</a>
                             </div>
                         </div>
                     </div>
@@ -151,14 +150,16 @@ while ($row = mysqli_fetch_assoc($result)) {
                                     </div>
                                 </div>
                                 <div class="modal-footer">
+                                    <!-- Add to Cart and Buy Now buttons in modal -->
                                     <button type="button" class="btn add-to-cart" data-bs-dismiss="modal"
-                                        data-name="<?= htmlspecialchars($row['productname']) ?>" data-price="<?= $row['price'] ?>"
-                                        data-image="<?= $row['imageurl'] ?>">
+                                            data-name="<?= htmlspecialchars($row['productname']) ?>" 
+                                            data-price="<?= $row['price'] ?>" data-image="<?= $row['imageurl'] ?>"
+                                            data-loggedin="<?php echo isset($_SESSION['user_id']) ? 'true' : 'false'; ?>">
                                         Add to Cart
                                     </button>
                                     <a href="delivery.php?price=<?= $row['price'] ?>&name=<?= urlencode($row['productname']) ?>&action=buynow" 
-                                    class="btn buy-now cart-button">Buy Now</a>
-
+                                       class="btn buy-now cart-button" 
+                                       data-loggedin="<?php echo isset($_SESSION['user_id']) ? 'true' : 'false'; ?>">Buy Now</a>
                                 </div>
                             </div>
                         </div>
@@ -178,10 +179,8 @@ while ($row = mysqli_fetch_assoc($result)) {
     </div>
 </section>
 
-<!-- Bootstrap JS (only once!) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="js/shopScript.js"></script>
-
 
 </body>
 </html>
