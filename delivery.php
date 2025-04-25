@@ -18,48 +18,49 @@ if (isset($_SESSION['message'])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         .mt-4 {
-  background: #fff;
-  box-shadow: --box-shadow;
-  padding: 1rem 1rem;
-  text-align: center;
-  outline: var(--outline);
-  outline-offset: -0.5rem;
-    background-color: #fff;
-    border: 1px solid white;
-    width: 100%;
-    padding: 10px 0px 10px 0px;
-    border: 20px solid #ddd;
-  }
+            background: #fff;
+            box-shadow: --box-shadow;
+            padding: 1rem 1rem;
+            text-align: center;
+            outline: var(--outline);
+            outline-offset: -0.5rem;
+            background-color: #fff;
+            border: 1px solid white;
+            width: 100%;
+            padding: 10px 0px 10px 0px;
+            border: 20px solid #ddd;
+        }
 
-  .btn-submit {
-  background: #d5f3d5;
-  border: 0.1rem solid #00ff00;
-  align-content: center;
-}
-.btn-submit:hover {
-  background: #00ff00;
-  color: white;
-}
+        .btn-submit {
+            background: #d5f3d5;
+            border: 0.1rem solid #00ff00;
+            align-content: center;
+        }
 
-.btn-back {
-    background-color: rgb(220, 233, 247);
-    border: 0.1rem solid dodgerblue;
-  align-content: center;
-}
-.btn-back:hover {
-    background-color: dodgerblue;
-    color: white;
-}
-.container
-{
-    background-color:rgb(252, 252, 250);
-    border: 5px solid #00ff00;
-}
+        .btn-submit:hover {
+            background: #00ff00;
+            color: white;
+        }
 
-body{
-    background: linear-gradient(to right, #e2e2e2, #d5ffdd);
-}
+        .btn-back {
+            background-color: rgb(220, 233, 247);
+            border: 0.1rem solid dodgerblue;
+            align-content: center;
+        }
 
+        .btn-back:hover {
+            background-color: dodgerblue;
+            color: white;
+        }
+
+        .container {
+            background-color: rgb(252, 252, 250);
+            border: 5px solid #00ff00;
+        }
+
+        body {
+            background: linear-gradient(to right, #e2e2e2, #d5ffdd);
+        }
     </style>
 </head>
 
@@ -81,75 +82,76 @@ body{
                 <label for="phone" class="form-label">Phone Number</label>
                 <input type="tel" name="phone" class="form-control" id="phone" required>
             </div>
-        
+
             <input type="hidden" id="totalInput" name="total">
             <h3>Total: <span id="totalPrice"></span></h3>
-        
 
-                <button type="submit" class="btn btn-submit mt-3">Confirm Order</button>
-                <button type="back" class="btn btn-back mt-3" type="button" onclick="window.location.href='cart.html';">Back</button>
-              <br>
-              <br>
+
+            <button type="submit" class="btn btn-submit mt-3">Confirm Order</button>
+            <button type="back" class="btn btn-back mt-3" type="button"
+                onclick="window.location.href='cart.html';">Back</button>
+            <br>
+            <br>
         </form>
-        
+
     </div>
 
 
     <script>
-document.addEventListener("DOMContentLoaded", function () {
-    const totalElement = document.getElementById("totalPrice");
-    const totalInput = document.getElementById("totalInput");
-    const deliveryForm = document.getElementById("deliveryForm");
+        document.addEventListener("DOMContentLoaded", function () {
+            const totalElement = document.getElementById("totalPrice");
+            const totalInput = document.getElementById("totalInput");
+            const deliveryForm = document.getElementById("deliveryForm");
 
-    // Get parameters from URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const price = urlParams.get("price") || "0.00";
-    const action = urlParams.get("action");
+            // Get parameters from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const price = urlParams.get("price") || "0.00";
+            const action = urlParams.get("action");
 
-    // Format the price
-    let total = "0.00";
-    if (action === "buynow") {
-        // For Buy Now, use the single product price
-        total = parseFloat(price).toFixed(2);
-    } else {
-        // For cart checkout, use the passed total
-        total = urlParams.get("total") || "0.00";
-        // Remove "Rs." if present
-        total = total.toString().replace(/rs\.?/i, '').trim();
-        total = parseFloat(total).toFixed(2);
-    }
+            // Format the price
+            let total = "0.00";
+            if (action === "buynow") {
+                // For Buy Now, use the single product price
+                total = parseFloat(price).toFixed(2);
+            } else {
+                // For cart checkout, use the passed total
+                total = urlParams.get("total") || "0.00";
+                // Remove "Rs." if present
+                total = total.toString().replace(/rs\.?/i, '').trim();
+                total = parseFloat(total).toFixed(2);
+            }
 
-    // Format as currency
-    const formattedTotal = "Rs. " + total;
+            // Format as currency
+            const formattedTotal = "Rs. " + total;
 
-    // Display and store in hidden input
-    totalElement.textContent = formattedTotal;
-    totalInput.value = formattedTotal;
+            // Display and store in hidden input
+            totalElement.textContent = formattedTotal;
+            totalInput.value = formattedTotal;
 
-    // Form validation
-    deliveryForm.addEventListener("submit", function (e) {
-        if (!document.getElementById("name").value.trim() ||
-            !document.getElementById("address").value.trim() ||
-            !document.getElementById("phone").value.trim()) {
-            e.preventDefault();
-            alert("Please fill in all fields.");
+            // Form validation
+            deliveryForm.addEventListener("submit", function (e) {
+                if (!document.getElementById("name").value.trim() ||
+                    !document.getElementById("address").value.trim() ||
+                    !document.getElementById("phone").value.trim()) {
+                    e.preventDefault();
+                    alert("Please fill in all fields.");
+                }
+            });
+        });
+
+        // Display PHP messages if any
+        const messageFromPHP = <?= json_encode($message) ?>;
+        if (messageFromPHP) {
+            alert(messageFromPHP);
         }
-    });
-});
+    </script>
 
-// Display PHP messages if any
-const messageFromPHP = <?= json_encode($message) ?>;
-if (messageFromPHP) {
-    alert(messageFromPHP);
-}
-</script>
-
-<script>
-    const messageFromPHP = <?= json_encode($message) ?>;
-    if (messageFromPHP) {
-        alert(messageFromPHP);
-    }
-</script>
+    <script>
+        const messageFromPHP = <?= json_encode($message) ?>;
+        if (messageFromPHP) {
+            alert(messageFromPHP);
+        }
+    </script>
 
 </body>
 

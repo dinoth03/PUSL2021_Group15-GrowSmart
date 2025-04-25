@@ -6,16 +6,12 @@ body {
   background: #eee;
 }
 
-/* cart-button button is for both button in cart*/
-/* .cart-button {
-    border: .1rem solid black;
-} */
-
 /* add-to-cart button */
 .add-to-cart {
   background-color: rgb(220, 233, 247);
   border: 0.1rem solid dodgerblue;
 }
+
 .add-to-cart:hover {
   background-color: dodgerblue;
   color: white;
@@ -26,6 +22,7 @@ body {
   background: #d5f3d5;
   border: 0.1rem solid #00ff00;
 }
+
 .buy-now:hover {
   background: #00ff00;
   color: white;

@@ -99,6 +99,18 @@ while ($row = mysqli_fetch_assoc($result)) {
             foreach ($products as $row) {
                 if (strtolower($row['category']) === $category) {
                     $modalId = 'modal_' . $row['itemid']; // Assuming 'id' is a unique field in your DB
+                    
+                            // Hardcoded descriptions by category
+        $categoryDescriptions = [
+            'plants' => 'Fresh and healthy plants to brighten your space.',
+            'fruits' => 'Sweet and juicy fruits grown with care.',
+            'vegetables' => 'Fresh vegetables harvested from local farms.',
+            'fertilizers' => 'High-quality fertilizers for healthy plant growth.'
+        ];
+
+        // Fallback description
+        $descriptionText = $categoryDescriptions[strtolower($row['category'])] ?? 'Product description not available.';
+
                     ?>
                     <div class="col-md-3 product-card" data-category="<?= $row['category'] ?>" data-name="<?= $row['productname'] ?>">
                         <div class="card">
@@ -107,10 +119,6 @@ while ($row = mysqli_fetch_assoc($result)) {
                                      data-bs-toggle="modal" data-bs-target="#<?= $modalId ?>">
                             </div>
                             <div class="card-body">
-                                <div class="card-body-user">
-                                    <img src="Images/u1.jpeg" alt="User Image" class="user-img">
-                                    <button class="user-name">John Smith</button>
-                                </div>
                                 <h5 class="card-title"><?= $row['productname'] ?></h5>
                                 <p><strong>Pieces:</strong> <?= $row['weight'] ?></p>
                                 <p class="card-text"><strong>Price:</strong> Rs.<?= $row['price'] ?></p>
@@ -140,11 +148,10 @@ while ($row = mysqli_fetch_assoc($result)) {
                                             <img src="<?= $row['imageurl'] ?>" class="img-fluid" alt="<?= $row['productname'] ?>">
                                         </div>
                                         <div class="col-md-6">
-                                            <p><strong>Seller:</strong> John Smith</p>
-                                            <p><strong>Seller Address:</strong> No.205, Galle Rd, Galle.</p>
-                                            <p><strong>Rating:</strong> ⭐⭐⭐⭐ (4.5)</p>
+                                            
                                             <p><strong>Pieces:</strong> <?= $row['weight'] ?></p>
                                             <p><strong>Price:</strong> Rs.<?= $row['price'] ?></p>
+                                            <p><strong>Description:</strong> <?= $descriptionText ?></p>
                                             <p><strong>Shipping:</strong> Free</p>
                                         </div>
                                     </div>

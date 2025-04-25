@@ -1,36 +1,3 @@
-<!--?php
-
-$server = "localhost";
-$username = "root";
-$password = "Himasha@1218";
-$db = "growsmart";
-
-$conn = mysqli_connect($server, $username, $password, $db);
-
-if (!$conn) {
-    header("Location: ../seller.php?message=" . urlencode("❌ Connection failed: " . mysqli_connect_error()));
-    exit();
-}
-
-$name = $_POST["productName"];
-$category = $_POST["productCategory"];
-$price = $_POST["productPrice"];
-$weight = $_POST["productWeight"];
-$url = $_POST["imageUrl"];
-
-$sql = "INSERT INTO products(productname, category, price, weight, imageurl) VALUES ('$name', '$category', '$price', '$weight', '$url');";
-
-if (mysqli_query($conn, $sql)) {
-    header("Location: ../seller.php?message=" . urlencode("✅ Product added successfully!"));
-} else {
-    header("Location: ../seller.php?message=" . urlencode("❌ Error: " . mysqli_error($conn)));
-}
-
-mysqli_close($conn);
-exit();
-?-->
-
-
 <?php
 session_start();
 
