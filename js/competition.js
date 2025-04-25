@@ -6,22 +6,22 @@ document.addEventListener("DOMContentLoaded", () => {
     updateLeaderboard();
 });
 
-function vote(plantId) {
-    // Count how many plants with this ID are present
-    const matchingPlants = document.querySelectorAll(`.plant[data-id='${plantId}']`);
+function vote(ProfileId) {
+    // Count how many Profile with this ID are present
+    const matchingProfile = document.querySelectorAll(`.Profile[data-id='${ProfileId}']`);
     
     // Increase vote count for this plantId
-    if (!votes[plantId]) {
-        votes[plantId] = 0;
+    if (!votes[ProfileId]) {
+        votes[ProfileId] = 0;
     }
 
-    votes[plantId]++;
+    votes[ProfileId]++;
 
     // Update all matching plants with the same ID
-    matchingPlants.forEach(plant => {
+    matchingProfile.forEach(plant => {
         const voteSpan = plant.querySelector(".votes");
         if (voteSpan) {
-            voteSpan.innerText = `Votes: ${votes[plantId]}`;
+            voteSpan.innerText = `Votes: ${votes[ProfileId]}`;
         }
     });
 
@@ -30,38 +30,45 @@ function vote(plantId) {
 }
 
 function saveVotes() {
-    localStorage.setItem("plantVotes", JSON.stringify(votes));
+    localStorage.setItem("ProfileVotes", JSON.stringify(votes));
 }
 
 function loadVotes() {
-    const storedVotes = localStorage.getItem("plantVotes");
-    if (storedVotes) {
-        votes = JSON.parse(storedVotes);
-        Object.keys(votes).forEach(plantId => {
-            const matchingPlants = document.querySelectorAll(`.plant[data-id='${plantId}']`);
-            matchingPlants.forEach(plant => {
-                const voteSpan = plant.querySelector(".votes");
-                if (voteSpan) {
-                    voteSpan.innerText = `Votes: ${votes[plantId]}`;
-                }
-            });
-        });
-    }
+  const storedVotes = localStorage.getItem("ProfileVotes");
+  if (storedVotes) {
+      votes = JSON.parse(storedVotes);
+  }
+
+  // Ensure all profiles start with vote count (even if 0)
+  const allProfiles = document.querySelectorAll(".Profile");
+  allProfiles.forEach(Profile => {
+      const ProfileId = Profile.getAttribute("data-id");
+
+      if (!votes[ProfileId]) {
+          votes[ProfileId] = 0; // Initialize if not present
+      }
+
+      const voteSpan = Profile.querySelector(".votes");
+      if (voteSpan) {
+          voteSpan.innerText = `Votes: ${votes[ProfileId]}`;
+      }
+  });
 }
+
 
 function updateLeaderboard() {
     const leaderboard = document.getElementById("leaderboard-list");
     if (!leaderboard) return;
 
     leaderboard.innerHTML = "";
-    const sortedPlants = Object.entries(votes).sort((a, b) => b[1] - a[1]);
+    const sortedProfile = Object.entries(votes).sort((a, b) => b[1] - a[1]);
 
-    sortedPlants.forEach(([plantId, voteCount]) => {
-        const plant = document.querySelector(`.plant[data-id='${plantId}']`);
-        if (plant) {
-            const plantName = plant.querySelector("h3").innerText;
+    sortedProfile.forEach(([ProfileId, voteCount]) => {
+        const Profile = document.querySelector(`.Profile[data-id='${ProfileId}']`);
+        if (Profile) {
+            const ProfileName = Profile.querySelector("h3").innerText;
             const listItem = document.createElement("li");
-            listItem.innerText = `${plantName}: ${voteCount} votes`;
+            listItem.innerText = `${ProfileName}: ${voteCount} votes`;
             leaderboard.appendChild(listItem);
         }
     });
@@ -69,30 +76,11 @@ function updateLeaderboard() {
 
 
 
-
-
-
-function addComment() {
-    let commentInput = document.getElementById("comment-input");
-    let commentText = commentInput.value.trim();
-    if (commentText !== "") {
-        let commentList = document.getElementById("comment-list");
-        let newComment = document.createElement("li");
-        newComment.textContent = commentText;
-        commentList.appendChild(newComment);
-        commentInput.value = "";
-    }
-}
-
-
-
-
-
 // Dummy seller data
 let sellers = [
-    { name: "GreenGarden", ratings: [5, 4, 4] },
-    { name: "NaturePro", ratings: [5, 5, 5, 4] },
-    { name: "Plantify", ratings: [3, 4, 2] },
+    { name: "Dinoth", ratings: [5, 4, 4] },
+    { name: "Dualj", ratings: [5, 5, 5, 4] },
+    { name: "Amanda", ratings: [3, 4, 2] },
   ];
   
   // Calculate average rating
