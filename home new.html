@@ -53,10 +53,57 @@
             <div class="fas fa-edit" id="user profile" onclick="window.location.href='../user profile/userprofile.html'"></div>
         </div>
 
-        <form action="" class="search-form">
-            <input type="search" id="search-box" placeholder="Search Here...">
-            <label for="search-box" class="fas fa-search"></label>
-            </form>
+        <form id="searchForm" class="search-form">
+            <input type="search" id="search-box" name="q" placeholder="Search Here..." />
+            <button type="submit" class="fas fa-search"></button>
+        </form>
+        
+        <script>
+            let searchForm = document.querySelector('.search-form');
+            let loginForm = document.querySelector('.login-form');
+            let navbar = document.querySelector('.navbar');
+            
+            // Show/hide search box
+            document.querySelector('#search-btn').onclick = () => {
+                searchForm.classList.toggle('active');
+                loginForm.classList.remove('active');
+                navbar.classList.remove('active');
+            };
+            
+            // Search form submit handler
+            document.querySelector('#searchForm').addEventListener('submit', function(e) {
+                e.preventDefault(); // prevent page reload
+            
+                const query = document.querySelector('#search-box').value.toLowerCase().trim();
+            
+                if (query.includes('home')) {
+                    window.location.href = 'home new.html';
+                } else if (query.includes('flower')) {
+                    window.location.href = 'flowers.html';
+                } else if (query.includes('fruit') || query.includes('vegetable')) {
+                    window.location.href = 'fruits & vegetables.html';
+                } else if (query.includes('indoor') || query.includes('house')) {
+                    window.location.href = 'indoorplants.html';
+                } else if (query.includes('shop')) {
+                    window.location.href = 'shop.html';
+                } else if (query.includes('sustainable')) {
+                    window.location.href = 'sustainable garden.html';
+                } else if (query.includes('about')) {
+                    window.location.href = 'about us.html';
+                } else if (query.includes('idea')) {
+                    window.location.href = 'Idea & Inspiration.html';
+                } else if (query.includes('offer')) {
+                    window.location.href = 'offer.html';
+                } else if (query.includes('compitition')) {
+                    window.location.href = 'compitition.html';
+                } else if (query.includes('Learning')) {
+                    window.location.href = 'Learning.html';
+                } else {
+                    alert('No results found for: ' + query);
+                }
+            });
+            </script>
+            
 
          <form action="" class="login-form">
             <h3><a href="Login.html">Login now</a> </h3>
