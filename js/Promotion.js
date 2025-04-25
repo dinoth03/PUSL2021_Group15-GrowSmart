@@ -19,13 +19,19 @@ function addToCart(productId) {
     updateCart();
 }
 
+
+
+
+
 function updateCart() {
     const cartItemsContainer = document.getElementById("cart-items");
     cartItemsContainer.innerHTML = "";
     let total = 0;
+    let itemCount = 0;
 
     cart.forEach(item => {
         total += item.price * item.quantity;
+        itemCount += item.quantity; // Count total items in cart
         let li = document.createElement("li");
         li.innerHTML = `
             <span>${item.name} - Rs.${item.price} x ${item.quantity}</span>
@@ -39,7 +45,13 @@ function updateCart() {
     });
 
     document.getElementById("cart-total").innerText = `Total: Rs.${total.toFixed(2)}`;
+    document.getElementById("cart-count").innerText = itemCount; // 🔴 This updates the red circle
 }
+
+
+
+
+
 
 function changeQuantity(productId, change) {
     let product = cart.find(item => item.id === productId);
