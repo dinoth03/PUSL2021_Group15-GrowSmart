@@ -1,37 +1,3 @@
-<!--?php
-session_start();
-$server = "localhost";
-$username = "root";
-$password = "Himasha@1218";
-$db = "growsmart";
-
-$conn = mysqli_connect($server, $username, $password, $db);
-if (!$conn) {
-    $_SESSION['message'] = "❌ Connection failed: " . mysqli_connect_error();
-    header("Location: ../seller.php");
-    exit();
-}
-
-$id = $_POST["product_id"];
-$name = $_POST["productName"];
-$category = $_POST["productCategory"];
-$price = $_POST["productPrice"];
-$weight = $_POST["productWeight"];
-$url = $_POST["imageUrl"];
-
-$sql = "UPDATE products SET productname='$name', category='$category', price='$price', weight='$weight', imageurl='$url' WHERE itemid=$id";
-
-if (mysqli_query($conn, $sql)) {
-    $_SESSION['message'] = "✅ Product updated successfully!";
-} else {
-    $_SESSION['message'] = "❌ Update failed: " . mysqli_error($conn);
-}
-unset($_SESSION['edit_product']);
-mysqli_close($conn);
-header("Location: ../seller.php");
-exit();
-?-->
-
 <?php
 session_start();
 
