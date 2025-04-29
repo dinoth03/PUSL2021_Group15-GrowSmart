@@ -1,0 +1,3 @@
+Login admin
+email: janesmith@example.com
+password: SecurePass@1
