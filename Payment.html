@@ -12,46 +12,61 @@
 
 <body>
 
-    <div class="container">
-        <div class="section">
-            <h3>Purchase Summary</h3><hr>
-            <div class="receipt">
-                <p id="product"><b>Products:</b> </p>
-                <p class="total" id="total_price"><b>Total Price:</b></p>
-            </div>
+
+
+  <div class="container">
+    <form action="payment.php" method="POST" id="cardForm">
+  
+      <div class="payment-container">
+        
+        <!-- Purchase Summary Section -->
+        <div class="section" style="flex: 1;">
+          <h3>Purchase Summary</h3>
+          <hr>
+          <div class="receipt">
+            <p id="product"><b>Products:</b></p>
+            <p class="total" id="total_price"><b>Total Price:</b></p>
+            <input type="hidden" name="product" value="Plant Package">
+            <input type="hidden" name="amount" value="36">
+          </div>
         </div>
-
-        <form action="payment.php" method="POST" class="card-form" id="cardForm"></form>
-        <div class="section">
-            <h3>Payment Method</h3><hr>
-               <div class="payment-methods">
-                <!-- PayPal Button -->
-                <div id="paypal-button-container"></div>
-
-                <div class="card-form">
-                    <input type="text" placeholder="Card Number" required id="cd">
-                    <input type="text" placeholder="Expiration (MM/YY)" required id="ex">
-                    <input type="text" placeholder="CVV" required id="cvv">
-                    <input type="text" placeholder="First Name" required id="fname">
-                    <input type="text" placeholder="Last Name" required id="lname">
-                    <input type="text" placeholder="Email" required id="email">
-					
-                </div>
-					<!--<label><input type="checkbox" required>&nbsp;&nbsp;I Agree to the Terms and Coniditons.</label>
-                <button class="place-order">Place Order</button>-->
-				
-				<div class="buttons">
-            		<a href="home new.html" class="back-btn" id="back">BACK</a>
-            		<a href="#" class="pay-now-btn" id="pay">PAY NOW</a>
-        		</div>
-           	   </div> <br>
-			
-			<input type="checkbox" id="check1" required>
+  
+        <!-- Payment Method Section -->
+        <div class="section" style="flex: 2;">
+          <h3>Payment Method</h3>
+          <hr>
+  
+          <!-- PayPal Button Container -->
+          <div id="paypal-button-container" style="margin-bottom: 20px;"></div>
+  
+          <!-- Card Form Fields -->
+          <div class="card-form">
+            <input type="text" id="cd" name="card_number" placeholder="Card Number" required>
+            <input type="text" id="ex" name="expiry" placeholder="Expiration (MM/YY)" required>
+            <input type="text" id="cvv" name="cvv" placeholder="CVV" required>
+            <input type="text" id="fname" name="first_name" placeholder="First Name" required>
+            <input type="text" id="lname" name="last_name" placeholder="Last Name" required>
+            <input type="email" id="email" name="email" placeholder="Email" required>
+          </div>
+  
+          <!-- Terms Checkbox -->
+          <div class="checkbox">
+            <input type="checkbox" id="check1" required>
             <label for="check1">I agree to the <a href="Terms and Conditions.html" id="tnm">Terms & Conditions</a></label>
-				
-        </div>
-        </form> 
-    	</div>
+          </div>
+  
+          <!-- Action Buttons -->
+          <div class="buttons">
+            <a href="home new.html" class="back-btn" id="back">BACK</a>
+            <button type="submit" class="pay-now-btn" id="pay">PAY NOW</button>
+          </div>
+  
+        </div> <!-- End of Payment Method Section -->
+  
+      </div> <!-- End of payment-container -->
+  
+    </form>
+  </div>
 
 
          <!-- PayPal Sandbox Configuration Load -->
