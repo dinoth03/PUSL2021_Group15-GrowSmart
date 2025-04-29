@@ -1,6 +1,6 @@
 <?php
 // Save as: payment.php
-require 'paydb_config.php';
+require 'db_config.php';
 require 'vendor/autoload.php'; // For PHPMailer
 
 use PHPMailer\PHPMailer\PHPMailer;
@@ -52,7 +52,7 @@ try {
           <p><b>Amount:</b> $$amount</p>
           <p><b>Status:</b> Payment Successful ✅</p>
         </div>
-        <br><a href='home new.html' class='back-btn'>Back to Home</a>
+        <br><a href='payment.html' class='back-btn'>Back to Home</a>
       </div>
     </div></body></html>";
 } catch (Exception $e) {
