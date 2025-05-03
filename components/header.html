@@ -1,47 +1,108 @@
+Smart_Web\components\header.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Growsmart</title>
+    <title>GrowSmart</title>
+    <link rel="icon" type="image/png" href="../Img/TitleLogo.png">
 
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-        <!--font awesom file link-->
-        <link rel="stylesheet" href="../css/styles.css">
-    </head>
-     <!--header section starts-->
-
-     <header class="header">
+    <!--font awesome file link-->
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .user-badge {
+            background-color: #00ff00;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.7rem;
+            margin-left: 5px;
+        }
+        
+        .admin-badge {
+            background-color: #ff9900;
+        }
+        
+        .seller-badge {
+            background-color: #33cc99;
+        }
+        
+        .dropdown-content .dashboard-link {
+            font-weight: bold;
+            padding: 12px 16px;
+            background-color: #f1fff1;
+        }
+        
+        .dropdown-content .admin-link {
+            background-color: #fff0e0;
+        }
+        
+        .dropdown-content .seller-link {
+            background-color: #e0fff0;
+        }
+        
+        .dropdown-content .dashboard-link:hover {
+            background-color: #d1ffd1;
+        }
+        
+        .dropdown-content .admin-link:hover {
+            background-color: #ffe0c0;
+        }
+        
+        .dropdown-content .seller-link:hover {
+            background-color: #c0ffe0;
+        }
+    </style>
+</head>
+<body>
+    <!--header section starts-->
+    <header class="header">
         <a href="../home new.html" class="logo"><i class="fas fa-seedling"></i>Growsmart</a>
         <ul class="navbar">
-            <li><a href="../home new.html">Home</a></li>
+            <li><a href="./home new.html">Home</a></li>
             <li class="dropdown">
-            <a href="#">categories <i class="fas fa-chevron-down"></i></a>
-            <div class="dropdown-content">
-                <a href="../indoorplants.html">House Plants</a>
-                <a href="../fruits & vegetables.html">Fruits & Vegetables</a>
-                <a href="../flowers.html">Flowers</a>
-                <a href="../sustainable.html">Sustainability Garden </a>
-            </div></li>
-            <li><a href="../shop.php">Shop </a></li>
-            <li><a href="../offer.html">offers</a></li>
-            <li><a href="../Competition.html">competition</a></li>
+                <a href="#">Categories <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="./indoorplants.html">House Plants</a>
+                    <a href="./fruits & vegetables.html">Fruits & Vegetables</a>
+                    <a href="./flowers.html">Flowers</a>
+                    <a href="./sustainable.html">Sustainability Garden</a>
+                </div>
+            </li>
+            <li><a href="./shop.php">Shop</a></li>
+            <li><a href="./offer.php">Offers</a></li>
+            <li><a href="./Competition.html">Competition</a></li>
             <li class="dropdown">
-            <a href="#">Chat <i class="fas fa-chevron-down"></i></a>
-            <div class="dropdown-content">
-                <a href="../components/Virtual Assistant.html">AI Chat</a>
-                <a href="../server/public/index.html">Community</a>
-            </div></li>
+                <a href="#">Chat <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="./components/Virtual Assistant.html">AI Chat</a>
+                    <a href="./server/public/index.html">Community</a>
+                </div>
+            </li>
             <li class="dropdown">
                 <a href="#">More <i class="fas fa-chevron-down"></i></a>
                 <div class="dropdown-content">
-                   <a href="../Learning.html">Learning</a>
-                    <a href="../Idea & Inspiration.html">Idea & Inspiration</a>
-                </div></li>
-                <li><a href="../Login.html">Login</a></li>    
-                
+                    <a href="./Learning.html">Learning</a>
+                    <a href="./Idea & Inspiration.html">Idea & Inspiration</a>
+                    <!-- Dashboard links will be added here dynamically -->
+                    <div id="dashboard-links"></div>
+                </div>
+            </li>
+            <!-- Login item (will be hidden when logged in) -->
+            <li id="login-nav-item"><a href="./Login.html">Login</a></li>
+            
+            <!-- User info (will be shown when logged in) -->
+            <li id="user-info-nav" style="display: none;" class="dropdown">
+                <a href="#" id="username-display">User <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="../user profile/userprofile.html"><i class="fas fa-user-circle"></i> My Profile</a>
+                    <a href="../my-orders.php"><i class="fas fa-box"></i> My Orders</a>
+                    <a href="#" id="logout-link"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                </div>
+            </li>
         </ul>
 
         <div class="Icons">
@@ -49,34 +110,139 @@
             <div class="fas fa-search" id="search-btn"></div>
             <div class="fas fa-shopping-cart" id="cart-btn" onclick="window.location.href='../cart.html'"></div>
             <div class="fas fa-user" id="login-btn"></div>
-            <div class="fas fa-edit" id="user profile" onclick="window.location.href='../user profile/userprofile.html'"></div>
         </div>
 
         <form action="" class="search-form">
             <input type="search" id="search-box" placeholder="Search Here...">
             <label for="search-box" class="fas fa-search"></label>
-            </form>
+        </form>
 
-         <form action="" class="login-form">
-            <h3><a href="../Login.html">Login now</a> </h3>
-         </form>   
-      
+        <form action="" class="login-form" id="login-form-header">
+            <h3><a href="./Login.html">Login now</a></h3>
+        </form>
     </header>
-    <br><br><br>
-    <!--header section ends-->
-    </br>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-          document.querySelectorAll("a").forEach(function (link) {
-            link.addEventListener("click", function (e) {
-              e.preventDefault(); // Stop default link behavior
-              window.top.location.href = this.href; // Navigate parent page instead
+        document.addEventListener("DOMContentLoaded", function() {
+            // For links within the header (fix paths when loaded in iframes)
+            document.querySelectorAll(".header a").forEach(function(link) {
+                link.addEventListener("click", function(e) {
+                    if (this.getAttribute('id') === 'logout-link') {
+                        // Don't prevent default for logout link
+                        return;
+                    }
+                    const href = this.getAttribute('href');
+                    if (href && !href.startsWith('#') && !href.startsWith('javascript')) {
+                        e.preventDefault();
+                        if (window.top !== window.self) {
+                            // If in iframe, navigate the parent
+                            window.top.location.href = href;
+                        } else {
+                            // Normal navigation
+                            window.location.href = href;
+                        }
+                    }
+                });
             });
-          });
+            
+            // Check if user is logged in
+            checkUserLoginStatus();
+            
+            // Logout functionality
+            document.getElementById('logout-link').addEventListener('click', function(e) {
+                e.preventDefault();
+                logout();
+            });
         });
-      </script>
-
+        
+        // Function to check if user is logged in
+        function checkUserLoginStatus() {
+            // Use fetch to check session status (adjust path if needed)
+            fetch('../check_session.php')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.loggedIn) {
+                        // User is logged in
+                        showLoggedInState(data.username, data.role);
+                    } else {
+                        // User is not logged in
+                        showLoggedOutState();
+                    }
+                })
+                .catch(error => {
+                    console.error('Error checking login status:', error);
+                    // If error, assume logged out
+                    showLoggedOutState();
+                });
+        }
+        
+        // Display logged-in user interface
+        function showLoggedInState(username, role) {
+            // Hide login button and form
+            document.getElementById('login-nav-item').style.display = 'none';
+            document.getElementById('login-form-header').style.display = 'none';
+            
+            // Show user info
+            const userInfoNav = document.getElementById('user-info-nav');
+            const usernameDisplay = document.getElementById('username-display');
+            const dashboardLinks = document.getElementById('dashboard-links');
+            
+            // Display username with appropriate badge
+            let badgeHtml = '';
+            if (role === 'admin') {
+                badgeHtml = '<span class="user-badge admin-badge">Admin</span>';
+            } else if (role === 'seller') {
+                badgeHtml = '<span class="user-badge seller-badge">Seller</span>';
+            }
+            
+            usernameDisplay.innerHTML = username + ' ' + badgeHtml + ' <i class="fas fa-chevron-down"></i>';
+            userInfoNav.style.display = 'block';
+            
+            // Add dashboard links
+            dashboardLinks.innerHTML = '';
+            if (role === 'admin') {
+                dashboardLinks.innerHTML += '<a href="../admin panel/index.php" class="dashboard-link admin-link"><i class="fas fa-tachometer-alt"></i> Admin Dashboard</a>';
+            }
+            
+            if (role === 'seller') {
+                dashboardLinks.innerHTML += '<a href="../seller.php" class="dashboard-link seller-link"><i class="fas fa-store"></i> Seller Dashboard</a>';
+            }
+        }
+        
+        // Display logged-out user interface
+        function showLoggedOutState() {
+            // Show login button and form
+            document.getElementById('login-nav-item').style.display = 'block';
+            document.getElementById('login-form-header').style.display = 'block';
+            
+            // Hide user info
+            document.getElementById('user-info-nav').style.display = 'none';
+            
+            // Clear dashboard links
+            const dashboardLinks = document.getElementById('dashboard-links');
+            if (dashboardLinks) {
+                dashboardLinks.innerHTML = '';
+            }
+        }
+        
+        // Logout function
+        function logout() {
+            fetch('../logout.php')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // Redirect to home page
+                        if (window.top !== window.self) {
+                            window.top.location.href = '../home new.html';
+                        } else {
+                            window.location.href = '../home new.html';
+                        }
+                    }
+                })
+                .catch(error => {
+                    console.error('Error during logout:', error);
+                });
+        }
+    </script>
+</body>
 </html>
-
-
