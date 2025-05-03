@@ -1,280 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GrowSmart - Cart</title>
     <link rel="icon" type="image/png" href="Img/TitleLogo.png" />
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <!--my css-->
-    <link href="css/shopStyle.css" rel="stylesheet" />
-    <style>
-        .mt-4 {
-            background: #fff;
-            box-shadow: --box-shadow;
-            padding: 1rem 1rem;
-            text-align: center;
-            outline: var(--outline);
-            outline-offset: -0.5rem;
-            background-color: #fff;
-            border: 1px solid white;
-            width: 100%;
-            padding: 10px 0px 10px 0px;
-            border: 20px solid #ddd;
-        }
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link href="css/cart.css" rel="stylesheet" />
+  </head>
 
-        .cart-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 10px;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .cart-image {
-            width: 50px;
-            height: 50px;
-        }
-
-        .remove-item {
-            cursor: pointer;
-            font-size: 14px;
-            padding: 5px 10px 5px 10px;
-        }
-
-        .btn-back {
-            background-color: rgb(220, 233, 247);
-            border: 0.1rem solid dodgerblue;
-        }
-
-        .btn-back:hover {
-            background-color: dodgerblue;
-            color: white;
-        }
-
-        .btn-checkout {
-            background: #d5f3d5;
-            border: 0.1rem solid #00ff00;
-        }
-
-        .btn-checkout:hover {
-            background: #00ff00;
-            color: white;
-        }
-
-        .btn-remove {
-            background: #d68a85;
-            border: 0.1rem solid #e04c41;
-        }
-
-        .btn-remove:hover {
-            background: #e04c41;
-            color: white;
-        }
-
-        .section-1 {
-            background-color: rgb(252, 252, 250);
-            border: 5px solid #00ff00;
-            padding: 20px;
-            width: 1000px;
-            margin: 0 auto;
-            /* this centers the section horizontally */
-            box-sizing: border-box;
-            /* ensures padding/borders are included in the total width */
-        }
-
-        body {
-            background: linear-gradient(to right, #e2e2e2, #d5ffdd);
-        }
-
-        @media (min-width: 768px) {
-            .section-1 {
-                width: 1000px;
-            }
-        }
-
-        /* Media Query for Smaller Screens */
-        @media (max-width: 767px) {
-            .section-1 {
-                width: 500px;
-            }
-        }
-    </style>
-</head>
-
-<body>
-    <br />
-    <br />
+  <body>
+    <br /><br />
     <div class="section-1">
-        <div>
-            <h2 class="mt-4">Your Cart</h2>
-        </div>
-        <div class="container">
-            <div style="
+      <div>
+        <h2 class="mt-4">Your Cart</h2>
+      </div>
+      <div class="container">
+        <div
+          style="
             display: flex;
             justify-content: flex-end;
             align-items: center;
             padding-right: 10px;
-          ">
-                <label style="margin-right: 30px; font-size: 20px">
-                    <input type="checkbox" id="selectAll" /> Select All
-                </label>
-                <button id="removeAll" class="btn btn-remove">Remove Selected</button>
-            </div>
-
-            <br />
-            <div id="cartItems" style="
+          "
+        >
+          <label style="margin-right: 30px; font-size: 20px">
+            <input type="checkbox" id="selectAll" /> Select All
+          </label>
+          <button id="removeAll" class="btn btn-remove">Remove Selected</button>
+        </div>
+        <br />
+        <div
+          id="cartItems"
+          style="
             border: 1px solid #ddd;
             padding: 15px;
             margin: 20px;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-          "></div>
+          "
+        ></div>
 
-            <h3>Total: <span id="totalPrice">Rs.0.00</span></h3>
-            <button id="checkout" type="button" class="btn btn-checkout">
-                Check Out
-            </button>
-            <button class="btn btn-back" type="button" onclick="window.location.href='shop.php';">
-                Back
-            </button>
-            <br />
-            <br />
-        </div>
+        <h3>Total: <span id="totalPrice">Rs.0.00</span></h3>
+        <button id="checkout" type="button" class="btn btn-checkout">
+          Check Out
+        </button>
+        <button
+          class="btn btn-back"
+          type="button"
+          onclick="window.location.href='shop.php';"
+        >
+          Back
+        </button>
+        <br /><br />
+      </div>
     </div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const cartItemsContainer = document.getElementById("cartItems");
-            const totalPriceElement = document.getElementById("totalPrice");
-            const selectAllCheckbox = document.getElementById("selectAll");
-            const removeAllButton = document.getElementById("removeAll");
-            const checkoutButton = document.getElementById("checkout");
-
-            let cart = JSON.parse(localStorage.getItem("cart")) || [
-                { name: "Apple", price: "Rs.50.00", image: "apple.jpg" },
-                { name: "Banana", price: "Rs.20.00", image: "banana.jpg" },
-                { name: "Cherry", price: "Rs.150.00", image: "cherry.jpg" },
-            ];
-
-            function renderCart() {
-                cartItemsContainer.innerHTML = "";
-
-                cart.forEach((item, index) => {
-                    const cartItem = document.createElement("div");
-                    cartItem.className = "cart-item";
-                    cartItem.innerHTML = `
-                    <input type="checkbox" class="cart-checkbox" data-index="${index}">
-                    <img src="${item.image}" alt="${item.name}" class="cart-image">
-                    <span>${item.name}</span>
-                    <span>${item.price}</span>
-                   <button class="remove-item btn btn-remove" data-index="${index}">Remove</button>
-
-                `;
-                    cartItemsContainer.appendChild(cartItem);
-                });
-
-                calculateTotal();
-            }
-
-            function calculateTotal() {
-                const checkboxes = document.querySelectorAll(
-                    ".cart-checkbox:checked"
-                );
-                let total = 0;
-
-                checkboxes.forEach((checkbox) => {
-                    const index = checkbox.getAttribute("data-index");
-                    const item = cart[index];
-                    if (item && item.price) {
-                        const price = parseFloat(item.price.replace("Rs.", "").trim());
-                        total += isNaN(price) ? 0 : price;
-                    }
-                });
-
-                totalPriceElement.textContent = `Rs.${total.toFixed(2)}`;
-            }
-
-            // Select All Checkbox
-            selectAllCheckbox.addEventListener("change", function () {
-                const checkboxes = document.querySelectorAll(".cart-checkbox");
-                checkboxes.forEach((checkbox) => (checkbox.checked = this.checked));
-                calculateTotal();
-            });
-
-            // Remove Selected Items
-            removeAllButton.addEventListener("click", function () {
-                const selectedItems = document.querySelectorAll(
-                    ".cart-checkbox:checked"
-                );
-
-                if (selectedItems.length === 0) {
-                    alert("No items selected to remove!");
-                    return;
-                }
-
-                cart = cart.filter((_, index) => {
-                    return ![...selectedItems].some(
-                        (item) => item.getAttribute("data-index") == index
-                    );
-                });
-
-                localStorage.setItem("cart", JSON.stringify(cart));
-                renderCart();
-                alert("Selected items have been removed!");
-            });
-
-            // Remove Individual Item
-            cartItemsContainer.addEventListener("click", function (e) {
-                if (e.target.classList.contains("remove-item")) {
-                    const index = e.target.getAttribute("data-index");
-                    cart.splice(index, 1);
-                    localStorage.setItem("cart", JSON.stringify(cart));
-                    renderCart();
-                    alert("Item removed successfully!");
-                }
-            });
-
-            // Event Listener for Individual Checkboxes
-            cartItemsContainer.addEventListener("change", function (e) {
-                if (e.target.classList.contains("cart-checkbox")) {
-                    calculateTotal();
-                }
-            });
-
-            // Checkout Button Event
-            checkoutButton.addEventListener("click", function () {
-                const checkboxes = document.querySelectorAll(
-                    ".cart-checkbox:checked"
-                );
-                let selectedItems = [];
-                let total = 0;
-
-                checkboxes.forEach((checkbox) => {
-                    const index = checkbox.getAttribute("data-index");
-                    const item = cart[index];
-                    if (item) {
-                        selectedItems.push(item);
-                        total += parseFloat(item.price.replace("Rs.", "").trim());
-                    }
-                });
-
-                if (selectedItems.length === 0) {
-                    alert("No items selected for checkout!");
-                    return;
-                }
-
-                // Pass selected items and total to the delivery form
-                localStorage.setItem("selectedItems", JSON.stringify(selectedItems));
-                localStorage.setItem("checkoutTotal", total.toFixed(2));
-                window.location.href = `delivery.php?total=Rs.${total.toFixed(2)}`; // <--- Changed here
-            });
-
-            renderCart();
-        });
-    </script>
-</body>
-
+    <script src="js/cart.js"></script>
+  </body>
 </html>

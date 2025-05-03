@@ -23,10 +23,15 @@
 <body>
 
 <?php
+// $server = "localhost";
+// $username = "root";
+// $password = "Himasha@1218";
+// $db = "growsmart";
+
 $server = "localhost";
 $username = "root";
-$password = "Himasha@1218";
-$db = "growsmart";
+$password = "";
+$db = "growsmartDB";
 
 $conn = mysqli_connect($server, $username, $password, $db);
 if (!$conn) {

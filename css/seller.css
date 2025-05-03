@@ -1,0 +1,49 @@
+.btn-submit {
+  background: #d5f3d5;
+  border: 0.1rem solid #00ff00;
+}
+
+.btn-submit:hover {
+  background: #00ff00;
+  color: white;
+}
+
+.btn-back {
+  background-color: rgb(220, 233, 247);
+  border: 0.1rem solid dodgerblue;
+}
+
+.btn-back:hover {
+  background-color: dodgerblue;
+  color: white;
+}
+
+.container {
+  background-color: rgb(252, 252, 250);
+  border: 5px solid #00ff00;
+}
+
+body {
+  background: linear-gradient(to right, #e2e2e2, #d5ffdd);
+}
+
+.btn-warning {
+  background-color: rgb(239, 247, 128);
+  border: 0.1rem solid #e3eb52;
+}
+
+.btn-warning:hover {
+  background-color: #e3eb52;
+  color: white;
+}
+
+.btn-danger {
+  color: black;
+  background-color: rgb(241, 137, 119);
+  border: 0.1rem solid #f24949;
+}
+
+.btn-danger:hover {
+  background-color: #f24949;
+  color: white;
+}

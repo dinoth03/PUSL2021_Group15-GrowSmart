@@ -1,10 +1,15 @@
 <?php
 session_start();
 
+// $server = "localhost";
+// $username = "root";
+// $password = "Himasha@1218";
+// $db = "growsmart";
+
 $server = "localhost";
 $username = "root";
-$password = "Himasha@1218";
-$db = "growsmart";
+$password = "";
+$db = "growsmartDB";
 
 // 1. Connect to MySQL
 $conn = mysqli_connect($server, $username, $password, $db);
