@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['account_type'] = $user['account_type'];
             echo "Login successful! Welcome, " . $user['first_name'] . ".";
             // Redirect to dashboard or home page
-            header("Location: home.php");
+            header("Location: home new.html");
             exit();
         } else {
             echo "Invalid password. Please try again.";
