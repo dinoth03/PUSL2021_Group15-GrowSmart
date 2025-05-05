@@ -1,4 +1,3 @@
-Smart_Web\components\header.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,7 +59,7 @@ Smart_Web\components\header.html -->
 <body>
     <!--header section starts-->
     <header class="header">
-        <a href="../home new.html" class="logo"><i class="fas fa-seedling"></i>Growsmart</a>
+        <a href="./home new.html" class="logo"><i class="fas fa-seedling"></i>Growsmart</a>
         <ul class="navbar">
             <li><a href="./home new.html">Home</a></li>
             <li class="dropdown">
@@ -98,7 +97,7 @@ Smart_Web\components\header.html -->
             <li id="user-info-nav" style="display: none;" class="dropdown">
                 <a href="#" id="username-display">User <i class="fas fa-chevron-down"></i></a>
                 <div class="dropdown-content">
-                    <a href="../user profile/userprofile.html"><i class="fas fa-user-circle"></i> My Profile</a>
+                    <a href="../user profile/user_profile.php"><i class="fas fa-user-circle"></i> My Profile</a>
                     <a href="../my-orders.php"><i class="fas fa-box"></i> My Orders</a>
                     <a href="#" id="logout-link"><i class="fas fa-sign-out-alt"></i> Logout</a>
                 </div>
@@ -108,8 +107,8 @@ Smart_Web\components\header.html -->
         <div class="Icons">
             <div class="fas fa-bars" id="menu-btn"></div>
             <div class="fas fa-search" id="search-btn"></div>
-            <div class="fas fa-shopping-cart" id="cart-btn" onclick="window.location.href='../cart.html'"></div>
-            <div class="fas fa-user" id="login-btn"></div>
+            <div class="fas fa-shopping-cart" id="cart-btn" onclick="window.location.href='cart.html'"></div>
+            <div class="fas fa-user" id="login-btn" onclick="window.location.href='user profile/user_profile.php'"></div>
         </div>
 
         <form action="" class="search-form">
@@ -181,6 +180,7 @@ Smart_Web\components\header.html -->
             // Hide login button and form
             document.getElementById('login-nav-item').style.display = 'none';
             document.getElementById('login-form-header').style.display = 'none';
+            document.getElementById('login-btn').style.display = 'none'; // Hide user icon in the Icons section
             
             // Show user info
             const userInfoNav = document.getElementById('user-info-nav');
@@ -214,6 +214,7 @@ Smart_Web\components\header.html -->
             // Show login button and form
             document.getElementById('login-nav-item').style.display = 'block';
             document.getElementById('login-form-header').style.display = 'block';
+            document.getElementById('login-btn').style.display = 'block'; // Show user icon in the Icons section
             
             // Hide user info
             document.getElementById('user-info-nav').style.display = 'none';
