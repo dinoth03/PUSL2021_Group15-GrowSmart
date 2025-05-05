@@ -7,7 +7,7 @@ A web-based platform which is developed to foster connection between plant lover
 - Frameworks :- Bootstrap, Express 
 - Database :- MySQL ( via XAMPP server, phpMyAdmin ) 
 - Development tools :- VS Code, XAMPP Server, phpMyAdmin 
-- Payment Integration :- PayPal API ( sandbox ), Card payment with Email Receipt system, COD 
+- Payment Integration :- PayPal (Sandbox), Card payment with Stripe, COD 
 - Email System :- SMTP, PHPMailer, Composer
 - API Keys :- PayPal, Stripe 
 
