@@ -1,6 +1,11 @@
 <?php
 session_start();
 
+// $server = "localhost";
+// $username = "root";
+// $password = "Himasha@1218";
+// $db = "growsmart";
+
 $server = "localhost";
 $username = "root";
 $password = "";
