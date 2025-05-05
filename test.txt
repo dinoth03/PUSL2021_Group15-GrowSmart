@@ -1,3 +1,7 @@
 Login admin
 email: janesmith@example.com
 password: SecurePass@1
+
+User login 
+email :- dulaj.dulsith@gmail.com
+password :- 1234
