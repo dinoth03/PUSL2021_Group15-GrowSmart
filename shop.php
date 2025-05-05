@@ -77,8 +77,8 @@ while ($row = mysqli_fetch_assoc($result)) {
             </ul>
         </div>
 
-        <!-- Change this line -->
-<a href="seller.php" id="addProductBtn" class="btn search-button">Add Products</a>
+        <a href="seller.php" id="addProductBtn" class="btn search-button" 
+           data-loggedin="<?php echo isset($_SESSION['seller_id']) ? 'true' : 'false'; ?>">Add Products</a>
 
     </div>
 </nav>

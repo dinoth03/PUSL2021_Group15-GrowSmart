@@ -153,74 +153,26 @@
             const removeAllButton = document.getElementById("removeAll");
             const checkoutButton = document.getElementById("checkout");
 
-            // Retrieve cart from localStorage
-            let cart = [];
-            try {
-                const savedCart = localStorage.getItem("cart");
-                cart = savedCart ? JSON.parse(savedCart) : [];
-                
-                // Handle legacy format or empty cart
-                if (!Array.isArray(cart) || cart.length === 0) {
-                    cart = [];
-                }
-                
-                // Ensure all prices are properly formatted
-                cart.forEach(item => {
-                    // Standardize price format and ensure it's a number
-                    if (typeof item.price === 'number') {
-                        // Price is already a number, keep it that way
-                    } else if (typeof item.price === 'string') {
-                        // If price is a string like "Rs.50.00", extract the number
-                        if (item.price.startsWith('Rs.')) {
-                            item.price = parseFloat(item.price.replace('Rs.', '').trim()) || 0;
-                        } else {
-                            // Try to convert string to number
-                            item.price = parseFloat(item.price) || 0;
-                        }
-                    } else {
-                        // Default case
-                        item.price = 0;
-                    }
-                    
-                    // Add quantity if missing
-                    if (!item.quantity) {
-                        item.quantity = 1;
-                    }
-                });
-                
-                // Save standardized cart back to localStorage
-                localStorage.setItem("cart", JSON.stringify(cart));
-            } catch (e) {
-                console.error("Error loading cart:", e);
-                cart = [];
-            }
+            let cart = JSON.parse(localStorage.getItem("cart")) || [
+                { name: "Apple", price: "Rs.50.00", image: "apple.jpg" },
+                { name: "Banana", price: "Rs.20.00", image: "banana.jpg" },
+                { name: "Cherry", price: "Rs.150.00", image: "cherry.jpg" },
+            ];
 
             function renderCart() {
                 cartItemsContainer.innerHTML = "";
 
-                if (cart.length === 0) {
-                    cartItemsContainer.innerHTML = "<p style='text-align: center; padding: 20px;'>Your cart is empty</p>";
-                    return;
-                }
-
                 cart.forEach((item, index) => {
                     const cartItem = document.createElement("div");
                     cartItem.className = "cart-item";
-                    
-                    // Calculate price display format
-                    const displayPrice = `Rs.${(parseFloat(item.price) * (item.quantity || 1)).toFixed(2)}`;
-                    const quantityText = item.quantity > 1 ? ` (${item.quantity} x Rs.${parseFloat(item.price).toFixed(2)})` : '';
-                    
-                    // Default image if none provided
-                    const imgSrc = item.image || 'Img/product_placeholder.png';
-                    
                     cartItem.innerHTML = `
-                        <input type="checkbox" class="cart-checkbox" data-index="${index}">
-                        <img src="${imgSrc}" alt="${item.name}" class="cart-image" onerror="this.src='Img/product_placeholder.png'">
-                        <span>${item.name}</span>
-                        <span>${displayPrice}${quantityText}</span>
-                        <button class="remove-item btn btn-remove" data-index="${index}">Remove</button>
-                    `;
+                    <input type="checkbox" class="cart-checkbox" data-index="${index}">
+                    <img src="${item.image}" alt="${item.name}" class="cart-image">
+                    <span>${item.name}</span>
+                    <span>${item.price}</span>
+                   <button class="remove-item btn btn-remove" data-index="${index}">Remove</button>
+
+                `;
                     cartItemsContainer.appendChild(cartItem);
                 });
 
@@ -228,18 +180,17 @@
             }
 
             function calculateTotal() {
-                const checkboxes = document.querySelectorAll(".cart-checkbox:checked");
+                const checkboxes = document.querySelectorAll(
+                    ".cart-checkbox:checked"
+                );
                 let total = 0;
 
                 checkboxes.forEach((checkbox) => {
-                    const index = parseInt(checkbox.getAttribute("data-index"));
+                    const index = checkbox.getAttribute("data-index");
                     const item = cart[index];
-                    
-                    if (item) {
-                        // Ensure price is treated as a number
-                        const price = parseFloat(item.price) || 0;
-                        const quantity = item.quantity || 1;
-                        total += price * quantity;
+                    if (item && item.price) {
+                        const price = parseFloat(item.price.replace("Rs.", "").trim());
+                        total += isNaN(price) ? 0 : price;
                     }
                 });
 
@@ -255,23 +206,19 @@
 
             // Remove Selected Items
             removeAllButton.addEventListener("click", function () {
-                const selectedItems = document.querySelectorAll(".cart-checkbox:checked");
+                const selectedItems = document.querySelectorAll(
+                    ".cart-checkbox:checked"
+                );
 
                 if (selectedItems.length === 0) {
                     alert("No items selected to remove!");
                     return;
                 }
 
-                // Create indexes array of items to remove
-                const indexesToRemove = Array.from(selectedItems).map(
-                    checkbox => parseInt(checkbox.getAttribute("data-index"))
-                ).sort((a, b) => b - a); // Sort in descending order
-                
-                // Remove items from the end first to avoid index shifting
-                indexesToRemove.forEach(index => {
-                    if (index >= 0 && index < cart.length) {
-                        cart.splice(index, 1);
-                    }
+                cart = cart.filter((_, index) => {
+                    return ![...selectedItems].some(
+                        (item) => item.getAttribute("data-index") == index
+                    );
                 });
 
                 localStorage.setItem("cart", JSON.stringify(cart));
@@ -282,13 +229,11 @@
             // Remove Individual Item
             cartItemsContainer.addEventListener("click", function (e) {
                 if (e.target.classList.contains("remove-item")) {
-                    const index = parseInt(e.target.getAttribute("data-index"));
-                    if (index >= 0 && index < cart.length) {
-                        cart.splice(index, 1);
-                        localStorage.setItem("cart", JSON.stringify(cart));
-                        renderCart();
-                        alert("Item removed successfully!");
-                    }
+                    const index = e.target.getAttribute("data-index");
+                    cart.splice(index, 1);
+                    localStorage.setItem("cart", JSON.stringify(cart));
+                    renderCart();
+                    alert("Item removed successfully!");
                 }
             });
 
@@ -301,44 +246,33 @@
 
             // Checkout Button Event
             checkoutButton.addEventListener("click", function () {
-                const checkboxes = document.querySelectorAll(".cart-checkbox:checked");
-                
-                if (checkboxes.length === 0) {
-                    alert("No items selected for checkout!");
-                    return;
-                }
-                
+                const checkboxes = document.querySelectorAll(
+                    ".cart-checkbox:checked"
+                );
                 let selectedItems = [];
                 let total = 0;
 
                 checkboxes.forEach((checkbox) => {
-                    const index = parseInt(checkbox.getAttribute("data-index"));
+                    const index = checkbox.getAttribute("data-index");
                     const item = cart[index];
-                    
                     if (item) {
                         selectedItems.push(item);
-                        const price = parseFloat(item.price) || 0;
-                        const quantity = item.quantity || 1;
-                        total += price * quantity;
+                        total += parseFloat(item.price.replace("Rs.", "").trim());
                     }
                 });
+
+                if (selectedItems.length === 0) {
+                    alert("No items selected for checkout!");
+                    return;
+                }
 
                 // Pass selected items and total to the delivery form
                 localStorage.setItem("selectedItems", JSON.stringify(selectedItems));
                 localStorage.setItem("checkoutTotal", total.toFixed(2));
-                
-                // Redirect to delivery page with total
-                window.location.href = `delivery.php?total=${total.toFixed(2)}`;
+                window.location.href = `delivery.php?total=Rs.${total.toFixed(2)}`; // <--- Changed here
             });
 
-            // Initialize cart display
             renderCart();
-            
-            // Auto-select all items on page load
-            selectAllCheckbox.checked = true;
-            const checkboxes = document.querySelectorAll(".cart-checkbox");
-            checkboxes.forEach((checkbox) => (checkbox.checked = true));
-            calculateTotal();
         });
     </script>
 </body>

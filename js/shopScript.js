@@ -85,34 +85,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
   filterProducts("all");
 
-  function getCorrectImagePath(storedPath) {
-    // Check if the path is a full URL (starts with http or https)
-    if (storedPath.startsWith('http://') || storedPath.startsWith('https://')) {
-        return storedPath;
-    }
-    
-    // Extract just the filename from the stored path
-    const filename = storedPath.split('/').pop();
-    
-    // Return the correct path
-    return "admin/images/products/" + filename;
+  // 🔐 Add Product login check
+  if (addProductBtn) {
+    addProductBtn.addEventListener("click", function (e) {
+      const isLoggedIn = addProductBtn.getAttribute("data-loggedin") === "true";
+      if (!isLoggedIn) {
+        e.preventDefault();
+        alert("Please log in to add products.");
+      }
+    });
   }
 
-  // Then update any code that uses product images
-  document.querySelectorAll('.add-to-cart').forEach(button => {
-      button.addEventListener('click', function() {
-          const productName = this.getAttribute('data-name');
-          const productPrice = this.getAttribute('data-price');
-          let productImage = this.getAttribute('data-image');
-          
-          // Use the corrected image path
-          productImage = getCorrectImagePath(productImage);
-          
-          // Rest of your code...
-      });
+  // 🔐 Check login for all Add to Cart & Buy Now buttons
+  document.querySelectorAll(".add-to-cart, .buy-now").forEach((button) => {
+    button.addEventListener("click", function (e) {
+      const isLoggedIn = button.getAttribute("data-loggedin");
+      if (isLoggedIn === "false") {
+        e.preventDefault();
+        alert("Please log in to perform this action.");
+        // window.location.href = "login.php"; // Optional redirect
+      }
+    });
   });
-
-  // 🔐 Login check removed - buttons will work directly without login requirement
 });
 
 // 🛒 Cart functionality

@@ -26,19 +26,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         // Verify the password
         if (password_verify($password, $user['password'])) {
-            // Set common session variables
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['first_name'] = $user['first_name'];
             $_SESSION['account_type'] = $user['account_type'];
-            
-            // Role-based redirection
-            if ($user['account_type'] === 'Admin') {
-                // Redirect admin to admin dashboard
-                header("Location: admin panel/admin_dashboard.php");
-            } else {
-                // Redirect sellers and regular users to home page
-                header("Location: home new.html");
-            }
+            echo "Login successful! Welcome, " . $user['first_name'] . ".";
+            // Redirect to dashboard or home page
+            header("Location: home new.html");
             exit();
         } else {
             echo "Invalid password. Please try again.";
