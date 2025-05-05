@@ -1,0 +1,11 @@
+Dear Lecturer/Tester,
+
+* Due to this project was developed collaboratively with our group members some file's folder paths are different.
+* Some features like Virtual Assistant etc, will not function due to the file path changes according to how you save the GrowSmart project in your htdocs. 
+* Please be kind to create a folder named "Grow" and download the files to inside of that folder, and then change this "PUSL2021_Group15_GrowSmart" folder name into "GrowSmart_web".
+* Import the Database file and run.
+* Then all the special features fill function correctly according to the report.
+
+Thank you for your patience,
+Group - 15,
+GrowSmart.
