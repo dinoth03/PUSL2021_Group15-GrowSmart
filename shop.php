@@ -23,10 +23,13 @@
 <body>
 
 <?php
-// $server = "localhost";
-// $username = "root";
-// $password = "Himasha@1218";
-// $db = "growsmart";
+//session_start();
+//$_SESSION['user_id'] = 1;  //checking using this
+
+//  $server = "localhost";
+//  $username = "root";
+//  $password = "Himasha@1218";
+//  $db = "growsmart";
 
 $server = "localhost";
 $username = "root";
@@ -83,7 +86,7 @@ while ($row = mysqli_fetch_assoc($result)) {
         </div>
 
         <a href="seller.php" id="addProductBtn" class="btn search-button" 
-           data-loggedin="<?php echo isset($_SESSION['seller_id']) ? 'true' : 'false'; ?>">Add Products</a>
+           data-loggedin="<?php echo isset($_SESSION['user_id']) ? 'true' : 'false'; ?>">Add Products</a>
 
     </div>
 </nav>

@@ -102,12 +102,7 @@ if (isset($_SESSION['message'])) {
         }
     </script>
 
-    <script>
-        const messageFromPHP = <?= json_encode($message) ?>;
-        if (messageFromPHP) {
-            alert(messageFromPHP);
-        }
-    </script>
+   
 
 </body>
 

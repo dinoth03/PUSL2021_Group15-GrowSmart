@@ -59,6 +59,12 @@
       </div>
     </div>
 
+    <!-- ✅ Add the hidden checkout form here -->
+<form id="checkoutForm" action="controller/checkoutProcess.php" method="POST" style="display: none;">
+  <input type="hidden" name="checkout_items" id="checkoutItemsInput">
+  <input type="hidden" name="checkout_total" id="checkoutTotalInput">
+</form>
+
     <script src="js/cart.js"></script>
   </body>
 </html>

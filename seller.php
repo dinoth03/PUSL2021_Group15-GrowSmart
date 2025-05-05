@@ -1,9 +1,17 @@
 <?php
 // Start the session and get session data
 session_start();
+//$_SESSION['user_id'] = 1;  //checking using this
+
 $message = $_SESSION['message'] ?? '';
 $editData = $_SESSION['edit_product'] ?? null;
 unset($_SESSION['message']);
+
+// Check if user is logged in
+$userId = $_SESSION['user_id'] ?? null;
+if (!$userId) {
+    die("Unauthorized access. Please <a href='login.html'>log in</a>.");
+}
 ?>
 
 <?php
@@ -18,18 +26,15 @@ $username = "root";
 $password = "";
 $db = "growsmartDB";
 
-// Connect to MySQL
 $conn = mysqli_connect($server, $username, $password, $db);
 
-// Check connection
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-// Fetch products
-$result = mysqli_query($conn, "SELECT * FROM products");
+// Fetch products only added by the logged-in user
+$result = mysqli_query($conn, "SELECT * FROM products WHERE user_id = '$userId'");
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -52,7 +57,8 @@ $result = mysqli_query($conn, "SELECT * FROM products");
 
         <!-- Add/Edit Product Form -->
         <form id="addProductForm"
-            action="<?= $editData ? 'controller/updateProducts.php' : 'controller/addProducts.php' ?>" method="post">
+              action="<?= $editData ? 'controller/updateProducts.php' : 'controller/addProducts.php' ?>"
+              method="post">
 
             <?php if ($editData): ?>
                 <input type="hidden" name="product_id" value="<?= $editData['itemid'] ?>">
@@ -62,7 +68,7 @@ $result = mysqli_query($conn, "SELECT * FROM products");
                 <div class="col-md-6">
                     <label for="productName">Product Name</label>
                     <input type="text" name="productName" id="productName" class="form-control" required
-                        value="<?= $editData['productname'] ?? '' ?>">
+                           value="<?= $editData['productname'] ?? '' ?>">
                 </div>
                 <div class="col-md-6">
                     <label for="productCategory">Category</label>
@@ -83,12 +89,12 @@ $result = mysqli_query($conn, "SELECT * FROM products");
                 <div class="col-md-6">
                     <label for="productPrice">Price (Rs.)</label>
                     <input type="number" name="productPrice" id="productPrice" class="form-control" required
-                        value="<?= $editData['price'] ?? '' ?>">
+                           value="<?= $editData['price'] ?? '' ?>">
                 </div>
                 <div class="col-md-6">
                     <label for="productWeight">Pieces</label>
                     <input type="text" name="productWeight" id="productWeight" class="form-control" required
-                        value="<?= $editData['weight'] ?? '' ?>">
+                           value="<?= $editData['weight'] ?? '' ?>">
                 </div>
             </div>
 
@@ -96,17 +102,18 @@ $result = mysqli_query($conn, "SELECT * FROM products");
                 <div class="col-md-12">
                     <label for="imageUrl">Image URL</label>
                     <input type="text" name="imageUrl" id="imageUrl" class="form-control" required
-                        value="<?= $editData['imageurl'] ?? '' ?>">
+                           value="<?= $editData['imageurl'] ?? '' ?>">
                 </div>
             </div>
 
-            <button type="submit"
-                class="btn btn-submit mt-3"><?= $editData ? 'Update Product' : 'Add Product' ?></button>
+            <button type="submit" class="btn btn-submit mt-3">
+                <?= $editData ? 'Update Product' : 'Add Product' ?>
+            </button>
             <button type="button" class="btn btn-back mt-3" onclick="window.location.href='shop.php';">Back</button>
         </form>
 
         <div class="manage_table mt-5">
-            <h3>Manage Products</h3>
+            <h3>Manage My Products</h3>
             <div class="table-responsive">
                 <table class="table table-bordered">
                     <thead class="table-success">
@@ -129,15 +136,12 @@ $result = mysqli_query($conn, "SELECT * FROM products");
                                     <td><?= htmlspecialchars($row['weight']) ?></td>
                                     <td><?= htmlspecialchars($row['imageurl']) ?></td>
                                     <td>
-                                        <!-- Edit button -->
                                         <form method="post" action="controller/editProducts.php" style="display:inline-block;">
                                             <input type="hidden" name="product_id" value="<?= $row['itemid'] ?>">
                                             <button type="submit" class="btn btn-sm btn-warning">Edit</button>
                                         </form>
-                                        <!-- Delete button -->
                                         <form method="post" action="controller/deleteProducts.php" style="display:inline-block;"
-                                            onsubmit="return confirm('Are you sure you want to delete this product?');">
-
+                                              onsubmit="return confirm('Are you sure you want to delete this product?');">
                                             <input type="hidden" name="product_id" value="<?= $row['itemid'] ?>">
                                             <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                                         </form>
@@ -146,7 +150,7 @@ $result = mysqli_query($conn, "SELECT * FROM products");
                             <?php endwhile; ?>
                         <?php else: ?>
                             <tr>
-                                <td colspan="5" class="text-center">No products found.</td>
+                                <td colspan="6" class="text-center">No products found.</td>
                             </tr>
                         <?php endif; ?>
                     </tbody>
@@ -164,10 +168,10 @@ $result = mysqli_query($conn, "SELECT * FROM products");
         }
     </script>
 
-
 </body>
-
 </html>
-<?php unset($_SESSION['edit_product']); ?>
 
-<?php mysqli_close($conn); ?>
+<?php
+unset($_SESSION['edit_product']);
+mysqli_close($conn);
+?>

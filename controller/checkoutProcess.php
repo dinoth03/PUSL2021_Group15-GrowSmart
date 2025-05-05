@@ -1,9 +1,4 @@
 <?php
-// Enable error reporting (optional for development)
-//ini_set('display_errors', 1);
-//ini_set('display_startup_errors', 1);
-//error_reporting(E_ALL);
-
 session_start();
 
 // $server = "localhost";
@@ -19,7 +14,7 @@ $db = "growsmartDB";
 $conn = mysqli_connect($server, $username, $password, $db);
 if (!$conn) {
     $_SESSION['message'] = "❌ Connection failed: " . mysqli_connect_error();
-    header("Location: ../cart.php");
+    header("Location: ../cart.html"); 
     exit();
 }
 
@@ -30,42 +25,62 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (!$userId || empty($items)) {
         $_SESSION['message'] = "❌ Invalid checkout request!";
-        header("Location: ../cart.php");
+        header("Location: ../cart.html"); 
         exit();
     }
 
     $success = true;
 
-    foreach ($items as $item) {
-        $name = $item['name'];
-        $price = floatval(str_replace('Rs.', '', $item['price']));
-        $image = $item['image'];
+    // Start a transaction to ensure all operations succeed together
+    mysqli_begin_transaction($conn);
 
-        $stmt = $conn->prepare("INSERT INTO orders (user_id, product_name, price, image) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("isds", $userId, $name, $price, $image);
-        if (!$stmt->execute()) {
-            $success = false;
-            break;
+    try {
+        foreach ($items as $item) {
+            $name = $item['name'];
+            $price = floatval(str_replace('Rs.', '', $item['price']));
+            $image = $item['image'];
+
+            // Insert the order item into the orders table
+            $stmt = $conn->prepare("INSERT INTO orders (user_id, product_name, price, image) VALUES (?, ?, ?, ?)");
+            if ($stmt === false) {
+                throw new Exception("❌ Prepare failed: " . $conn->error);
+            }
+
+            $stmt->bind_param("isds", $userId, $name, $price, $image);
+            if (!$stmt->execute()) {
+                throw new Exception("❌ Failed to insert order item: " . $stmt->error);
+            }
+            $stmt->close(); // Good practice to close statement after each use
         }
-    }
 
-    if ($success) {
+        // Insert the total amount into the order_summary table
         $stmt = $conn->prepare("INSERT INTO order_summary (user_id, total_amount) VALUES (?, ?)");
-        $stmt->bind_param("id", $userId, $total);
-        if ($stmt->execute()) {
-            $_SESSION['message'] = "✅ Order placed successfully!";
-            mysqli_close($conn);
-            header("Location: ../delivery.php?total=Rs.$total");
-            exit();
-        } else {
-            $_SESSION['message'] = "❌ Failed to save order summary: " . $stmt->error;
+        if ($stmt === false) {
+            throw new Exception("❌ Prepare failed (summary): " . $conn->error);
         }
-    } else {
-        $_SESSION['message'] = "❌ Failed to process order items.";
+
+        $stmt->bind_param("id", $userId, $total);
+        if (!$stmt->execute()) {
+            throw new Exception("❌ Failed to save order summary: " . $stmt->error);
+        }
+        $stmt->close();
+
+        // Commit the transaction if all inserts are successful
+        mysqli_commit($conn);
+
+        $_SESSION['message'] = "✅ Order placed successfully!";
+        header("Location: ../delivery.php?total=Rs.$total");
+        exit();
+    } catch (Exception $e) {
+        // Rollback the transaction in case of error
+        mysqli_rollback($conn);
+        $_SESSION['message'] = $e->getMessage();
+        header("Location: ../cart.html"); 
+        exit();
     }
 }
 
 mysqli_close($conn);
-header("Location: ../cart.php");
+header("Location: ../cart.html"); 
 exit();
 ?>

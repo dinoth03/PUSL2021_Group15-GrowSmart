@@ -1,6 +1,13 @@
 <?php
 session_start();
 
+$userId = $_SESSION['user_id'] ?? null;
+if (!$userId) {
+    $_SESSION['message'] = "❌ Unauthorized: Please log in first.";
+    header("Location: ../seller.php");
+    exit();
+}
+
 // $server = "localhost";
 // $username = "root";
 // $password = "Himasha@1218";
@@ -11,17 +18,15 @@ $username = "root";
 $password = "";
 $db = "growsmartDB";
 
-// 1. Connect to MySQL
 $conn = mysqli_connect($server, $username, $password, $db);
 
-// 2. Check connection
 if (!$conn) {
     $_SESSION['message'] = "❌ Connection failed: " . mysqli_connect_error();
     header("Location: ../seller.php");
     exit();
 }
 
-// 3. Get data from request
+// Get form data
 $id = $_POST["product_id"];
 $name = $_POST["productName"];
 $category = $_POST["productCategory"];
@@ -29,23 +34,39 @@ $price = $_POST["productPrice"];
 $weight = $_POST["productWeight"];
 $url = $_POST["imageUrl"];
 
-// 4. Prepare and execute UPDATE statement
-$stmt = $conn->prepare("UPDATE products SET 
-                       productname=?, 
-                       category=?, 
-                       price=?, 
-                       weight=?, 
-                       imageurl=? 
-                       WHERE itemid=?");
-$stmt->bind_param("ssdssi", $name, $category, $price, $weight, $url, $id);
+// Check if the product belongs to the user
+$checkQuery = "SELECT itemid FROM products WHERE itemid = ? AND user_id = ?";
+$checkStmt = $conn->prepare($checkQuery);
+$checkStmt->bind_param("ii", $id, $userId);
+$checkStmt->execute();
+$checkResult = $checkStmt->get_result();
 
-if ($stmt->execute()) {
+if ($checkResult->num_rows === 0) {
+    $_SESSION['message'] = "⚠️ You are not authorized to update this product.";
+    $checkStmt->close();
+    mysqli_close($conn);
+    header("Location: ../seller.php");
+    exit();
+}
+$checkStmt->close();
+
+// Perform the update
+$updateStmt = $conn->prepare("UPDATE products SET 
+                               productname = ?, 
+                               category = ?, 
+                               price = ?, 
+                               weight = ?, 
+                               imageurl = ? 
+                               WHERE itemid = ? AND user_id = ?");
+$updateStmt->bind_param("ssdssii", $name, $category, $price, $weight, $url, $id, $userId);
+
+if ($updateStmt->execute()) {
     $_SESSION['message'] = "✅ Product updated successfully!";
 } else {
-    $_SESSION['message'] = "❌ Error: " . $stmt->error;
+    $_SESSION['message'] = "❌ Error: " . $updateStmt->error;
 }
 
-$stmt->close();
+$updateStmt->close();
 mysqli_close($conn);
 header("Location: ../seller.php");
 exit();
