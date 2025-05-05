@@ -8,7 +8,7 @@ A web-based platform which is developed to foster connection between plant lover
 - Database :- MySQL ( via XAMPP server, phpMyAdmin ) 
 - Development tools :- VS Code, XAMPP Server, phpMyAdmin 
 - Payment Integration :- PayPal API ( sandbox ), Card payment with Email Receipt system, COD 
-- Email System :- SMTP configuration for payment confirmation 
+- Email System :- SMTP, PHPMailer, Composer
 - API Keys :- PayPal, Stripe 
 
 ## Project Deliverables :- 
