@@ -9,109 +9,35 @@
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-        <!--font awesom file link-->
-        <link rel="stylesheet" href="css/styles.css">
-    </head>
-    <!--header section starts-->
-
-   <header class="header">
-        <a href="home new.html" class="logo"><i class="fas fa-seedling"></i>Growsmart</a>
-        <ul class="navbar">
-            <li><a href="home new.html">Home</a></li>
-            <li class="dropdown">
-            <a href="#">categories <i class="fas fa-chevron-down"></i></a>
-            <div class="dropdown-content">
-                <a href="indoorplants.html">House Plants</a>
-                <a href="fruits & vegetables.html">Fruits & Vegetables</a>
-                <a href="flowers.html">Flowers</a>
-                <a href="sustainable.html">Sustainability Garden </a>
-            </div></li>
-            <li><a href="shop.php">Shop </a></li>
-            <li><a href="offer.html">offers</a></li>
-            <li><a href="Competition.html">competition</a></li>
-            <li class="dropdown">
-            <a href="#">Chat <i class="fas fa-chevron-down"></i></a>
-            <div class="dropdown-content">
-                <a href="components/Virtual Assistant.html">AI Chat</a>
-                <a href="server/public/index.html">Community</a>
-            </div></li>
-            <li class="dropdown">
-                <a href="#">More <i class="fas fa-chevron-down"></i></a>
-                <div class="dropdown-content">
-                   <a href="Learning.html">Learning</a>
-                    <a href="Idea & Inspiration.html">Idea & Inspiration</a>
-                </div></li>
-                <li><a href="Login.html">Login</a></li>    
-                
-        </ul>
-
-        <div class="Icons">
-            <div class="fas fa-bars" id="menu-btn"></div>
-            <div class="fas fa-search" id="search-btn"></div>
-            <div class="fas fa-shopping-cart" id="cart-btn" onclick="window.location.href='cart.html'"></div>
-            <div class="fas fa-user" id="login-btn"></div>
-            <div class="fas fa-edit" id="user profile" onclick="window.location.href='../user profile/userprofile.html'"></div>
-        </div>
-
-        <form id="searchForm" class="search-form">
-            <input type="search" id="search-box" name="q" placeholder="Search Here..." />
-            <button type="submit" class="fas fa-search"></button>
-        </form>
+    <!-- Font awesome file link -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <script>
+        // Function to load header component
+        function loadHeader() {
+            fetch('components/header.html')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok: ' + response.statusText);
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    document.getElementById('header-container').innerHTML = data;
+                })
+                .catch(error => {
+                    console.error('Error loading header:', error);
+                    document.getElementById('header-container').innerHTML = '<p>Error loading header. Please refresh the page.</p>';
+                });
+        }
         
-        <script>
-            let searchForm = document.querySelector('.search-form');
-            let loginForm = document.querySelector('.login-form');
-            let navbar = document.querySelector('.navbar');
-            
-            // Show/hide search box
-            document.querySelector('#search-btn').onclick = () => {
-                searchForm.classList.toggle('active');
-                loginForm.classList.remove('active');
-                navbar.classList.remove('active');
-            };
-            
-            // Search form submit handler
-            document.querySelector('#searchForm').addEventListener('submit', function(e) {
-                e.preventDefault(); // prevent page reload
-            
-                const query = document.querySelector('#search-box').value.toLowerCase().trim();
-            
-                if (query.includes('home')) {
-                    window.location.href = 'home new.html';
-                } else if (query.includes('flower')) {
-                    window.location.href = 'flowers.html';
-                } else if (query.includes('fruit') || query.includes('vegetable')) {
-                    window.location.href = 'fruits & vegetables.html';
-                } else if (query.includes('indoor') || query.includes('house')) {
-                    window.location.href = 'indoorplants.html';
-                } else if (query.includes('shop')) {
-                    window.location.href = 'shop.html';
-                } else if (query.includes('sustainable')) {
-                    window.location.href = 'sustainable garden.html';
-                } else if (query.includes('about')) {
-                    window.location.href = 'about us.html';
-                } else if (query.includes('idea')) {
-                    window.location.href = 'Idea & Inspiration.html';
-                } else if (query.includes('offer')) {
-                    window.location.href = 'offer.html';
-                } else if (query.includes('compitition')) {
-                    window.location.href = 'compitition.html';
-                } else if (query.includes('Learning')) {
-                    window.location.href = 'Learning.html';
-                } else {
-                    alert('No results found for: ' + query);
-                }
-            });
-            </script>
-            
-
-         <form action="" class="login-form">
-            <h3><a href="Login.html">Login now</a> </h3>
-         </form>   
-      
-    </header>
-    <br><br><br>
-    <!--header section ends-->
+        // Load header when the document is ready
+        document.addEventListener('DOMContentLoaded', loadHeader);
+    </script>
+</head>
+<body>
+    <!-- Header container where the header will be loaded -->
+    <div id="header-container"></div>
 
     <!--home section starts-->
     <section class="home" home>
@@ -122,7 +48,7 @@
                  tools and expert gardening advice, we provide everything you 
                  need to create a flourishing garden that supports biodiversity 
                  and enhances soil health.</p>
-                 <a href="shop.html" class="btn">Shop Now</a>
+                 <a href="shop.php" class="btn">Shop Now</a>
         </div>
 
     </section>
@@ -194,7 +120,7 @@
                 <img src="Img/36.jpg" alt="">
                 <h3>Shop Organic</h3>
                 <p>Switching to organic products means choosing food free from harmful pesticides, synthetic fertilizers, and GMOs. </p>
-                <a href="shop.html" class="btn">View more</a>
+                <a href="shop.php" class="btn">View more</a>
             </div>
         
             <div class="box">
